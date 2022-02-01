@@ -2,10 +2,14 @@
 {% set title = "Your email address" %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-  <p>We will send your TRN to the email address you provide.</p>
   {{ govukInput(decorate({
-      id: "email-address",
-      name: "email-address"
-    }, ['email-address'])) }}
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    },
+    hint: {
+      text: 'We will send your TRN to the email address you provide'
+    }
+  }, ['email-address'])) }}
 {% endblock %}
