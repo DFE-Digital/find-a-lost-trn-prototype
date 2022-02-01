@@ -1,8 +1,8 @@
 {% extends "layouts/email.html" %}
 
-{% set first_name = data['first-name'] or data['dqt_record']['first-name'] %}
-{% set last_name = data['last-name'] or data['dqt_record']['last-name'] %}
-{% set email_address = data['email-address'] or data['dqt_record']['email-address'] %}
+{% set first_name = data['first-name'] or data.dqt_record['first-name'] %}
+{% set last_name = data['last-name'] or data.dqt_record['last-name'] %}
+{% set email_address = data['email-address'] or data.dqt_record['email-address'] %}
 
 {% set subject = "Your TRN" %}
 {% set from = "Teacher Regulation Agency <qts.enquiries@education.gov.uk>" %}
@@ -11,7 +11,7 @@
 {% block content %}
   <p>Dear {{ first_name }},</p>
 
-  <p>Your TRN is {{ data['dqt_record']['trn'] }}.</p>
+  <p>Your TRN is {{ data.dqt_record.trn }}.</p>
 
   <h1 class="govuk-heading-m">What a TRN is for</h1>
 
@@ -23,5 +23,4 @@
     <li>to manage records of your contributions to the Teachers’ Pensions scheme</li>
     <li>give to the Department for Education (DfE) when you have been awarded QTS so you can begin your early career teacher induction and access your early career framework induction training programme</li>
   </ul>
-
 {% endblock %}

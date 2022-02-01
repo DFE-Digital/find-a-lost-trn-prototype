@@ -1,20 +1,7 @@
-{% extends "layouts/default.html" %}
-
+{% extends "layouts/wizard.html" %}
 {% set title = "Check if you have a TRN" %}
 
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">{{ title }}</h1>
-
-      <form method="post" novalidate>
-        {% set trnGuidance %}
+{% set trnGuidance %}
 You will have a TRN if you:
 
 * hold qualified teacher status (QTS) in England or Wales
@@ -25,30 +12,25 @@ You will have a TRN if you:
 * are working towards an NPQ
 * contribute to the Teachers’ Pensions scheme
 * have a relevant restriction in relation to teaching in England
-        {% endset %}
+{% endset %}
 
-        {{ trnGuidance | govukMarkdown | safe }}
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+{{ trnGuidance | govukMarkdown | safe }}
 
-        {{ govukRadios(decorate({
-          fieldset: {
-            legend: {
-              classes: "govuk-fieldset__legend--l",
-              text: 'Do you have a TRN?'
-            }
-          },
-          items: [{
-            text: "Yes",
-            value: 'yes'
-          }, {
-            text: "No",
-            value: 'dont-know'
-          }]
-        }, ["wizard", "do-you-have-a-trn"])) }}
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
-    </div>
-  </div>
+{{ govukRadios(decorate({
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--l",
+      text: 'Do you have a TRN?'
+    }
+  },
+  items: [{
+    text: "Yes",
+    value: 'yes'
+  }, {
+    text: "No",
+    value: 'dont-know'
+  }]
+}, ["wizard", "do-you-have-a-trn"])) }}
 {% endblock %}
