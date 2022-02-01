@@ -1,15 +1,7 @@
-{% extends "layouts/default.html" %}
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you have a National Insurance number?" %}
 
-{% set title = "Find your TRN" %}
-
-{% block pageNavigation %}
-  {{ govukBackLink({
-    href: paths.back
-  }) }}
-{% endblock %}
-
-
-{% block content %}
+{% block form %}
   {% set NINumberHtml %}
     {{ govukInput(decorate({
       label: {
@@ -31,40 +23,28 @@
     }) }}
   {% endset %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form method="post" novalidate>
-        {{ govukRadios(decorate({
-          fieldset: {
-            legend: {
-              classes: "govuk-fieldset__legend--xl",
-              isPageHeading: true,
-              text: 'Do you have a National Insurance number?'
-            }
-          },
-          items: [
-            {
-              text: "Yes, I have a National Insurance number",
-              value: 'yes',
-              conditional: { html: NINumberHtml }
-            },
-            {
-              text: "I have a National Insurance number but I do not have it available",
-              value: 'forgotten',
-              conditional: { html: NINumberForgottenHtml }
-            },
-            {
-              text: "No, I have never been issued a National Insurance number",
-              value: 'no'
-            }]
-        }, ['has-national-insurance-number'])) }}
-
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-
-      </form>
-
-    </div>
-  </div>
+  {{ govukRadios(decorate({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: 'Do you have a National Insurance number?'
+      }
+    },
+    items: [
+      {
+        text: "Yes, I have a National Insurance number",
+        value: 'yes',
+        conditional: { html: NINumberHtml }
+      },
+      {
+        text: "I have a National Insurance number but I do not have it available",
+        value: 'forgotten',
+        conditional: { html: NINumberForgottenHtml }
+      },
+      {
+        text: "No, I have never been issued a National Insurance number",
+        value: 'no'
+      }]
+  }, ['has-national-insurance-number'])) }}
 {% endblock %}
