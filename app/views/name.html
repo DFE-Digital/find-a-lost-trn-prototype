@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Find out your TRN" %}
+{% set title = "Your name" %}
 
 {% block form %}
   {% set previousNameHtml %}
@@ -16,7 +16,7 @@
     }, ['previous-last-name'])) }}
   {% endset %}
 
-  <h1 class="govuk-heading-xl">Your name</h1>
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   <p>We’ll match your name against the Teaching Regulation Agency records.</p>
   {{ govukInput(decorate({
