@@ -3,12 +3,20 @@
 
 {% block form %}
   {% set ITTProviderNameHtml %}
-    {{ xGovukAutocomplete(decorate({
-      label: {
-        text: "Your school, university or other training provider"
-      },
-      items: ittProviderOptionNames()
-    }, ["itt-provider"])) }}
+    {% if data.features.ittAutocomplete.on %}
+      {{ xGovukAutocomplete(decorate({
+        label: {
+          text: "Your school, university or other training provider"
+        },
+        items: ittProviderOptionNames()
+      }, ["itt-provider"])) }}
+    {% else %}
+      {{ govukInput(decorate({
+        label: {
+          text: "Your school, university or other training provider"
+        }
+      }, ["itt-provider"])) }}
+    {% endif %}
   {% endset %}
 
   {{ govukRadios(decorate({

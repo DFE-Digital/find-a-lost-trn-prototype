@@ -9,15 +9,15 @@
 export default {
   // Set feature flags using the `features` key
   features: {
-    demo: {
-      on: false,
-      name: 'Demonstration',
-      description: 'Show message about feature flags on the home page.'
-    },
     helpdeskOnly: {
-      on: false,
+      on: true,
       name: 'Straight to Helpdesk flow',
-      description: 'Disable any functionality that requires a backend data lookup.'
+      description: 'Disable any functionality that requires a backend data lookup'
+    },
+    ittAutocomplete: {
+      on: true,
+      name: 'ITT provider autocomplete',
+      description: 'Use an autocomplete for ITT providers, otherwise use a free text input'
     }
   },
   dqt_record: {
