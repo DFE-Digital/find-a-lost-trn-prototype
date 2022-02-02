@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Find out your TRN" %}
+{% set title = "Your date of birth" %}
 
 {% block form %}
   {{ govukDateInput(decorate({
@@ -7,7 +7,7 @@
       legend: {
         classes: "govuk-fieldset__legend--xl",
         isPageHeading: true,
-        text: "Your date of birth"
+        text: title
       }
     },
     hint: {
