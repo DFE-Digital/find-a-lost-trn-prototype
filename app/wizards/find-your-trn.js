@@ -23,33 +23,37 @@ export function trnWizardPaths (req) {
 }
 
 export function trnWizardForks (req) {
-  const forks = [{
-    currentPath: '/trn-holder',
-    storedData: ['wizard', 'do-you-have-a-trn'],
-    excludedValues: ['yes'],
-    forkPath: '/you-dont-have-a-trn'
-  }, {
-    currentPath: '/ni-number',
-    excludedValues: [],
-    forkPath: (value) => {
-      if (userMatchesDQTRecord(req.session.data)) {
-        return '/email'
-      } else {
-        return '/itt-provider'
+  const forks = [
+    {
+      currentPath: '/trn-holder',
+      storedData: ['wizard', 'do-you-have-a-trn'],
+      excludedValues: ['yes'],
+      forkPath: '/you-dont-have-a-trn'
+    },
+    {
+      currentPath: '/ni-number',
+      excludedValues: [],
+      forkPath: (value) => {
+        if (userMatchesDQTRecord(req.session.data)) {
+          return '/email'
+        } else {
+          return '/itt-provider'
+        }
+      }
+    },
+    {
+      currentPath: '/check-answers',
+      excludedValues: [],
+      forkPath: (value) => {
+        if (req.session.data.features.helpdeskOnly.on) {
+          return 'helpdesk-request-submitted'
+        } else if (userMatchesDQTRecord(req.session.data)) {
+          return '/trn-sent'
+        } else {
+          return '/no-match'
+        }
       }
     }
-  }, {
-    currentPath: '/check-answers',
-    excludedValues: [],
-    forkPath: (value) => {
-      if (req.session.data.features.helpdeskOnly.on) {
-        return 'helpdesk-request-submitted'
-      } else if (userMatchesDQTRecord(req.session.data)) {
-        return '/trn-sent'
-      } else {
-        return '/no-match'
-      }
-    }
-  }]
+  ]
   return wizard.nextForkPath(forks, req)
 }
