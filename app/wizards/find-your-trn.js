@@ -8,7 +8,8 @@ export function trnWizardPaths (req) {
     '/ask-questions',
     '/name',
     '/dob',
-    '/ni-number',
+    '/have-nino',
+    '/nino',
     '/itt-provider',
     '/email',
     '/check-answers',
@@ -31,7 +32,19 @@ export function trnWizardForks (req) {
       forkPath: '/you-dont-have-a-trn'
     },
     {
-      currentPath: '/ni-number',
+      currentPath: '/have-nino',
+      storedData: 'have-nino',
+      values: ['No'],
+      forkPath: (value) => {
+        if (userMatchesDQTRecord(req.session.data)) {
+          return '/email'
+        } else {
+          return '/itt-provider'
+        }
+      }
+    },
+    {
+      currentPath: '/nino',
       excludedValues: [],
       forkPath: (value) => {
         if (userMatchesDQTRecord(req.session.data)) {

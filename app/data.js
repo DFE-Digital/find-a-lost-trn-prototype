@@ -40,7 +40,7 @@ export default {
   // 'national-insurance-number': 'QQ 12 34 56 C',
   // 'itt-provider': 'Gorse SCITT',
   // trn: '0000000',
-  // 'has-national-insurance-number': 'yes',
+  // 'have-nino': 'yes',
   // 'wizard': {
   //   'has-done-itt': 'yes'
   // }
