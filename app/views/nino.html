@@ -7,9 +7,10 @@
 
     <p>Or you can continue without it, but we are less likely to find your TRN.</p>
 
-    <p>
-      <a href="#" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0">Continue without it</a>
-    </p>
+    {{ govukButton({
+      html: 'Continue without it',
+      classes: 'govuk-!-margin-bottom-0 govuk-button--secondary'
+    }) }}
   {% endset %}
 
   {{ govukInput(decorate({
