@@ -58,7 +58,7 @@ export function trnWizardForks (req) {
       currentPath: '/check-answers',
       excludedValues: [],
       forkPath: (value) => {
-        if (req.session.data.features.helpdeskOnly.on) {
+        if (req.session.data.features.apiUnavailable.on) {
           return 'helpdesk-request-submitted'
         } else if (userMatchesDQTRecord(req.session.data)) {
           return '/trn-sent'

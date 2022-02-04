@@ -9,9 +9,9 @@
 export default {
   // Set feature flags using the `features` key
   features: {
-    helpdeskOnly: {
+    apiUnavailable: {
       on: true,
-      name: 'Straight to Helpdesk flow',
+      name: 'API unavailable',
       description: 'Disable any functionality that requires a backend data lookup'
     },
     ittAutocomplete: {
