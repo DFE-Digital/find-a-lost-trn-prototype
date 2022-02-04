@@ -71,7 +71,7 @@
       text: "National Insurance number"
     },
     value: {
-      text: data['national-insurance-number'] or 'Unavailable'
+      text: data['national-insurance-number'] or 'Not given'
     },
     actions: {
       items: [{
@@ -80,7 +80,7 @@
         href: "/ni-number"
       }]
     }
-  } if data['national-insurance-number'] or data['has-national-insurance-number'] === 'forgotten', {
+  } if data['have-nino'] === 'Yes', {
     key: {
       text: "Teacher training provider"
     },
@@ -94,7 +94,7 @@
         href: "/itt-provider"
       }]
     }
-  } if data['itt-provider']
+  } if data['itt-provider'] and data['has-done-itt'] === 'yes'
 ]}) }}
 {% endblock %}
 
