@@ -3,8 +3,10 @@ const emailAddressMatchesDQTRecord = (data) => {
 }
 
 const nameMatchesDQTRecord = (data) => {
-  return data['first-name'] === data.dqt_record['first-name'] &&
-    data['last-name'] === data.dqt_record['last-name']
+  const names = data['full-name'].split(' ')
+
+  return names.includes(data.dqt_record['first-name']) &&
+    names.includes(data.dqt_record['last-name'])
 }
 
 const dobMatchesDQTRecord = (data) => {

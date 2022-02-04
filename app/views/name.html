@@ -5,15 +5,9 @@
   {% set previousNameHtml %}
     {{ govukInput(decorate({
       label: {
-        text: "Previous given name"
+        text: "Previous name"
       }
-    }, ['previous-first-name'])) }}
-
-    {{ govukInput(decorate({
-      label: {
-        text: "Previous family name"
-      }
-    }, ['previous-last-name'])) }}
+    }, ['previous-name'])) }}
   {% endset %}
 
   <h1 class="govuk-heading-xl">{{ title }}</h1>
@@ -21,17 +15,10 @@
   <p>We’ll match your name against the Teaching Regulation Agency records.</p>
   {{ govukInput(decorate({
     label: {
-      text: "Given name",
+      text: "Full name",
       classes: "govuk-label--m"
     }
-  }, ['first-name'])) }}
-
-  {{ govukInput(decorate({
-    label: {
-      text: "Family name",
-      classes: "govuk-label--m"
-    }
-  }, ['last-name'])) }}
+  }, ['full-name'])) }}
 
   {{ govukCheckboxes(decorate({
     items: [

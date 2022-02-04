@@ -30,7 +30,7 @@
       text: "Name"
     },
     value: {
-      text: (data['first-name'] + ' ' + data['last-name'])
+      text: data['full-name']
     },
     actions: {
       items: [{
@@ -39,12 +39,12 @@
         href: "/name"
       }]
     }
-  }if data['first-name'], {
+  } if data['full-name'], {
   key: {
       text: "Previous name"
     },
     value: {
-      text: (data['previous-first-name'] + ' ' + data['previous-last-name'])
+      text: data['previous-name']
     },
     actions: {
       items: [{
@@ -53,7 +53,7 @@
         href: "/name"
       }]
     }
-  }if data['previous-last-name'], {
+  }if data['previous-name'], {
     key: {
       text: "Date of birth"
     },
