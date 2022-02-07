@@ -28,15 +28,6 @@
 Have your National Insurance number ready, as we’ll ask for this.
 {% endset %}
 
-{% set beforeYouStartapiUnavailable %}
-## Before you start
-
-We’ll ask for your name, date of birth and National Insurance number. If you do not have your National Insurance number available, we may ask you some follow-up questions.
-
-We will send you your TRN by email.
-
-{% endset %}
-
 {% set whoCanUseThisService %}
 You can use this service to check your own TRN. You cannot use it to find out someone else’s TRN.
 {% endset %}
@@ -53,6 +44,17 @@ Your TRN may be shown on a:
 The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
 {% endset %}
 
+{% set urgentTrn %}
+  <h2 class="govuk-heading-m">If you need your TRN urgently</h2>
+  <p>Call the Teaching Regulation Agency:</p>
+  <ul class="govuk-list">
+    <li>Telephone: 020 7593 5394</li>
+    <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+  </ul>
+
+  <p>Have your National Insurance number ready before you call.</p>
+{% endset %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -66,7 +68,21 @@ The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
         <li>find your <a href="https://www.gov.uk/guidance/teacher-reference-number-trn" class="govuk-link">teacher reference number (TRN)</a> if you do not know it or have forgotten it</li>
         <li>check if you have a TRN</li>
       </ul>
-      {{ whoCanUseThisService | govukMarkdown | safe }}
+      <!-- {{ whoCanUseThisService | govukMarkdown | safe }} -->
+
+      {% if data.features.apiUnavailable.on %}
+        <div class="govuk-inset-text" style="background-color: #eee">
+          {{ govukWarningText({
+            html: '<span class="govuk-!-font-size-19">It’s taking longer than usual to find TRNs</span>',
+            iconFallbackText: 'Warning',
+            classes: 'govuk-!-margin-bottom-2'
+          }) }}
+          <p class="govuk-!-margin-bottom-3">If you give us all the information we need, you won’t get a response straight away. And if the information you give is incomplete, it might take more than five days to get back to you.</p>
+        </div>
+
+        {{ urgentTrn | safe }}
+      {% endif %}
+
       {{ beforeYouStart | govukMarkdown | safe }}
 
       {{ govukButton({
@@ -78,14 +94,7 @@ The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
 
       {{ otherWaysToFindOutYourTrn | govukMarkdown | safe }}
 
-      <h2 class="govuk-heading-m">If you need your TRN urgently</h2>
-      <p>Call the Teaching Regulation Agency:</p>
-      <ul class="govuk-list">
-        <li>Telephone: 020 7593 5394</li>
-        <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
-      </ul>
-
-      <p>Have your National Insurance number ready before you call.</p>
+      {{ urgentTrn | safe if not data.features.apiUnavailable.on }}
     </div>
 
     <div class="govuk-grid-column-one-third">
