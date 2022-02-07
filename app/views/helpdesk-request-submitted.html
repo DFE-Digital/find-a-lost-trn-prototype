@@ -1,17 +1,19 @@
 {% extends "layouts/default.html" %}
-{% set title = "TRN requested" %}
+{% set title = "Information received" %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: title,
-        html: 'We’ve sent an email confirming your request',
+        html: 'We’ll send your TRN by email or get in touch to ask for more information',
         classes: 'govuk-!-margin-bottom-6'
       }) }}
 
       <h2 class="govuk-heading-m">What happens next?</h2>
-      <p>We aim to respond via email within 5 working days. If we cannot find your record, we may request further information from you to help locate it.</p>
+      <p>You’ll get an email with your TRN if we find a match. Otherwise, we’ll be in touch to ask for more information.</p>
+
+      <p>We aim to respond in 5 working days.</p>
 
       <h2 class="govuk-heading-m">For urgent requests call the Teaching Regulation Agency</h2>
       <p>Give the helpdesk your request number: 4992.</p>
