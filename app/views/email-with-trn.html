@@ -1,15 +1,12 @@
 {% extends "layouts/email.html" %}
-
-{% set first_name = data['first-name'] or data.dqt_record['first-name'] %}
-{% set last_name = data['last-name'] or data.dqt_record['last-name'] %}
 {% set email_address = data['email-address'] or data.dqt_record['email-address'] %}
 
 {% set subject = "Your TRN" %}
 {% set from = "Teacher Regulation Agency <qts.enquiries@education.gov.uk>" %}
-{% set to = first_name + ' ' + last_name + ' <' + email_address + '>' %}
+{% set to = data['full-name'] + ' <' + email_address + '>' %}
 
 {% block content %}
-  <p>Dear {{ first_name }},</p>
+  <p>Dear {{ data['full-name'] }},</p>
 
   <p>Your TRN is {{ data.dqt_record.trn }}.</p>
 

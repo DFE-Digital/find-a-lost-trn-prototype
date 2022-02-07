@@ -18,6 +18,11 @@ export default {
       on: true,
       name: 'ITT provider autocomplete',
       description: 'Use an autocomplete for ITT providers, otherwise use a free text input'
+    },
+    fullName: {
+      on: false,
+      name: 'Use full name',
+      description: 'Use full name rather than first name, last name'
     }
   },
   dqt_record: {
@@ -31,17 +36,13 @@ export default {
   }
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',
-  // 'first-name': 'Jane',
-  // 'last-name': 'Smith',
+  // 'full-name': 'Jane Smith',
   // 'changed-name': 'changed-name',
-  // 'previous-first-name': 'Jane',
-  // 'previous-last-name': 'Doe',
+  // 'previous-name': 'Jane Doe',
   // 'date-of-birth': { day: 27, month: 3, year: 1987 },
+  // 'have-nino': 'yes',
   // 'national-insurance-number': 'QQ 12 34 56 C',
   // 'itt-provider': 'Gorse SCITT',
   // trn: '0000000',
-  // 'have-nino': 'yes',
-  // 'wizard': {
-  //   'has-done-itt': 'yes'
-  // }
+  // 'has-done-itt': 'yes'
 }
