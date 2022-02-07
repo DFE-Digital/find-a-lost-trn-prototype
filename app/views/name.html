@@ -1,24 +1,56 @@
 {% extends "layouts/wizard.html" %}
+{% set useFullName = data.features.fullName.on %}
 {% set title = "Your name" %}
 
 {% block form %}
   {% set previousNameHtml %}
-    {{ govukInput(decorate({
-      label: {
-        text: "Previous name"
-      }
-    }, ['previous-name'])) }}
+    {% if useFullName %}
+      {{ govukInput(decorate({
+        label: {
+          text: "Previous name"
+        }
+      }, ['previous-name'])) }}
+    {% else %}
+      {{ govukInput(decorate({
+        label: {
+          text: "Previous first name"
+        }
+      }, ['previous-first-name'])) }}
+
+      {{ govukInput(decorate({
+        label: {
+          text: "Previous last name"
+        }
+      }, ['previous-last-name'])) }}
+    {% endif %}
   {% endset %}
 
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   <p>We’ll match your name against the Teaching Regulation Agency records.</p>
-  {{ govukInput(decorate({
-    label: {
-      text: "Full name",
-      classes: "govuk-label--m"
-    }
-  }, ['full-name'])) }}
+
+  {% if useFullName %}
+    {{ govukInput(decorate({
+      label: {
+        text: "Full name",
+        classes: "govuk-label--m"
+      }
+    }, ['full-name'])) }}
+  {% else %}
+    {{ govukInput(decorate({
+      label: {
+        text: "First name",
+        classes: "govuk-label--m"
+      }
+    }, ['first-name'])) }}
+
+    {{ govukInput(decorate({
+      label: {
+        text: "Last name",
+        classes: "govuk-label--m"
+      }
+    }, ['last-name'])) }}
+  {% endif %}
 
   {{ govukCheckboxes(decorate({
     items: [

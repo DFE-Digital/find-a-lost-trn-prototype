@@ -18,6 +18,11 @@ export default {
       on: true,
       name: 'ITT provider autocomplete',
       description: 'Use an autocomplete for ITT providers, otherwise use a free text input'
+    },
+    fullName: {
+      on: false,
+      name: 'Use full name',
+      description: 'Use full name rather than first name, last name'
     }
   },
   dqt_record: {
