@@ -71,13 +71,13 @@ The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
       <!-- {{ whoCanUseThisService | govukMarkdown | safe }} -->
 
       {% if data.features.apiUnavailable.on %}
-        <div class="govuk-inset-text" style="background-color: #eee">
+        <div class="app-box">
           {{ govukWarningText({
             html: '<span class="govuk-!-font-size-19">It’s taking longer than usual to find TRNs</span>',
             iconFallbackText: 'Warning',
             classes: 'govuk-!-margin-bottom-2'
           }) }}
-          <p class="govuk-!-margin-bottom-3">If you give us all the information we need, you won’t get a response straight away. And if the information you give is incomplete, it might take more than five days to get back to you.</p>
+          <p>If you give us all the information we need, you won’t get a response straight away. And if the information you give is incomplete, it might take more than five days to get back to you.</p>
         </div>
 
         {{ urgentTrn | safe }}
