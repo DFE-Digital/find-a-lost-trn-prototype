@@ -1,4 +1,4 @@
-# Find your TRN prototype
+# Find a lost TRN prototype
 
 Prototype: https://find-your-trn.herokuapp.com/
 
