@@ -52,7 +52,7 @@
         href: "/name"
       }]
     }
-  } if data['previous-name'], {
+  } if data['previous-name'] and not data['previous-name'] === " ", {
     key: {
       text: "Date of birth"
     },
