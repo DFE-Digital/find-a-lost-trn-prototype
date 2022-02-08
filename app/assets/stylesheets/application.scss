@@ -15,13 +15,3 @@ $govuk-assets-path: "/govuk/assets/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "govuk-page-masthead";
 @import "components/hidden-link";
-
-.app-box {
-  background: govuk-colour("light-grey");
-  margin: govuk-spacing(6) 0;
-  padding: govuk-spacing(4);
-
-  & :last-child {
-    margin-bottom: 0;
-  }
-}
