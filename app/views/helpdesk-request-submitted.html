@@ -2,11 +2,15 @@
 {% set title = "Information received" %}
 
 {% block content %}
+  {% set html %}
+    <a class="app-hidden-link" href="/emails/email-with-api-down">We’ll send your TRN by email or get in touch to ask for more information</a>
+  {% endset %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: title,
-        html: 'We’ll send your TRN by email or get in touch to ask for more information',
+        html: html,
         classes: 'govuk-!-margin-bottom-6'
       }) }}
 
@@ -15,7 +19,7 @@
 
       <p>We aim to respond in 5 working days.</p>
 
-      <h2 class="govuk-heading-m">For urgent requests call the Teaching Regulation Agency</h2>
+      <h2 class="govuk-heading-m">For urgent requests, call the Teaching Regulation Agency</h2>
       <p>Give the helpdesk your request number: 4992.</p>
       <ul class="govuk-list">
         <li>Telephone: 020 7593 5394</li>

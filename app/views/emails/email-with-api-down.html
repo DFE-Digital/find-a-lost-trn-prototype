@@ -1,0 +1,24 @@
+{% extends "layouts/email.html" %}
+{% set email_address = data['email-address'] or data.dqt_record['email-address'] %}
+
+{% set subject = "We’ve received the information you submitted" %}
+{% set from = "Teacher Regulation Agency <qts.enquiries@education.gov.uk>" %}
+{% set to = data['full-name'] + ' <' + email_address + '>' %}
+
+{% block content %}
+  <p>Dear {{ data['full-name'] }},</p>
+
+  <p>We’ve received the information you submitted.</p>
+
+  <p>You’ll get an email with your TRN if we find a match. Otherwise, we’ll be in touch to ask for more information.</p>
+
+  <p>We aim to respond in 5 working days.</p>
+
+  <h2 class="govuk-heading-m">For urgent requests, call the Teaching Regulation Agency</h2>
+
+  <p>Give the helpdesk your request number: 4992.</p>
+  <ul class="govuk-list">
+    <li>Telephone: 020 7593 5394</li>
+    <li>Monday to Friday, 9am to 5pm (except public holidays)</li>
+  </ul>
+{% endblock %}
