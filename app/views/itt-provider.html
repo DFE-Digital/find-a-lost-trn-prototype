@@ -4,12 +4,10 @@
 {% block form %}
   {% set ITTProviderNameHtml %}
     {% if data.features.ittAutocomplete.on %}
-      {{ xGovukAutocomplete(decorate({
-        label: {
-          text: "Your school, university or other training provider"
-        },
-        items: ittProviderOptionNames()
-      }, ["itt-provider"])) }}
+      <label for="itt-autocomplete" class="govuk-label">
+        Your school, university or other training provider
+      </label>
+      <div id="itt-autocomplete-container" data-value="{{ data['itt-provider'] }}"></div>
     {% else %}
       {{ govukInput(decorate({
         label: {
