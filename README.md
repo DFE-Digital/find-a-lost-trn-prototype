@@ -1,6 +1,6 @@
 # Find a lost TRN prototype
 
-Prototype: https://find-your-trn.herokuapp.com/
+Prototype: https://find-a-lost-trn.herokuapp.com/
 
 Design history: https://tra-digital-design-history.herokuapp.com/
 
