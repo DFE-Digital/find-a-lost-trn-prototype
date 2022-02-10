@@ -1,27 +1,5 @@
 {% extends "layouts/default.html" %}
 
-{% block header %}
-  {{ govukHeader() }}
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [{
-      text: "Home",
-      href: "https://www.gov.uk"
-    }, {
-      text: "Education, training and skills",
-      href: "https://www.gov.uk/education"
-    }, {
-      text: "Teaching and leadership",
-      href: "https://www.gov.uk/education/teaching-and-leadership"
-    }, {
-      text: "Teacher records",
-      href: "https://www.gov.uk/education/teacher-records"
-    }]
-  }) }}
-{% endblock %}
-
 {% set beforeYouStart %}
 ## Before you start
 
