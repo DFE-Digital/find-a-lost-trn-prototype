@@ -28,7 +28,7 @@ export function trnWizardForks (req) {
     {
       currentPath: '/trn-holder',
       storedData: ['wizard', 'do-you-have-a-trn'],
-      excludedValues: ['yes'],
+      values: ['No'],
       forkPath: '/you-dont-have-a-trn'
     },
     {
