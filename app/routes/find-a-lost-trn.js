@@ -1,6 +1,6 @@
-import { trnWizardPaths, trnWizardForks } from '../wizards/find-your-trn.js'
+import { trnWizardPaths, trnWizardForks } from '../wizards/find-a-lost-trn.js'
 
-export const findYourTrnRoutes = router => {
+export const findLostTrnRoutes = router => {
   router.post('/name', (req, res, next) => {
     const data = req.session.data
     if (!data.features.fullName.on) {
