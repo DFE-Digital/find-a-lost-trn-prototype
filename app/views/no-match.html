@@ -10,18 +10,84 @@
 
       <p>We could not find your TRN in the Teaching Regulations Agency records using the details provided.</p>
 
+      <p>This could be because you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>abbreviated your first name, for example Rob/Robert</li>
+        <li>used a different name to the one held on the Teaching Regulation Agency records</li>
+        <li>mistyped or entered some incorrect information</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Check your details and try again</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-6",
+        rows: [{
+            key: {
+            text: "Email address"
+          },
+          value: {
+            text: data['email-address'] or 'email@example.com'
+          }
+        }, {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: data['full-name']
+          }
+        } if data['full-name'], {
+        key: {
+            text: "Previous name"
+          },
+          value: {
+            text: data['previous-name']
+          }
+        } if data['previous-name'], {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: data['date-of-birth'] | dateWithYear
+          }
+        } if data['date-of-birth'], {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: data['national-insurance-number'] or 'Not given'
+          }
+        } if data['have-nino'] === 'Yes', {
+          key: {
+            text: "Teacher training provider"
+          },
+          value: {
+            text:  data['itt-provider']
+          }
+        } if data['itt-provider']
+      ]}) }}
+
       {% if not data['national-insurance-number'] %}
-        <p><a href="/ni-number">Try again</a> with your National Insurance number.</p>
+        <p>Try again with your National Insurance number.</p>
       {% endif %}
 
-      <h2 class="govuk-heading-m">For urgent requests call the Teaching Regulation Agency</h2>
+      {{ govukButton({
+        text: 'Try again',
+        href: '/check-answers'
+      }) }}
 
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">Still can’t find your TRN?</h2>
+
+      <p>Submit a support request using the details you’ve already given.<br />
+      We aim to respond within 5 working days.</p>
+
+      {{ govukButton({
+        text: 'Submit support request',
+        href: paths.next,
+        classes: 'govuk-button--secondary'
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">For urgent requests call the Teaching Regulation Agency</h2>
       {% include '_phone-line.html' %}
-
-      <h2 class="govuk-heading-m">Get a response by email</h2>
-
-      <p><a href="/submit-request">Submit a support request</a> using the details you’ve already given.</p>
-      <p>We aim to respond within 5 working days.</p>
     </div>
   </div>
 {% endblock %}
