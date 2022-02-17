@@ -8,7 +8,7 @@
 
       <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-      <p>We could not find your TRN in the Teaching Regulations Agency records using the details provided.</p>
+      <p>We could not find your TRN in the Teaching Regulation Agency records using the details provided.</p>
 
       <p>This could be because you:</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -17,7 +17,7 @@
         <li>mistyped or entered some incorrect information</li>
       </ul>
 
-      <h2 class="govuk-heading-m">Check your details and try again</h2>
+      <!-- <h2 class="govuk-heading-m">Check your details and try again</h2>
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-6",
@@ -64,26 +64,31 @@
             text:  data['itt-provider']
           }
         } if data['itt-provider']
-      ]}) }}
+      ]}) }} -->
 
       {% if not data['national-insurance-number'] %}
         <p>Try again with your National Insurance number.</p>
       {% endif %}
 
-      {{ govukButton({
-        text: 'Try again',
-        href: '/check-answers'
+      {% set html %}
+        <p>You can submit a support request using the details you’ve given.<br />
+        We aim to respond within 5 working days.</p>
+
+        {{ govukButton({
+          text: 'Submit a support request',
+          href: paths.next,
+          classes: 'govuk-button--secondary'
+        }) }}
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "Still can’t find your TRN?",
+        html: html
       }) }}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-4">Still can’t find your TRN?</h2>
-
-      <p>Submit a support request using the details you’ve already given.<br />
-      We aim to respond within 5 working days.</p>
-
       {{ govukButton({
-        text: 'Submit support request',
-        href: paths.next,
-        classes: 'govuk-button--secondary'
+        text: 'Check your details and try again',
+        href: '/check-answers'
       }) }}
 
       <h2 class="govuk-heading-m govuk-!-margin-top-4">For urgent requests call the Teaching Regulation Agency</h2>
