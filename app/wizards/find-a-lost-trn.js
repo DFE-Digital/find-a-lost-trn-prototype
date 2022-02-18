@@ -15,7 +15,6 @@ export function trnWizardPaths (req) {
     '/check-answers',
     '/trn-sent',
     '/no-match',
-    '/submit-request',
     '/helpdesk-request-submitted',
     '/'
   ]
