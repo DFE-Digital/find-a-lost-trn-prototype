@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 /**
  * @access private
  * @param {Object} req - Express request
@@ -8,10 +10,30 @@ const originalQuery = (req) => {
   return originalQueryString ? `?${originalQueryString}` : ''
 }
 
-const getFork = (forks) => {
+const getFork = (forks, req) => {
   for (const key of Object.keys(forks)) {
-    if (forks[key]()) {
+    const fork = forks[key]
+
+    if (typeof fork === 'function' && fork()) {
       return key
+    }
+
+    if (typeof fork === 'object' && fork.data) {
+      const sessionData = _.toPath(_.get(req.session.data, fork.data))
+
+      if (fork.value || fork.values) {
+        const includedValues = _.toPath(fork.value ? fork.value : fork.values)
+        if (includedValues.some(v => sessionData.indexOf(v) >= 0)) {
+          return key
+        }
+      }
+
+      if (fork.excludedValue || fork.excludedValues) {
+        const excludedValues = _.toPath(fork.excludedValue ? fork.excludedValue : fork.excludedValues)
+        if (!excludedValues.some(v => sessionData.indexOf(v) >= 0)) {
+          return key
+        }
+      }
     }
   }
   return false
@@ -35,7 +57,7 @@ export const wizard = (journey, req) => {
   let back
 
   if (index !== -1) {
-    fork = getFork(journey[currentPath])
+    fork = getFork(journey[currentPath], req)
     next = fork || paths[index + 1] || ''
     back = paths[index - 1] || ''
   }

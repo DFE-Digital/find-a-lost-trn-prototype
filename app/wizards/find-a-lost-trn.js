@@ -6,14 +6,14 @@ export default (req) => {
   const journey = {
     '/start': {},
     '/trn-holder': {
-      '/you-dont-have-a-trn': () => data['do-you-have-a-trn'] === 'No'
+      '/you-dont-have-a-trn': { data: 'do-you-have-a-trn', value: 'No' }
     },
     '/ask-questions': {},
     '/name': {},
     '/dob': {},
     '/have-nino': {
       '/email': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
-      '/itt-provider': () => data['have-nino'] === 'No'
+      '/itt-provider': { data: 'have-nino', value: 'No' }
     },
     '/nino': {
       '/email': () => userMatchesDQTRecord(data)
