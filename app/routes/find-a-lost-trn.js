@@ -1,4 +1,4 @@
-import { trnWizardPaths, trnWizardForks } from '../wizards/find-a-lost-trn.js'
+import trnWizard from '../wizards/find-a-lost-trn.js'
 
 export const findLostTrnRoutes = router => {
   router.post('/name', (req, res, next) => {
@@ -10,14 +10,12 @@ export const findLostTrnRoutes = router => {
     next()
   })
 
-  router.get('/:view', (req, res, next) => {
-    res.locals.paths = trnWizardPaths(req)
+  router.all('/:view', (req, res, next) => {
+    res.locals.paths = trnWizard(req)
     next()
   })
 
   router.post('/:view', (req, res) => {
-    const fork = trnWizardForks(req)
-    const paths = trnWizardPaths(req)
-    fork ? res.redirect(fork) : res.redirect(paths.next)
+    res.redirect(res.locals.paths.next)
   })
 }

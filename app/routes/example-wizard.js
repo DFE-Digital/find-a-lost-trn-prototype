@@ -1,36 +1,18 @@
-import { exampleWizardPaths, exampleWizardForks } from '../wizards/example-wizard.js'
+import exampleWizard from '../wizards/example-wizard.js'
 
 export const exampleWizardRoutes = router => {
   /**
    * Example routes to demonstrate using wizard helper.
    */
-  router.get('/examples/wizard', (req, res) => {
-    res.render('examples/wizard/index', {
-      paths: exampleWizardPaths(req)
-    })
+  router.all([
+    '/examples/wizard',
+    '/examples/wizard/:view'
+  ], (req, res, next) => {
+    res.locals.paths = exampleWizard(req)
+    next()
   })
 
-  router.get('/examples/wizard/:view', (req, res) => {
-    const { view } = req.params
-    const views = [
-      'check-answers',
-      'confirm',
-      'england',
-      'name',
-      'nationality',
-      'where-do-you-live'
-    ]
-
-    if (views.includes(view)) {
-      res.render(`examples/wizard/${view}`, {
-        paths: exampleWizardPaths(req)
-      })
-    }
-  })
-
-  router.post('/examples/wizard/:view?', (req, res) => {
-    const fork = exampleWizardForks(req)
-    const paths = exampleWizardPaths(req)
-    fork ? res.redirect(fork) : res.redirect(paths.next)
+  router.post('/examples/wizard/:view', (req, res) => {
+    res.redirect(res.locals.paths.next)
   })
 }

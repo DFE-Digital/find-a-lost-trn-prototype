@@ -1,29 +1,20 @@
 import { wizard } from 'govuk-prototype-rig'
 
-export function exampleWizardPaths (req) {
-  const paths = [
-    '/examples/wizard',
-    '/examples/wizard/name',
-    '/examples/wizard/where-do-you-live',
-    '/examples/wizard/england',
-    '/examples/wizard/nationality',
-    '/examples/wizard/check-answers',
-    '/examples/wizard/confirm',
-    '/'
-  ]
+export default (req) => {
+  const journey = {
+    '/examples/wizard': {},
+    '/examples/wizard/name': {},
+    '/examples/wizard/where-do-you-live': {
+      // An example fork in the journey:
+      // Go to the nationality page if the answer to the ‘Where do you live?’ page is not England
+      '/examples/wizard/nationality': { data: 'wizard.where-do-you-live', excludedValue: 'England' }
+    },
+    '/examples/wizard/england': {},
+    '/examples/wizard/nationality': {},
+    '/examples/wizard/check-answers': {},
+    '/examples/wizard/confirm': {},
+    '/': {}
+  }
 
-  return wizard.nextAndBackPaths(paths, req)
-}
-
-export function exampleWizardForks (req) {
-  // Example fork:
-  // Skip the England question if an answer other than England
-  // is given for where you live
-  const forks = [{
-    currentPath: '/examples/wizard/where-do-you-live',
-    storedData: ['wizard', 'where-do-you-live'],
-    excludedValues: ['England'],
-    forkPath: '/examples/wizard/nationality'
-  }]
-  return wizard.nextForkPath(forks, req)
+  return wizard(journey, req)
 }
