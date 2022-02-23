@@ -10,6 +10,12 @@ const originalQuery = (req) => {
   return originalQueryString ? `?${originalQueryString}` : ''
 }
 
+/**
+ * @access private
+ * @param {Object} forks - All the possible forks for a given path
+ * @param {Object} req - Express request
+ * @returns {string} Path to fork to if conditions are met
+ */
 const getFork = (forks, req) => {
   for (const key of Object.keys(forks)) {
     const fork = forks[key]
