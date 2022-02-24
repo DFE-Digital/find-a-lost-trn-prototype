@@ -15,3 +15,21 @@ $govuk-assets-path: "/govuk/assets/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "govuk-page-masthead";
 @import "components/hidden-link";
+
+// Additional style helpers
+
+.app-\!-inherit-colour {
+  color: inherit !important;
+}
+
+.app-\!-font-family-tabular {
+  @include govuk-font($size: false, $tabular: true);
+}
+
+.app-\!-font-family-tabular-bold {
+  @include govuk-font($size: false, $tabular: true, $weight: bold);
+}
+
+.app-\!-no-wrap {
+  white-space: nowrap !important;
+}

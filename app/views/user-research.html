@@ -1,0 +1,44 @@
+{% extends "layouts/default.html" %}
+{% block pageTitle %}User research with Department for Education{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+  }) }}
+
+  <div class="app-masthead">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="app-masthead__title govuk-heading-xl govuk-!-margin-top-3 govuk-!-margin-bottom-6">
+            <span class="govuk-caption-xl app-!-inherit-colour">Department for Education</span>
+            User research
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">
+        <a href="/user-research/scenario-s" class="app-!-font-family-tabular-bold">Scenario S</a>
+      </h2>
+
+      <h2 class="govuk-heading-l">
+        <a href="/user-research/scenario-f" class="app-!-font-family-tabular-bold">Scenario F</a>
+      </h2>
+
+      <h2 class="govuk-heading-l">
+        <a href="/user-research/scenario-u" class="app-!-font-family-tabular-bold">Scenario U</a>
+      </h2>
+    </div>
+  </div>
+{% endblock %}
