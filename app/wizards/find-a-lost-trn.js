@@ -21,10 +21,9 @@ export default (req) => {
     '/itt-provider': {},
     '/email': {},
     '/check-answers': {
-      '/helpdesk-request-submitted': () => data.features.apiUnavailable.on,
-      '/trn-sent': () => userMatchesDQTRecord(data)
+      '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
+      '/helpdesk-request-submitted': () => data.features.apiUnavailable.on
     },
-    '/trn-sent': {},
     '/no-match': {},
     '/helpdesk-request-submitted': {},
     '/': {}

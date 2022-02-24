@@ -32,7 +32,7 @@ export default {
     'date-of-birth': { day: 27, month: 3, year: 1987 },
     'national-insurance-number': 'QQ 12 34 56 C',
     'itt-provider': 'Gorse SCITT',
-    trn: '0000000'
+    trn: '7651234'
   }
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',
