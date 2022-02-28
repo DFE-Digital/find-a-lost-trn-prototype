@@ -6,7 +6,6 @@
 {% set title = subject %}
 {% block skipLink %}{% endblock %}
 {% block header %}{% endblock %}
-{% block footer %}{% endblock %}
 
 {% block bodyStart %}
   <div class="govuk-width-container app-email__metadata-container">
@@ -31,4 +30,14 @@
   {{ govukHeader({
     containerClasses: "app-email__header"
   }) }}
+{% endblock %}
+
+{% block footer %}
+  {% if data.scenario %}
+    <div class="govuk-width-container app-email__metadata-container">
+      <p>
+        <a href="/user-research">Return to User research</a>
+      </p>
+    </div>
+  {% endif %}
 {% endblock %}
