@@ -2,6 +2,7 @@ export const userResearch = router => {
   // Success
   router.get('/user-research/scenario-s/', (req, res) => {
     const data = req.session.data
+    data.scenario = 's'
     data.successfulJourney = true
     data.features.apiUnavailable.on = false
 
@@ -13,6 +14,7 @@ export const userResearch = router => {
   // Failure
   router.get('/user-research/scenario-f/', (req, res) => {
     const data = req.session.data
+    data.scenario = 'f'
     data.successfulJourney = false
     data.features.apiUnavailable.on = false
 
@@ -24,6 +26,7 @@ export const userResearch = router => {
   // API unavailable
   router.get('/user-research/scenario-u/', (req, res) => {
     const data = req.session.data
+    data.scenario = 'u'
     data.successfulJourney = false
     data.features.apiUnavailable.on = true
     res.redirect('/start')
