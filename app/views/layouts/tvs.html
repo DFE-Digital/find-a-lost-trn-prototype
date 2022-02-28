@@ -1,0 +1,30 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+  {{- "Error: " if errors -}}
+  {{- title -}}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    productName: productName,
+    serviceName: 'Teaching Vacancies',
+    serviceUrl: "/start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#",
+        text: "Find a teaching job"
+      },
+      {
+        href: "#",
+        text: "Your account"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
