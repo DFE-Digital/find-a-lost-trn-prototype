@@ -1,0 +1,151 @@
+{% extends "layouts/tvs.html" %}
+{% set title = 'Job Application – Teaching Vacancies' %}
+{# Reproduction of https://teaching-vacancies-prototype.london.cloudapps.digital/prototypes/application/round-5/js/07-application-personalDetails #}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Job application
+    </h1>
+
+    <h2 class="govuk-heading-l">
+      <span class="govuk-caption-l">Step 1 of 10</span>
+      Personal details
+    </h2>
+
+    <p>Tell us some basic details about yourself, like how to contact you about this application.</p>
+
+    {{ govukInput(decorate({
+      label: {
+        text: "First name",
+        classes: "govuk-label--m"
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-first-name'])) }}
+
+    {{ govukInput(decorate({
+      label: {
+        text: "Last name",
+        classes: "govuk-label--m"
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-last-name'])) }}
+
+    {{ govukInput(decorate({
+      label: {
+        text: "Previous names (optional)",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: 'For example maiden name or name at birth, if different from the name you have now.'
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-previous-names'])) }}
+
+    {% call govukFieldset({
+      legend: {
+        text: "Your address",
+        classes: "govuk-fieldset__legend--m"
+      }
+    }) %}
+      {{ govukInput({
+        label: {
+          html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+        },
+        id: "address-line-1",
+        name: "address-line-1",
+        autocomplete: "address-line1"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+        },
+        id: "address-line-2",
+        name: "address-line-2",
+        autocomplete: "address-line2"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Town or city"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "address-town",
+        name: "address-town",
+        autocomplete: "address-level2"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Postcode"
+        },
+        classes: "govuk-input--width-10",
+        id: "address-postcode",
+        name: "address-postcode",
+        autocomplete: "postal-code"
+      }) }}
+    {% endcall %}
+
+    {{ govukInput(decorate({
+      label: {
+        text: "Phone number",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: 'Please only give a phone number that you are happy to be contacted on.'
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-phone-number'])) }}
+
+    {{ govukInput(decorate({
+      label: {
+        text: "Email address",
+        classes: "govuk-label--m"
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-email'])) }}
+
+    {{ govukInput(decorate({
+      formGroup: {
+        classes: 'govuk-!-margin-bottom-4'
+      },
+      label: {
+        text: "Teacher reference number (TRN)",
+        classes: "govuk-label--m"
+      },
+      classes: "govuk-input--width-20 govuk-!-margin-bottom-0"
+    }, ['tvs-trn'])) }}
+
+    {% set html %}
+      <p>You can <a href="/user-research/scenario-u">Find a lost teacher reference number</a></p>
+    {% endset %}
+
+    <!-- {{ govukDetails({
+      summaryText: "I don’t know my teacher reference number (TRN)",
+      html: html
+    }) }} -->
+
+    <p class="govuk-!-margin-bottom-6">
+      <a href="/user-research/scenario-u">Find a lost teacher reference number</a>
+    </p>
+
+    {{ govukInput(decorate({
+      label: {
+        text: "National Insurance number (optional)",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: 'If you have a National Insurance number you should enter it here. It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+      },
+      classes: "govuk-input--width-20"
+    }, ['tvs-nino'])) }}
+
+    {{ govukButton({
+      href: '#',
+      text: 'Continue'
+    })}}
+  </div>
+</div>
+{% endblock %}
