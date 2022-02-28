@@ -9,6 +9,7 @@ export default (req) => {
       '/you-dont-have-a-trn': { data: 'do-you-have-a-trn', value: 'No' }
     },
     '/ask-questions': {},
+    ...data.features.apiUnavailable.on && { '/longer-than-normal': {} },
     '/name': {},
     '/dob': {},
     '/have-nino': {

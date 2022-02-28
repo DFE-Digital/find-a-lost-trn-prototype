@@ -18,12 +18,6 @@ Your TRN may be shown on a:
 The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
 {% endset %}
 
-{% set urgentTrn %}
-  <h2 class="govuk-heading-m">If you need your TRN urgently</h2>
-  <p>Call the Teaching Regulation Agency, and have your National Insurance number ready:</p>
-  {% include '_phone-line.html' %}
-{% endset %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -32,30 +26,11 @@ The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if data.features.apiUnavailable.on %}
-        {% set html %}
-          <p class="govuk-notification-banner__heading">
-            It’s taking longer than usual to find TRNs
-          </p>
-          <p>
-            If you give us all the information we need, you won’t get a response straight away. And if the information you give is incomplete, it might take more than five days to get back to you.
-          </p>
-        {% endset %}
-        {{ govukNotificationBanner({
-          html: html,
-          classes: 'govuk-!-margin-bottom-4'
-        }) }}
-      {% endif %}
-
       <p body="govuk-body">Use this service to:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>find your <a href="https://www.gov.uk/guidance/teacher-reference-number-trn" class="govuk-link">teacher reference number (TRN)</a> if you do not know it or have forgotten it</li>
         <li>check if you have a TRN</li>
       </ul>
-
-      {% if data.features.apiUnavailable.on %}
-        {{ urgentTrn | safe }}
-      {% endif %}
 
       {{ beforeYouStart | govukMarkdown | safe }}
 
@@ -68,7 +43,10 @@ The TRN has previously been known as a QTS, GTC, DfE, DfES and DCSF number.
 
       {{ otherWaysToFindOutYourTrn | govukMarkdown | safe }}
 
-      {{ urgentTrn | safe if not data.features.apiUnavailable.on }}
+      <h2 class="govuk-heading-m">If you need your TRN urgently</h2>
+
+      <p>Call the Teaching Regulation Agency, and have your National Insurance number ready:</p>
+      {% include '_phone-line.html' %}
     </div>
 
     <div class="govuk-grid-column-one-third">
