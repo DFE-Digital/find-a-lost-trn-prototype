@@ -4,7 +4,10 @@ export const userResearch = router => {
     const data = req.session.data
     data.successfulJourney = true
     data.features.apiUnavailable.on = false
-    res.redirect('/start')
+
+    // Shortcut to the check answers page if they've been through the journey
+    // once before
+    data['full-name'] ? res.redirect('/check-answers') : res.redirect('/start')
   })
 
   // Failure
@@ -12,7 +15,10 @@ export const userResearch = router => {
     const data = req.session.data
     data.successfulJourney = false
     data.features.apiUnavailable.on = false
-    res.redirect('/start')
+
+    // Shortcut to the check answers page if they've been through the journey
+    // once before
+    data['full-name'] ? res.redirect('/check-answers') : res.redirect('/start')
   })
 
   // API unavailable
