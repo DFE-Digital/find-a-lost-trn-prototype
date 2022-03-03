@@ -5,23 +5,26 @@
 {% block form %}
   {% set previousNameHtml %}
     {% if useFullName %}
-      {{ govukInput(decorate({
+      {{ govukInput({
         label: {
           text: "Previous name"
-        }
-      }, ['previous-name'])) }}
+        },
+        decorate: 'previous-name'
+      }) }}
     {% else %}
-      {{ govukInput(decorate({
+      {{ govukInput({
         label: {
           text: "Previous first name"
-        }
-      }, ['previous-first-name'])) }}
+        },
+        decorate: 'previous-first-name'
+      }) }}
 
-      {{ govukInput(decorate({
+      {{ govukInput({
         label: {
           text: "Previous last name"
-        }
-      }, ['previous-last-name'])) }}
+        },
+        decorate: 'previous-last-name'
+      }) }}
     {% endif %}
   {% endset %}
 
@@ -30,35 +33,39 @@
   <p>We’ll match your name against the Teaching Regulation Agency records.</p>
 
   {% if useFullName %}
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Full name",
         classes: "govuk-label--m"
-      }
-    }, ['full-name'])) }}
+      },
+      decorate: 'full-name'
+    }) }}
   {% else %}
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "First name",
         classes: "govuk-label--m"
-      }
-    }, ['first-name'])) }}
+      },
+      decorate: 'first-name'
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Last name",
         classes: "govuk-label--m"
-      }
-    }, ['last-name'])) }}
+      },
+      decorate: 'last-name'
+    }) }}
   {% endif %}
 
-  {{ govukCheckboxes(decorate({
+  {{ govukCheckboxes({
     items: [
       {
         value: "changed-name",
         text: "I’ve changed my name since I received my TRN",
         conditional: { html: previousNameHtml }
       }
-    ]
-  }, ['changed-name'])) }}
+    ],
+    decorate: 'changed-name'
+  }) }}
 {% endblock %}

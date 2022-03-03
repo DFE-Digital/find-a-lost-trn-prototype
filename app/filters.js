@@ -23,7 +23,7 @@ export default (env) => {
    *
    * {{ "World" | sayHello }} => Hello, World!
    *
-   * @see https://mozilla.github.io/nunjucks/api#custom-filters
+   * @see {@link https://mozilla.github.io/nunjucks/api#custom-filters}
    */
 
   // example: 7 December 2021

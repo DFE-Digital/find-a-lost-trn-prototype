@@ -9,15 +9,16 @@
       </label>
       <div id="itt-autocomplete-container" data-value="{{ data['itt-provider'] }}"></div>
     {% else %}
-      {{ govukInput(decorate({
+      {{ govukInput({
         label: {
           text: "Your school, university or other training provider"
-        }
-      }, ["itt-provider"])) }}
+        },
+        decorate: "itt-provider"
+      }) }}
     {% endif %}
   {% endset %}
 
-  {{ govukRadios(decorate({
+  {{ govukRadios({
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--xl",
@@ -34,6 +35,8 @@
       {
         text: "No",
         value: 'no'
-      }]
-  }, ["has-done-itt"])) }}
+      }
+    ],
+    decorate: "has-done-itt"
+  }) }}
 {% endblock %}

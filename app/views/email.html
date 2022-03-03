@@ -2,7 +2,7 @@
 {% set title = "Your email address" %}
 
 {% block form %}
-  {{ govukInput(decorate({
+  {{ govukInput({
     label: {
       text: title,
       classes: "govuk-label--xl",
@@ -10,6 +10,7 @@
     },
     hint: {
       text: 'If we can find your TRN, we’ll send it to the email address you give.'
-    }
-  }, ['email-address'])) }}
+    },
+    decorate: 'email-address'
+  }) }}
 {% endblock %}

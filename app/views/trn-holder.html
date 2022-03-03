@@ -16,7 +16,7 @@ You will have a TRN if you:
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 {{ trnGuidance | govukMarkdown | safe }}
 
-{{ govukRadios(decorate({
+{{ govukRadios({
   fieldset: {
     legend: {
       classes: "govuk-fieldset__legend--m",
@@ -27,6 +27,7 @@ You will have a TRN if you:
     text: "Yes"
   }, {
     text: "No"
-  }]
-}, "do-you-have-a-trn")) }}
+  }],
+  decorate: "do-you-have-a-trn"
+}) }}
 {% endblock %}
