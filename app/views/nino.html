@@ -13,7 +13,7 @@
     }) }}
   {% endset %}
 
-  {{ govukInput(decorate({
+  {{ govukInput({
     label: {
       text: title,
       classes: "govuk-label--xl",
@@ -22,8 +22,9 @@
     classes: "govuk-input--width-10",
     hint: {
       text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-    }
-  }, ['national-insurance-number'])) }}
+    },
+    decorate: 'national-insurance-number'
+  }) }}
 
   {{ govukDetails({
     summaryText: "I don’t know my National Insurance number",

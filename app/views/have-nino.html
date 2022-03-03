@@ -2,7 +2,7 @@
 {% set title = "Do you have a National Insurance number?" %}
 
 {% block form %}
-  {{ govukRadios(decorate({
+  {{ govukRadios({
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--xl",
@@ -16,5 +16,7 @@
       },
       {
         text: "No"
-      }]
-  }, ['have-nino'])) }}{% endblock %}
+      }
+    ],
+    decorate: 'have-nino'
+  }) }}{% endblock %}

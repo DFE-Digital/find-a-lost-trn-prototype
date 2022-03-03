@@ -16,23 +16,25 @@
 
     <p>Tell us some basic details about yourself, like how to contact you about this application.</p>
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "First name",
         classes: "govuk-label--m"
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-first-name'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-first-name"
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Last name",
         classes: "govuk-label--m"
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-last-name'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-last-name"
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Previous names (optional)",
         classes: "govuk-label--m"
@@ -40,8 +42,9 @@
       hint: {
         text: 'For example maiden name or name at birth, if different from the name you have now.'
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-previous-names'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-previous-names"
+    }) }}
 
     {% call govukFieldset({
       legend: {
@@ -88,7 +91,7 @@
       }) }}
     {% endcall %}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Phone number",
         classes: "govuk-label--m"
@@ -96,18 +99,20 @@
       hint: {
         text: 'Please only give a phone number that you are happy to be contacted on.'
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-phone-number'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-phone-number"
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "Email address",
         classes: "govuk-label--m"
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-email'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-email"
+    }) }}
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       formGroup: {
         classes: 'govuk-!-margin-bottom-4'
       },
@@ -115,14 +120,15 @@
         text: "Teacher reference number (TRN)",
         classes: "govuk-label--m"
       },
-      classes: "govuk-input--width-20 govuk-!-margin-bottom-0"
-    }, ['tvs-trn'])) }}
+      classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+      decorate: "tvs-trn"
+    }) }}
 
     <p class="govuk-!-margin-bottom-6">
       <a href="/public/govuk-trn.html">Find a lost teacher reference number</a>
     </p>
 
-    {{ govukInput(decorate({
+    {{ govukInput({
       label: {
         text: "National Insurance number (optional)",
         classes: "govuk-label--m"
@@ -130,8 +136,9 @@
       hint: {
         text: 'If you have a National Insurance number you should enter it here. It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
       },
-      classes: "govuk-input--width-20"
-    }, ['tvs-nino'])) }}
+      classes: "govuk-input--width-20",
+      decorate: "tvs-nino"
+    }) }}
 
     {{ govukButton({
       href: '#',

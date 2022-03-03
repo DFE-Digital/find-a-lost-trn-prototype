@@ -2,7 +2,7 @@
 {% set title = "Your date of birth" %}
 
 {% block form %}
-  {{ govukDateInput(decorate({
+  {{ govukDateInput({
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--xl",
@@ -13,12 +13,6 @@
     hint: {
       text: "For example, 27 3 1987"
     },
-    items: [{
-      decorate: "day"
-    }, {
-      decorate: "month"
-    }, {
-      decorate: "year"
-    }]
-  }, "date-of-birth")) }}
+    decorate: "date-of-birth"
+  }) }}
 {% endblock %}
