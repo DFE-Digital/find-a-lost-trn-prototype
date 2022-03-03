@@ -1,4 +1,4 @@
-import exampleWizard from '../wizards/example-wizard.js'
+import { exampleWizard } from '../wizards/example-wizard.js'
 
 export const exampleWizardRoutes = router => {
   /**
