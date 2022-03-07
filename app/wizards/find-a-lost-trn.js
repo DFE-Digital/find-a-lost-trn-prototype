@@ -25,7 +25,9 @@ export default (req) => {
       '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
       '/helpdesk-request-submitted': () => data.features.apiUnavailable.on
     },
-    '/no-match': {},
+    '/no-match': {
+      '/check-answers': { data: 'try-again', value: 'yes' }
+    },
     '/helpdesk-request-submitted': {},
     '/': {}
   }
