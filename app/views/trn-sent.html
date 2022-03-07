@@ -6,11 +6,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% set html %}
-        <a class="app-hidden-link" href="/emails/email-with-trn">We’ve sent your TRN to <br><strong>{{ data['email-address'] or data.dqt_record['email-address'] }}</strong></a>
+        <a class="app-hidden-link" href="/emails/email-with-trn">We’ve sent it to <br><strong>{{ data['email-address'] or data.dqt_record['email-address'] }}</strong></a>
       {% endset %}
 
       {{ govukPanel({
-        titleText: "Success",
+        titleText: "We’ve found your TRN",
         html: html,
         classes: 'govuk-!-margin-bottom-6'
       }) }}
