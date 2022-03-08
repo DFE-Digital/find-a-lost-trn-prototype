@@ -1,3 +1,5 @@
+import accessibleAutocomplete from 'accessible-autocomplete'
+
 // Sass entry point for rollup.js
 import '../stylesheets/application.scss'
 
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    window.accessibleAutocomplete({
+    accessibleAutocomplete({
       element: autocompleteContainer,
       id: 'itt-autocomplete',
       name: 'itt-provider',
