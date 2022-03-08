@@ -1,3 +1,5 @@
+import accessibleAutocomplete from 'accessible-autocomplete'
+
 // Sass entry point for rollup.js
 import '../stylesheets/application.scss'
 
@@ -5,7 +7,7 @@ import '../stylesheets/application.scss'
 import GOVUKFrontend from 'govuk-frontend'
 
 // Import GOV.UK Prototype Rig
-import { GOVUKPrototypeComponents } from 'govuk-prototype-components'
+import GOVUKPrototypeComponents from 'govuk-prototype-components'
 
 // Initiate scripts on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    window.accessibleAutocomplete({
+    accessibleAutocomplete({
       element: autocompleteContainer,
       id: 'itt-autocomplete',
       name: 'itt-provider',
