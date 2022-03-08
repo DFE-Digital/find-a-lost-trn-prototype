@@ -2,7 +2,7 @@
 {% set email_address = data['email-address'] or data.dqt_record['email-address'] %}
 {% set full_name = data['full-name'] or (data.dqt_record['first-name'] + ' ' + data.dqt_record['last-name']) %}
 
-{% set subject = "We’ve received the information you submitted" %}
+{% set subject = "We’ve received your request" %}
 {% set from = "Teacher Regulation Agency <qts.enquiries@education.gov.uk>" %}
 {% set to = full_name + ' <' + email_address + '>' %}
 
@@ -11,7 +11,7 @@
 
   <p>We’ve received the information you submitted.</p>
 
-  <p>You’ll get an email with your TRN if we find a match. Otherwise, we’ll be in touch to ask for more information.</p>
+  <p>You’ll get an email with your TRN if we find a match. Otherwise, we’ll contact you for more information.</p>
 
   <p>We aim to respond in 5 working days.</p>
 

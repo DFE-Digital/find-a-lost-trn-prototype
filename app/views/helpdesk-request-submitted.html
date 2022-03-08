@@ -1,22 +1,22 @@
 {% extends "layouts/default.html" %}
-{% set title = "Information received" %}
+{% set title = "We’ve received your request" %}
 
 {% block content %}
   {% set html %}
-    <a class="app-hidden-link" href="/emails/email-with-api-down">We’ll send your TRN by email or get in touch to ask for more information</a>
+    <p class="app-!-inherit-colour govuk-!-margin-bottom-0">
+      <a class="app-hidden-link govuk-!-font-size-24" href="/emails/email-with-api-down">You’ll get an email with your TRN if we find a match. Otherwise, we’ll contact you for more&nbsp;information.</a>
+    </p>
   {% endset %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ govukPanel({
-        titleText: title,
+        titleHtml: title | noOrphans,
         html: html,
         classes: 'govuk-!-margin-bottom-6'
       }) }}
 
       <h2 class="govuk-heading-m">What happens next?</h2>
-      <p>You’ll get an email with your TRN if we find a match. Otherwise, we’ll be in touch to ask for more information.</p>
-
       <p>We aim to respond in 5 working days.</p>
 
       <h2 class="govuk-heading-m">For urgent requests, call the Teaching Regulation Agency</h2>
