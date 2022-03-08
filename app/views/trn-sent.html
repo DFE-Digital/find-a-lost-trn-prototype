@@ -4,7 +4,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
       {% set html %}
         <a class="app-hidden-link" href="/emails/email-with-trn">We’ve sent it to <br><strong>{{ data['email-address'] or data.dqt_record['email-address'] }}</strong></a>
       {% endset %}
