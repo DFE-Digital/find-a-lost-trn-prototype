@@ -86,7 +86,7 @@
     } if change
   } if data['have-nino'] === 'No', {
     key: {
-      text: "Teacher training provider"
+      text: "Where did you get your QTS?"
     },
     value: {
       text: data['itt-provider'] if data['itt-provider'] else 'Not given'
@@ -94,13 +94,13 @@
     actions: {
       items: [{
         text: "Change",
-        visuallyHiddenText: "teacher training provider",
+        visuallyHiddenText: "where you got your QTS",
         href: "/itt-provider"
       }]
     } if change
   } if data['has-done-itt'] === 'Yes', {
     key: {
-      text: "Have you been enrolled in initial teacher training in England or Wales?"
+      text: "Have you been awarded QTS?"
     },
     value: {
       text: data['has-done-itt']
@@ -108,7 +108,7 @@
     actions: {
       items: [{
         text: "Change",
-        visuallyHiddenText: "teacher training provider",
+        visuallyHiddenText: "if you have QTS",
         href: "/itt-provider"
       }]
     } if change
