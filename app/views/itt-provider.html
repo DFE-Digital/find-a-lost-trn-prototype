@@ -1,17 +1,24 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Have you ever been enrolled in initial teacher training in England or Wales?" %}
+{% set title = "Have you been awarded qualified teacher status (QTS)?" %}
 
 {% block form %}
   {% set ITTProviderNameHtml %}
     {% if data.features.ittAutocomplete.on %}
-      <label for="itt-autocomplete" class="govuk-label">
-        Your school, university or other training provider
+      <label for="itt-autocomplete" class="govuk-label govuk-label--s">
+        Where did you get your QTS?
       </label>
+      <div id="itt-provider-hint" class="govuk-hint">
+        Your university, SCITT, school or other training provider
+      </div>
       <div id="itt-autocomplete-container" data-value="{{ data['itt-provider'] }}"></div>
     {% else %}
       {{ govukInput({
         label: {
-          text: "Your school, university or other training provider"
+          text: "Where did you get your QTS?",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "Your university, SCITT, school or other training provider"
         },
         decorate: "itt-provider"
       }) }}
