@@ -7,7 +7,7 @@ const defaultConfig = {
   promoMode: false,
   serviceName: 'Your service name',
   templateExtension: 'html',
-  useAuth: false,
+  useAuth: true,
   useAutoStoreData: true,
   useCookieSessionStore: false,
   useHttps: true
