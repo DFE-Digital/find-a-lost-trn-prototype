@@ -1,6 +1,5 @@
 import fs from 'node:fs'
 import express from 'express'
-import rateLimit from "express-rate-limit";
 import sessionInCookie from 'client-sessions'
 import sessionInMemory from 'express-session'
 
@@ -32,12 +31,6 @@ const useHttps = getEnvBoolean('USE_HTTPS', config)
 // Set up Express app
 const app = express()
 const router = express.Router()
-const limit = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
-  standardHeaders: true,
-  legacyHeaders: false,
-});
 
 // Make config variables available to all views
 app.locals = { ...app.locals, ...config}
@@ -52,7 +45,6 @@ if (isSecure) {
 
 // Authentication
 if (isProduction && useAuth) {
-  app.use(limit)
   app.use(authentication)
 }
 
