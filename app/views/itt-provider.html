@@ -20,7 +20,16 @@
         hint: {
           text: "Your university, SCITT, school or other training provider"
         },
-        decorate: "itt-provider"
+        decorate: "itt-provider",
+        validate: {
+          conditional: {
+            dependentOn: {
+              name: "[has-done-itt]",
+              value: "Yes"
+            },
+            message: "Tell us where you got your QTS"
+          }
+        } if data.features.validation.on
       }) }}
     {% endif %}
   {% endset %}
@@ -42,6 +51,11 @@
         text: "No"
       }
     ],
-    decorate: "has-done-itt"
+    decorate: "has-done-itt",
+    validate: {
+      presence: {
+        message: "Tell us if you have been awarded QTS"
+      }
+    } if data.features.validation.on
   }) }}
 {% endblock %}

@@ -18,5 +18,10 @@
         text: "No"
       }
     ],
-    decorate: 'have-nino'
+    decorate: 'have-nino',
+    validate: {
+      presence: {
+        message: "Tell us if you have a National Insurance number"
+      }
+    } if data.features.validation.on
   }) }}{% endblock %}

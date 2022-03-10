@@ -28,6 +28,11 @@ You will have a TRN if you:
   }, {
     text: "No"
   }],
-  decorate: "do-you-have-a-trn"
+  decorate: "do-you-have-a-trn",
+  validate: {
+    presence: {
+      message: "Tell us if you think you have a TRN"
+    }
+  } if data.features.validation.on
 }) }}
 {% endblock %}

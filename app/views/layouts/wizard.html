@@ -10,7 +10,7 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {% block beforeForm %}{% endblock %}
 
-      <form method="post" novalidate>
+      <form method="post" novalidate {% if data.features.validation.on %}data-validate{% endif %}>
         {% block form %}{% endblock %}
 
         {{ govukButton({
