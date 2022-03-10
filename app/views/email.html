@@ -11,6 +11,14 @@
     hint: {
       text: 'If we can find your TRN, we’ll send it to the email address you give.'
     },
-    decorate: 'email-address'
+    decorate: 'email-address',
+    validate: {
+      presence: {
+        message: "Enter your email address"
+      },
+      email: {
+        message: "Enter an email address in the correct format, like name@example.com"
+      }
+    } if data.features.validation.on
   }) }}
 {% endblock %}

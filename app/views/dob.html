@@ -13,6 +13,11 @@
     hint: {
       text: "For example, 27 3 1987"
     },
-    decorate: "date-of-birth"
+    decorate: "date-of-birth",
+    validate: {
+      date: {
+        message: "Date of birth should be a valid date"
+      }
+    } if data.features.validation.on
   }) }}
 {% endblock %}

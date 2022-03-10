@@ -23,6 +23,11 @@ export default {
       on: false,
       name: 'Use full name',
       description: 'Use full name rather than first name, last name'
+    },
+    validation: {
+      on: true,
+      name: 'Use validation',
+      description: 'Show errors during journey'
     }
   },
   dqt_record: {
