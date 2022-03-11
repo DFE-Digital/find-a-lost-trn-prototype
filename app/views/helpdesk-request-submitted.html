@@ -17,11 +17,14 @@
       }) }}
 
       <h2 class="govuk-heading-m">What happens next?</h2>
-      <p>We aim to respond in 5 working days.</p>
+      {% include '_support-time.html' %}
 
       <h2 class="govuk-heading-m">For urgent requests, call the Teaching Regulation Agency</h2>
       <p>Give the helpdesk your request number: 4992.</p>
       {% include '_phone-line.html' %}
+
+      <h2 class="govuk-heading-m">Give feedback</h2>
+      <p><a href="#">What did you think of this service?</a> (takes 30 seconds)</p>
     </div>
   </div>
 {% endblock %}
