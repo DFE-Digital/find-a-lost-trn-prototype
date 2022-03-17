@@ -2,14 +2,20 @@
 {% set email_address = data['email-address'] or data.dqt_record['email-address'] %}
 {% set full_name = data['full-name'] or (data.dqt_record['first-name'] + ' ' + data.dqt_record['last-name']) %}
 
-{% set subject = "Your TRN" %}
+{% set subject = "Your TRN is " +  data.dqt_record.trn %}
 {% set from = "Teacher Regulation Agency <qts.enquiries@education.gov.uk>" %}
 {% set to = full_name + ' <' + email_address + '>' %}
 
 {% block content %}
   <p>Dear {{ full_name }},</p>
 
-  <p>Your TRN is {{ data.dqt_record.trn }}</p>
+  <h1 class="govuk-heading-m">Your TRN</h1>
+
+  <p class="govuk-inset-text">Teacher reference number (TRN):<br />{{ data.dqt_record.trn }}</p>
+
+  <p>We suggest you keep this email for future reference.</p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
   <h1 class="govuk-heading-m">What a TRN is for</h1>
 
