@@ -25,7 +25,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "govuk-prototype-components": "^0.1.5",
     "govuk-prototype-rig": "^0.2.0",
