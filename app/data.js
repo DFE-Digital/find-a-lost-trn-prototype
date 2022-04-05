@@ -10,7 +10,7 @@ export default {
   // Set feature flags using the `features` key
   features: {
     apiUnavailable: {
-      on: true,
+      on: false,
       name: 'API unavailable',
       description: 'Disable any functionality that requires a backend data lookup'
     },
