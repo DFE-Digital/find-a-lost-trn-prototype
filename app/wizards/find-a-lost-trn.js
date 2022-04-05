@@ -14,12 +14,12 @@ export default (req) => {
     '/dob': {},
     '/have-nino': {
       '/email': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
-      '/itt-provider': { data: 'have-nino', value: 'No' }
+      '/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/nino': {
       '/email': () => userMatchesDQTRecord(data)
     },
-    '/itt-provider': {},
+    '/have-qts': {},
     '/email': {},
     '/check-answers': {
       '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
