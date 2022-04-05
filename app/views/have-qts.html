@@ -2,38 +2,6 @@
 {% set title = "Have you been awarded qualified teacher status (QTS)?" %}
 
 {% block form %}
-  {% set html %}
-    {% if data.features.ittAutocomplete.on %}
-      <label for="itt-autocomplete" class="govuk-label govuk-label--s">
-        Where did you get your QTS?
-      </label>
-      <div id="itt-provider-hint" class="govuk-hint">
-        Your university, SCITT, school or other training provider
-      </div>
-      <div id="itt-autocomplete-container" data-value="{{ data['itt-provider'] }}"></div>
-    {% else %}
-      {{ govukInput({
-        label: {
-          text: "Where did you get your QTS?",
-          classes: "govuk-label--s"
-        },
-        hint: {
-          text: "Your university, SCITT, school or other training provider"
-        },
-        decorate: "itt-provider",
-        validate: {
-          conditional: {
-            dependentOn: {
-              name: "[has-qts]",
-              value: "Yes"
-            },
-            message: "Tell us where you got your QTS"
-          }
-        } if data.features.validation.on
-      }) }}
-    {% endif %}
-  {% endset %}
-
   {{ govukRadios({
     fieldset: {
       legend: {
@@ -44,8 +12,7 @@
     },
     items: [
       {
-        text: "Yes",
-        conditional: { html: html }
+        text: "Yes"
       },
       {
         text: "No"

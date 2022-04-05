@@ -19,7 +19,10 @@ export default (req) => {
     '/nino': {
       '/email': () => userMatchesDQTRecord(data)
     },
-    '/have-qts': {},
+    '/have-qts': {
+      '/email': { data: 'has-qts', value: 'No' }
+    },
+    '/how-qts': {},
     '/email': {},
     '/check-answers': {
       '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
