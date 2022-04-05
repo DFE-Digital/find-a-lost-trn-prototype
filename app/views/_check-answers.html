@@ -98,12 +98,12 @@
         href: "/have-qts"
       }]
     } if change
-  } if data['has-done-itt'] === 'Yes', {
+  } if data['has-qts'] === 'Yes', {
     key: {
       text: "Have you been awarded QTS?"
     },
     value: {
-      text: data['has-done-itt']
+      text: data['has-qts']
     },
     actions: {
       items: [{
@@ -112,5 +112,5 @@
         href: "/have-qts"
       }]
     } if change
-  } if data['has-done-itt'] === 'No'
+  } if data['has-qts'] === 'No'
 ]}) }}
