@@ -1,8 +1,8 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Have you been awarded qualified teacher status (QTS)?" %}
+{% set title = "Did a university, SCITT or school award your QTS?" %}
 
 {% block form %}
-  {% set ITTProviderNameHtml %}
+  {% set html %}
     {% if data.features.ittAutocomplete.on %}
       <label for="itt-autocomplete" class="govuk-label govuk-label--s">
         Where did you get your QTS?
@@ -24,10 +24,10 @@
         validate: {
           conditional: {
             dependentOn: {
-              name: "[has-done-itt]",
+              name: "[has-qts-from-provider]",
               value: "Yes"
             },
-            message: "Tell us where you got your QTS"
+            message: "Tell us who your training provider was"
           }
         } if data.features.validation.on
       }) }}
@@ -45,13 +45,13 @@
     items: [
       {
         text: "Yes",
-        conditional: { html: ITTProviderNameHtml }
+        conditional: { html: html }
       },
       {
-        text: "No"
+        text: "No, I was awarded QTS another way"
       }
     ],
-    decorate: "has-done-itt",
+    decorate: "has-qts-from-provider",
     validate: {
       presence: {
         message: "Tell us if you have been awarded QTS"

@@ -86,6 +86,20 @@
     } if change
   } if data['have-nino'] === 'No', {
     key: {
+      text: "Have you been awarded QTS?"
+    },
+    value: {
+      text: data['has-qts']
+    },
+    actions: {
+      items: [{
+        text: "Change",
+        visuallyHiddenText: "if you have QTS",
+        href: "/have-qts"
+      }]
+    } if change
+  }, {
+    key: {
       text: "Where did you get your QTS?"
     },
     value: {
@@ -95,22 +109,22 @@
       items: [{
         text: "Change",
         visuallyHiddenText: "where you got your QTS",
-        href: "/itt-provider"
+        href: "/how-qts"
       }]
     } if change
-  } if data['has-done-itt'] === 'Yes', {
+  } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] === 'Yes', {
     key: {
-      text: "Have you been awarded QTS?"
+      text: "Did a university, SCITT or school award your QTS?"
     },
     value: {
-      text: data['has-done-itt']
+      text: data['has-qts-from-provider']
     },
     actions: {
       items: [{
         text: "Change",
-        visuallyHiddenText: "if you have QTS",
-        href: "/itt-provider"
+        visuallyHiddenText: "where you got your QTS",
+        href: "/how-qts"
       }]
     } if change
-  } if data['has-done-itt'] === 'No'
+  } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes'
 ]}) }}

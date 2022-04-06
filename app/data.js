@@ -10,7 +10,7 @@ export default {
   // Set feature flags using the `features` key
   features: {
     apiUnavailable: {
-      on: true,
+      on: false,
       name: 'API unavailable',
       description: 'Disable any functionality that requires a backend data lookup'
     },
@@ -49,5 +49,5 @@ export default {
   // 'national-insurance-number': 'QQ 12 34 56 C',
   // 'itt-provider': 'Gorse SCITT',
   // trn: '0000000',
-  // 'has-done-itt': 'yes'
+  // 'has-qts': 'yes'
 }
