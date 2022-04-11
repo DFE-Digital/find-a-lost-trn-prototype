@@ -39,7 +39,7 @@
     "inquirer": "^8.2.2",
     "lodash": "^4.17.21",
     "luxon": "^2.0.2",
-    "marked": "^4.0.12",
+    "marked": "^4.0.14",
     "nodemon": "^2.0.13",
     "nunjucks": "^3.2.1",
     "portscanner": "^2.1.1",
