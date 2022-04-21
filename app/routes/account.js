@@ -4,7 +4,7 @@ export const accountRoutes = router => {
   router.all('/account/:view', (req, res, next) => {
     res.locals.paths = wizard(req)
     res.locals.accountJourney = true
-    res.locals.serviceName = 'Test service name'
+    res.locals.serviceName = req.session.data.accountServiceName || 'Create a teacher account'
     next()
   })
 

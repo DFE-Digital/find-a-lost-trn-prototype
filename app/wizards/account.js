@@ -2,14 +2,17 @@ import { wizard } from 'govuk-prototype-rig'
 import { userMatchesDQTRecord } from '../utils/dqt.js'
 
 function emailHasAccount (data) {
-  return false
+  return data.hasAccount
 }
 
 export default (req) => {
   const data = req.session.data
   const journey = {
     '/account/email': {
-      '/account/sign-in-with-password': () => emailHasAccount(data)
+      '/account/email-confirmation': () => !emailHasAccount(data)
+    },
+    '/account/sign-in-with-password': {
+      '/account/return-to-service': () => true
     },
     '/account/email-confirmation': {},
     '/account/trn-holder': {

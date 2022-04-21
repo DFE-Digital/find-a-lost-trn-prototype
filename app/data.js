@@ -25,7 +25,7 @@ export default {
       description: 'Use full name rather than first name, last name'
     },
     validation: {
-      on: true,
+      on: false,
       name: 'Use validation',
       description: 'Show errors during journey'
     }
