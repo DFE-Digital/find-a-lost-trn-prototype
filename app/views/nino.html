@@ -5,7 +5,11 @@
   {% set help %}
     <p>You can <a href="https://www.gov.uk/lost-national-insurance-number">find a lost National Insurance number</a>.</p>
 
-    <p>Or you can continue without it, but we are less likely to find your TRN.</p>
+    {% if accountJourney %}
+      <p>Or you can continue without it.</p>
+    {% else %}
+      <p>Or you can continue without it, but we are less likely to find your TRN.</p>
+    {% endif %}
 
     {{ govukButton({
       html: 'Continue without it',
@@ -23,12 +27,7 @@
     hint: {
       text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
     },
-    decorate: 'national-insurance-number',
-    validate: {
-      presence: {
-        message: "Enter your National Insurance number"
-      }
-    } if data.features.validation.on
+    decorate: 'national-insurance-number'
   }) }}
 
   {{ govukDetails({

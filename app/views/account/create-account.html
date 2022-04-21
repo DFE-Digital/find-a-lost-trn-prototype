@@ -1,0 +1,34 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you want to create an account?" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+<p>You can use an account to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>sign in to teacher services quickly</li>
+  <li>download teaching certificates</li>
+  <li>…</li>
+</ul>
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--m govuk-visually-hidden",
+      text: 'Do you know your TRN?'
+    }
+  },
+  items: [{
+    text: "Yes, create an account"
+  }, {
+    text: "No, do not create an account",
+    value: "no"
+  }],
+  decorate: "account.create-account",
+  validate: {
+    presence: {
+      message: "Tell us if you want to create an account"
+    }
+  } if data.features.validation.on
+}) }}
+{% endblock %}
