@@ -1,0 +1,17 @@
+{% extends "layouts/default.html" %}
+{% set title = "Returning to service"%}
+{% block pageNavigation %}
+  {{ govukBackLink({
+    href: paths.back
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      <p>This is where we would redirect a user back to the originating service.</p>
+    </div>
+  </div>
+{% endblock %}
