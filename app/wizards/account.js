@@ -8,13 +8,14 @@ function emailHasAccount (data) {
 export default (req) => {
   const data = req.session.data
   const journey = {
-    '/account/email': {
-      '/account/email-confirmation': () => !emailHasAccount(data)
+    '/account/email': {},
+    '/account/email-confirmation': {
+      '/account/ask-questions': () => !emailHasAccount(data)
     },
-    '/account/sign-in-with-password': {
+    '/account/signed-in-as': {
       '/account/return-to-service': () => true
     },
-    '/account/email-confirmation': {},
+    '/account/ask-questions': {},
     '/account/trn-holder': {
       '/account/name': { data: 'account.do-you-have-a-trn', value: 'No' }
     },
@@ -24,24 +25,24 @@ export default (req) => {
     '/account/trn': {},
     '/account/name': {},
     '/account/dob': {
-      '/account/create-account': () => userMatchesDQTRecord(data)
+      '/account/match': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
       '/account/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/account/nino': {
-      '/account/create-account': () => userMatchesDQTRecord(data)
+      '/account/match': () => userMatchesDQTRecord(data)
     },
     '/account/have-qts': {
-      '/account/create-account': { data: 'has-qts', value: 'No' }
+      '/account/match': { data: 'has-qts', value: 'No' }
     },
     '/account/how-qts': {
       '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
     },
+    '/account/match': {},
     '/account/create-account': {
       '/account/return-to-service': { data: 'create-account', value: 'No' }
     },
-    '/account/create-password': {},
     '/account/return-to-service': {}
   }
 

@@ -1,0 +1,35 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "You’re signed in" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Jane Doe"
+      }
+    },
+    {
+      key: {
+        text: "TRN"
+      },
+      value: {
+        text: "1234567"
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: "1 January 1980"
+      }
+    }
+  ]
+}) }}
+{% endblock %}

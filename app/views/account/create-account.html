@@ -1,29 +1,37 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Do you want to create an account?" %}
+{% set title = "Next time you use this service" %}
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title }}</h1>
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
-<p>You can use an account to:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>sign in to teacher services quickly</li>
-  <li>download teaching certificates</li>
-  <li>…</li>
+<p>Now that you’ve confirmed your identity, you can choose to use your email address to sign in the next time you use this service.</p>
+
+<p>Your email address must not be a shared email address or a work email address.</p>
 </ul>
 
 {{ govukRadios({
   fieldset: {
     legend: {
-      classes: "govuk-fieldset__legend--m govuk-visually-hidden",
-      text: 'Do you know your TRN?'
+      classes: "govuk-fieldset__legend--m",
+      text: 'Do you want to use your email address to sign in next time?'
     }
   },
-  items: [{
-    text: "Yes, create an account"
-  }, {
-    text: "No, do not create an account",
-    value: "no"
-  }],
+  items: [
+    {
+      html: "Yes, I will use <b>" + (data.email or "email@example.com") + "</b>",
+      value: "yes"
+    }, {
+      text: "No, I will confirm my identity by answering questions",
+      value: "no"
+    },
+    {
+      divider: 'or'
+    },
+    {
+      text: "I want to use a different email address",
+      value: "different"
+    }
+  ],
   decorate: "account.create-account",
   validate: {
     presence: {
