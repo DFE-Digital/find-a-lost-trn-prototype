@@ -36,6 +36,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
     data.accountServiceName = 'Register for a National Professional Qualification'
+    data.returnToService = '/npq/where-do-you-work'
     data.scenario = '1'
     data.hasAccount = false
     res.redirect('/account/email')
@@ -45,6 +46,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-2/', (req, res) => {
     const data = req.session.data
     data.accountServiceName = 'Register for a National Professional Qualification'
+    data.returnToService = '/npq/where-do-you-work'
     data.scenario = '2'
     data.hasAccount = true
     res.redirect('/account/email')

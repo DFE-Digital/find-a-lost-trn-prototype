@@ -36,6 +36,10 @@ export const accountRoutes = router => {
     res.render('how-qts')
   })
 
+  router.get('/account/return-to-service', (req, res) => {
+    res.redirect(req.session.data.returnToService)
+  })
+
   router.post('/account/:view', (req, res) => {
     res.redirect(res.locals.paths.next)
   })
