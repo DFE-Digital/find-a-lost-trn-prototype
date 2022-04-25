@@ -1,8 +1,10 @@
-{% extends "layouts/wizard.html" %}
-{% set title = "We’ve finished checking our records" %}
+{% extends "layouts/wizard-interruption.html" %}
+{% set title = "Thank you, we’ve finished checking our records" %}
+{% set buttonText = "Continue with your NPQ registration" %}
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title }}</h1>
-
-<p>Thank you, we’ve successfully matched your details against the Teaching Regulation Agency records.</p>
+  <h1 class="govuk-panel__title">{{ title }}</h1>
+  {% if data.account['create-account'] === 'yes' %}
+  <p class="govuk-!-margin-bottom-6">Next time you can skip these questions by signing in with your email address: <b>{{ data.email or "email@example.com" }}</b></p>
+  {% endif %}
 {% endblock %}

@@ -25,24 +25,22 @@ export default (req) => {
     '/account/trn': {},
     '/account/name': {},
     '/account/dob': {
-      '/account/match': () => userMatchesDQTRecord(data)
+      '/account/create-account': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
       '/account/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/account/nino': {
-      '/account/match': () => userMatchesDQTRecord(data)
+      '/account/create-account': () => userMatchesDQTRecord(data)
     },
     '/account/have-qts': {
-      '/account/match': { data: 'has-qts', value: 'No' }
+      '/account/create-account': { data: 'has-qts', value: 'No' }
     },
     '/account/how-qts': {
       '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
     },
+    '/account/create-account': {},
     '/account/match': {},
-    '/account/create-account': {
-      '/account/return-to-service': { data: 'create-account', value: 'No' }
-    },
     '/account/return-to-service': {}
   }
 
