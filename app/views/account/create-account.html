@@ -4,7 +4,7 @@
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
-<p>Now that you’ve confirmed your identity, you can choose to use your email address to sign in the next time you use this service.</p>
+<p>You can choose to use your email address to sign in the next time you use this service.</p>
 
 <p>Your email address must not be a shared email address or a work email address.</p>
 </ul>
@@ -21,7 +21,7 @@
       html: "Yes, I will use <b>" + (data.email or "email@example.com") + "</b>",
       value: "yes"
     }, {
-      text: "No, I will confirm my identity by answering questions",
+      text: "No, I will answer questions again",
       value: "no"
     },
     {
