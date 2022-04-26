@@ -49,7 +49,7 @@ export const accountRoutes = router => {
     res.redirect(req.session.data.returnToService)
   })
 
-  router.post('/account/finish', (req, res, next) => {
+  router.post(['/account/finish', '/account/signed-in-as'], (req, res, next) => {
     if (req.session.data.returnToService) {
       res.redirect(307, req.session.data.returnToService)
     } else {
