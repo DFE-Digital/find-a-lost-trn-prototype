@@ -8,6 +8,15 @@ export const accountRoutes = router => {
     next()
   })
 
+  router.post('/account/name', (req, res, next) => {
+    const data = req.session.data
+    if (!data.features.fullName.on) {
+      req.session.data['full-name'] = `${req.body['first-name']} ${req.body['last-name']}`
+      req.session.data['previous-name'] = `${req.body['previous-first-name']} ${req.body['previous-last-name']}`
+    }
+    next()
+  })
+
   router.get('/account/email', (req, res) => {
     res.render('email')
   })

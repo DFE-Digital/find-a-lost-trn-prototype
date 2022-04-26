@@ -1,130 +1,162 @@
+{% set basePath = "/account" if accountJourney else "" %}
+
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9" if change,
-  rows: [{
+  rows: [
+    {
       key: {
-      text: "Email address"
-    },
-    value: {
-      text: data['email-address'] or 'email@example.com'
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "email address",
-        href: "/email"
-      }]
-    } if change
-  }, {
+        text: "Email address"
+      },
+      value: {
+        text: data['email-address'] or 'email@example.com'
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "email address",
+          href: basePath + "/email"
+        }]
+      } if change
+    }, {
+      key: {
+        text: "Do you have a TRN?"
+      },
+      value: {
+        text: data.account['do-you-have-a-trn']
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "if you have a TRN",
+          href: basePath + "/trn-holder"
+        }]
+      } if change
+    } if accountJourney, {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "your TRN",
+          href: (basePath + "/trn") if data.account['do-you-know-your-trn'] === 'yes' else (basePath + "/trn-known")
+        }]
+      } if change
+    } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes', {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: data['full-name']
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "name",
+          href: basePath + "/name"
+        }]
+      } if change
+    } if data['full-name'], {
     key: {
-      text: "Name"
-    },
-    value: {
-      text: data['full-name']
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "name",
-        href: "/name"
-      }]
-    } if change
-  } if data['full-name'], {
-  key: {
-      text: "Previous name"
-    },
-    value: {
-      text: data['previous-name']
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "previous name",
-        href: "/name"
-      }]
-    } if change
-  } if data['previous-name'] and not data['previous-name'] === " ", {
-    key: {
-      text: "Date of birth"
-    },
-    value: {
-      text: data['date-of-birth'] | dateWithYear
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "date of birth",
-        href: "/dob"
-      }]
-    } if change
-  } if data['date-of-birth'], {
-    key: {
-      text: "National Insurance number"
-    },
-    value: {
-      text: data['national-insurance-number'] or 'Not given'
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "National Insurance number",
-        href: "/nino"
-      }]
-    } if change
-  } if data['have-nino'] !== 'No', {
-    key: {
-      text: "Do you have a National Insurance number?"
-    },
-    value: {
-      text: "No"
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "National Insurance number",
-        href: "/have-nino"
-      }]
-    } if change
-  } if data['have-nino'] === 'No', {
-    key: {
-      text: "Have you been awarded QTS?"
-    },
-    value: {
-      text: data['has-qts']
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "if you have QTS",
-        href: "/have-qts"
-      }]
-    } if change
-  }, {
-    key: {
-      text: "Where did you get your QTS?"
-    },
-    value: {
-      text: data['itt-provider'] if data['itt-provider'] else 'Not given'
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "where you got your QTS",
-        href: "/how-qts"
-      }]
-    } if change
-  } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] === 'Yes', {
-    key: {
-      text: "Did a university, SCITT or school award your QTS?"
-    },
-    value: {
-      text: data['has-qts-from-provider']
-    },
-    actions: {
-      items: [{
-        text: "Change",
-        visuallyHiddenText: "where you got your QTS",
-        href: "/how-qts"
-      }]
-    } if change
-  } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes'
-]}) }}
+        text: "Previous name"
+      },
+      value: {
+        text: data['previous-name']
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "previous name",
+          href: basePath + "/name"
+        }]
+      } if change
+    } if data['previous-name'] and not data['previous-name'] === " ", {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: data['date-of-birth'] | dateWithYear
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "date of birth",
+          href: basePath + "/dob"
+        }]
+      } if change
+    } if data['date-of-birth'], {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data['national-insurance-number'] or 'Not given'
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "National Insurance number",
+          href: basePath + "/nino"
+        }]
+      } if change
+    } if data['have-nino'] !== 'No', {
+      key: {
+        text: "Do you have a National Insurance number?"
+      },
+      value: {
+        text: "No"
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "National Insurance number",
+          href: basePath + "/have-nino"
+        }]
+      } if change
+    } if data['have-nino'] === 'No', {
+      key: {
+        text: "Have you been awarded QTS?"
+      },
+      value: {
+        text: data['has-qts']
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "if you have QTS",
+          href: basePath + "/have-qts"
+        }]
+      } if change
+    }, {
+      key: {
+        text: "Where did you get your QTS?"
+      },
+      value: {
+        text: data['itt-provider'] if data['itt-provider'] else 'Not given'
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "where you got your QTS",
+          href: basePath + "/how-qts"
+        }]
+      } if change
+    } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] === 'Yes', {
+      key: {
+        text: "Did a university, SCITT or school award your QTS?"
+      },
+      value: {
+        text: data['has-qts-from-provider']
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "where you got your QTS",
+          href: basePath + "/how-qts"
+        }]
+      } if change
+    } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes'
+  ]
+}) }}

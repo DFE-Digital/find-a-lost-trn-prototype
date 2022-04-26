@@ -37,10 +37,11 @@ export default (req) => {
       '/account/create-account': { data: 'has-qts', value: 'No' }
     },
     '/account/how-qts': {
-      '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
+      // '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
     },
     '/account/create-account': {},
     '/account/match': {},
+    '/account/check-answers': {},
     '/account/return-to-service': {}
   }
 
