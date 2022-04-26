@@ -7,6 +7,8 @@ function emailHasAccount (data) {
 
 export default (req) => {
   const data = req.session.data
+  const hasTrn = data.account && data.account['do-you-have-a-trn'] === 'Yes'
+
   const journey = {
     '/account/email': {},
     '/account/email-confirmation': {
@@ -28,17 +30,22 @@ export default (req) => {
       '/account/create-account': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
-      '/account/have-qts': { data: 'have-nino', value: 'No' }
+      ...hasTrn
+        ? { '/account/have-qts': { data: 'have-nino', value: 'No' } }
+        : { '/account/create-account': { data: 'have-nino', value: 'No' } }
     },
     '/account/nino': {
       '/account/create-account': () => userMatchesDQTRecord(data)
     },
-    '/account/have-qts': {
-      '/account/create-account': { data: 'has-qts', value: 'No' }
-    },
-    '/account/how-qts': {
-      // '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
-    },
+    // Only include QTS questions if user has a TRN
+    ...hasTrn
+      ? {
+          '/account/have-qts': {
+            '/account/create-account': { data: 'has-qts', value: 'No' }
+          },
+          '/account/how-qts': {}
+        }
+      : {},
     '/account/create-account': {},
     '/account/check-answers': {},
     '/account/finish': {},
