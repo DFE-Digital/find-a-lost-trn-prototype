@@ -19,6 +19,20 @@
       } if change
     }, {
       key: {
+        text: "Use your email address to sign in?"
+      },
+      value: {
+        text: data.account['create-account'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "if you want to use your email to sign in",
+          href: basePath + "/create-account"
+        }]
+      } if change
+    } if accountJourney, {
+      key: {
         text: "Do you have a TRN?"
       },
       value: {
