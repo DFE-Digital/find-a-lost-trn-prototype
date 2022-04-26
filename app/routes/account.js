@@ -49,6 +49,14 @@ export const accountRoutes = router => {
     res.redirect(req.session.data.returnToService)
   })
 
+  router.post('/account/finish', (req, res, next) => {
+    if (req.session.data.returnToService) {
+      res.redirect(307, req.session.data.returnToService)
+    } else {
+      next()
+    }
+  })
+
   router.post('/account/:view', (req, res) => {
     res.redirect(res.locals.paths.next)
   })

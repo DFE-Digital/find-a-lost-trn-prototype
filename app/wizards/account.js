@@ -40,8 +40,8 @@ export default (req) => {
       // '/account/no-match': () => !userMatchesDQTRecord(data) && data.scenario !== '1'
     },
     '/account/create-account': {},
-    '/account/match': {},
     '/account/check-answers': {},
+    '/account/finish': {},
     '/account/return-to-service': {}
   }
 

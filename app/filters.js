@@ -32,6 +32,11 @@ export default (env) => {
     return datetime.toFormat('d MMMM yyyy')
   }
 
+  // stringify an object
+  filters.stringify = obj => {
+    return JSON.stringify(obj)
+  }
+
   // Keep the following line to return your filters to the app
   return filters
 }
