@@ -4,10 +4,18 @@
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
-<p>You can choose to use your email address to sign in the next time you use this service.</p>
+<p>You can choose to use your email address to sign in the next time you use this&nbsp;service.</p>
 
-<p>Your email address must not be a shared email address or a work email address.</p>
+<p>You might return to this service to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>edit or check your registration</li>
+  <li>register for another NPQ</li>
+  <li>download your NPQ certificates</li>
 </ul>
+
+<h2 class="govuk-heading-m">Do not use a work email address</h2>
+
+<p class="govuk-!-margin-bottom-6">Your email address must be one you will always have access to. You could lose access to a work email address if you changed jobs.</p>
 
 {{ govukRadios({
   fieldset: {
@@ -28,7 +36,7 @@
       divider: 'or'
     },
     {
-      text: "I want to use a different email address",
+      text: "I want to change the email address I will use",
       value: "different"
     }
   ],
