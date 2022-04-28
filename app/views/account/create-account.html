@@ -1,0 +1,42 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Next time you use this service" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+<p>You can choose to use your email address to sign in the next time you use this service.</p>
+
+<p>Your email address must not be a shared email address or a work email address.</p>
+</ul>
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--m",
+      text: 'Do you want to use your email address to sign in next time?'
+    }
+  },
+  items: [
+    {
+      html: "Yes, I will use <b>" + (data.email or "email@example.com") + "</b>",
+      value: "yes"
+    }, {
+      text: "No, I will answer the same questions again",
+      value: "no"
+    },
+    {
+      divider: 'or'
+    },
+    {
+      text: "I want to use a different email address",
+      value: "different"
+    }
+  ],
+  decorate: "account.create-account",
+  validate: {
+    presence: {
+      message: "Tell us if you want to create an account"
+    }
+  } if data.features.validation.on
+}) }}
+{% endblock %}

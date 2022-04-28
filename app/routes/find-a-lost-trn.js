@@ -12,6 +12,7 @@ export const findLostTrnRoutes = router => {
 
   router.all('/:view', (req, res, next) => {
     res.locals.paths = trnWizard(req)
+    res.locals.findTRNJourney = true
     next()
   })
 

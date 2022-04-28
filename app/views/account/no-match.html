@@ -1,0 +1,42 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "We could not match your answers with our records" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>This could be because you:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    {% if data.account['do-you-have-a-trn'] === 'Yes' and not data.account.trn %}
+      <li>did not give us your teacher reference number (TRN)</li>
+    {% endif %}
+    {% if data['have-nino'] and not data['national-insurance-number'] %}
+      <li>did not give us your National Insurance number</li>
+    {% endif %}
+    <li>abbreviated your first name, for example Rob/Robert</li>
+    <li>used a different name to the one held on the Teaching Regulation Agency records</li>
+    <li>mistyped or entered some incorrect information</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Check your answers</h2>
+  {% include '_check-answers.html' %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you want to change something and try again?"
+      }
+    },
+    hint: {
+      html: nino
+    },
+    items: [{
+      text: "Yes, I have different details I can try",
+      value: "yes"
+    }, {
+      text: "No, use these details, they are correct",
+      value: "no"
+    }],
+    decorate: "try-again"
+  }) }}
+{% endblock %}

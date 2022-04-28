@@ -1,0 +1,38 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you have a teacher reference number (TRN)?" %}
+
+{% set trnGuidance %}
+You will have a TRN if you:
+
+* hold qualified teacher status (QTS) in England or Wales
+* hold early years teacher status (EYTS) in England
+* hold a national professional qualification (NPQ)
+* are working towards QTS, EYTS or an NPQ
+* contribute to the Teachers’ Pensions scheme
+* have a relevant restriction in relation to teaching in England
+{% endset %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+{{ trnGuidance | govukMarkdown | safe }}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--m",
+      text: 'Do you think you have a TRN?'
+    }
+  },
+  items: [{
+    text: "Yes"
+  }, {
+    text: "No"
+  }],
+  decorate: "account.do-you-have-a-trn",
+  validate: {
+    presence: {
+      message: "Tell us if you think you have a TRN"
+    }
+  } if data.features.validation.on
+}) }}
+{% endblock %}

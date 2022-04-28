@@ -1,5 +1,6 @@
 {% extends "layouts/wizard.html" %}
 {% set useFullName = data.features.fullName.on %}
+{% set checkingAgainstTRNRecord = findTRNJourney or data.account['do-you-have-a-trn'] === 'Yes' %}
 {% set title = "Your name" %}
 
 {% block form %}
@@ -30,7 +31,9 @@
 
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>We’ll match your name against the Teaching Regulation Agency records.</p>
+  {% if checkingAgainstTRNRecord %}
+    <p>We’ll match your name against the Teaching Regulation Agency records.</p>
+  {% endif %}
 
   {% if useFullName %}
     {{ govukInput({
@@ -58,14 +61,16 @@
     }) }}
   {% endif %}
 
-  {{ govukCheckboxes({
-    items: [
-      {
-        value: "changed-name",
-        text: "I’ve changed my name since I received my TRN",
-        conditional: { html: previousNameHtml }
-      }
-    ],
-    decorate: 'changed-name'
-  }) }}
+  {% if checkingAgainstTRNRecord %}
+    {{ govukCheckboxes({
+      items: [
+        {
+          value: "changed-name",
+          text: "I’ve changed my name since I received my TRN",
+          conditional: { html: previousNameHtml }
+        }
+      ],
+      decorate: 'changed-name'
+    }) }}
+  {% endif %}
 {% endblock %}

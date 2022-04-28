@@ -1,0 +1,19 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'What’s your teacher reference number (TRN)?' %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    },
+    classes: 'govuk-!-width-one-third',
+    decorate: 'account.trn',
+    validate: {
+      presence: {
+        message: "Enter your TRN"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}

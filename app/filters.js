@@ -32,6 +32,17 @@ export default (env) => {
     return datetime.toFormat('d MMMM yyyy')
   }
 
+  // stringify an object
+  filters.stringify = obj => {
+    return JSON.stringify(obj)
+  }
+
+  // example: "not like this" becomes "Not like this"
+  // do not error when string is undefined
+  filters.capitaliseFirstLetter = string => {
+    return string ? string.charAt(0).toUpperCase() + string.slice(1) : string
+  }
+
   // Keep the following line to return your filters to the app
   return filters
 }
