@@ -4,8 +4,8 @@
 {% block form %}
   <h1 class="govuk-panel__title">{{ title }}</h1>
   <p>Thank you, we’ve finished checking our records.</p>
-  {% if data.account['create-account'] === 'yes' %}
-    <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data.email or "email@example.com" }}</b></p>
+  {% if data.account['next-time'] === 'yes' %}
+    <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data['email-address'] or "email@example.com" }}</b></p>
   {% endif %}
 
   <input type="hidden" name="account-data" value="{{ data | stringify }}">

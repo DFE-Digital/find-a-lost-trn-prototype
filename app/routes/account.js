@@ -45,6 +45,10 @@ export const accountRoutes = router => {
     res.render('how-qts')
   })
 
+  router.get('/account/change-email-confirmation', (req, res) => {
+    res.render('account/email-confirmation')
+  })
+
   router.get('/account/return-to-service', (req, res) => {
     res.redirect(req.session.data.returnToService)
   })
