@@ -22,13 +22,13 @@
         text: "Use your email address to sign in?"
       },
       value: {
-        text: data.account['create-account'] | capitaliseFirstLetter
+        text: data.account['next-time'] | capitaliseFirstLetter
       },
       actions: {
         items: [{
           text: "Change",
           visuallyHiddenText: "if you want to use your email to sign in",
-          href: basePath + "/create-account"
+          href: basePath + "/next-time"
         }]
       } if change
     } if accountJourney and change, {
