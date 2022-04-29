@@ -22,7 +22,7 @@
         text: "Use your email address to sign in?"
       },
       value: {
-        text: data.account['next-time'] | capitaliseFirstLetter
+        text: "Yes" if data.account['next-time'] !== "no" else "No"
       },
       actions: {
         items: [{

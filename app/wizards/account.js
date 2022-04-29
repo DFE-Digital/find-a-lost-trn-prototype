@@ -46,10 +46,19 @@ export default (req) => {
           '/account/how-qts': {}
         }
       : {},
-    '/account/next-time': {},
+    '/account/next-time': {
+      '/account/change-email': { data: 'account.next-time', value: 'different' }
+    },
     '/account/check-answers': {},
     '/account/finish': {},
-    '/account/return-to-service': {}
+    '/account/return-to-service': {},
+
+    // Change email account flow
+    '/account/change-email': {},
+    '/account/change-email-confirmation': {},
+    '/account/change-email-next-time-confirmation': {
+      '/account/check-answers': () => true
+    }
   }
 
   return wizard(journey, req)

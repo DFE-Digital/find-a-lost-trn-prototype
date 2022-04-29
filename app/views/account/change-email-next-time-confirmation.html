@@ -1,0 +1,29 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you want to use your email address to sign in next time?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        html: "Yes, I will use <b>" + (data['email-address'] or "email@example.com") + "</b>",
+        value: "yes"
+      }, {
+        text: "No, I will answer the same questions again",
+        value: "no"
+      }
+    ],
+    decorate: "account.next-time",
+    validate: {
+      presence: {
+        message: "Tell us if you want to use your email address to sign in"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}
