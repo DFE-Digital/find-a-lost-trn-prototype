@@ -115,7 +115,7 @@
           href: basePath + "/nino"
         }]
       } if change
-    } if data['have-nino'] !== 'No', {
+    } if data['have-nino'] !== 'No' and not data.emailMatchJourney, {
       key: {
         text: "Do you have a National Insurance number?"
       },

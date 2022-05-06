@@ -3,6 +3,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-s/', (req, res) => {
     const data = req.session.data
     data.scenario = 's'
+    data.emailMatchJourney = false
     data.successfulJourney = true
     data.features.apiUnavailable.on = false
 
@@ -15,6 +16,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-f/', (req, res) => {
     const data = req.session.data
     data.scenario = 'f'
+    data.emailMatchJourney = false
     data.successfulJourney = false
     data.features.apiUnavailable.on = false
 
@@ -27,8 +29,19 @@ export const userResearch = router => {
   router.get('/user-research/scenario-u/', (req, res) => {
     const data = req.session.data
     data.scenario = 'u'
+    data.emailMatchJourney = false
     data.successfulJourney = false
     data.features.apiUnavailable.on = true
+    res.redirect('/start')
+  })
+
+  // Email match
+  router.get('/user-research/scenario-e/', (req, res) => {
+    const data = req.session.data
+    data.scenario = 'e'
+    data.emailMatchJourney = true
+    data.successfulJourney = true
+    data.features.apiUnavailable.on = false
     res.redirect('/start')
   })
 
