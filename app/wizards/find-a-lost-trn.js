@@ -13,19 +13,20 @@ export default (req) => {
     '/email': {},
     '/name': {},
     '/dob': {
-      '/check-answers': () => userMatchesDQTRecord(data) || data.emailMatchJourney
+      '/sms': () => userMatchesDQTRecord(data) || data.emailMatchJourney
     },
     '/have-nino': {
-      '/check-answers': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
+      '/sms': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
       '/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/nino': {
-      '/check-answers': () => userMatchesDQTRecord(data)
+      '/sms': () => userMatchesDQTRecord(data)
     },
     '/have-qts': {
-      '/check-answers': { data: 'has-qts', value: 'No' }
+      '/sms': { data: 'has-qts', value: 'No' }
     },
     '/how-qts': {},
+    '/sms': {},
     '/check-answers': {
       '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
       '/helpdesk-request-submitted': () => data.features.apiUnavailable.on
