@@ -10,20 +10,22 @@ export default (req) => {
     },
     '/ask-questions': {},
     ...data.features.apiUnavailable.on && { '/longer-than-normal': {} },
+    '/email': {},
     '/name': {},
-    '/dob': {},
+    '/dob': {
+      '/check-answers': () => userMatchesDQTRecord(data) || data.emailMatchJourney
+    },
     '/have-nino': {
-      '/email': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
+      '/check-answers': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
       '/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/nino': {
-      '/email': () => userMatchesDQTRecord(data)
+      '/check-answers': () => userMatchesDQTRecord(data)
     },
     '/have-qts': {
-      '/email': { data: 'has-qts', value: 'No' }
+      '/check-answers': { data: 'has-qts', value: 'No' }
     },
     '/how-qts': {},
-    '/email': {},
     '/check-answers': {
       '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
       '/helpdesk-request-submitted': () => data.features.apiUnavailable.on
