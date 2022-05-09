@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Do you want to be sent a text message with your TRN?" %}
+{% set title = "Do you want to get your TRN in a text message?" %}
 
 {% block form %}
   {% set html %}
@@ -38,11 +38,13 @@
     },
     items: [
       {
-        text: "Yes, send my TRN by text message",
+        text: "Yes, send it by text message and email",
+        value: "Yes",
         conditional: { html: html }
       },
       {
-        text: "No"
+        text: "No, do not send a text message",
+        value: "No"
       }
     ],
     decorate: "sms",
