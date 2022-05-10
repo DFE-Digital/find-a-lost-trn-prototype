@@ -6,7 +6,11 @@
 {% block beforeForm %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-<p>We will send your TRN to {{ emailAddress }} if we find one matching your details.</p>
+{% if data.sms == 'Yes' and data['phone-number'] %}
+  <p>We will send your TRN to {{ emailAddress }} and {{ data['phone-number'] }} if we find one matching your details.</p>
+{% else %}
+  <p>We will send your TRN to {{ emailAddress }} if we find one matching your details.</p>
+{% endif %}
 {% set change = true %}
 {% include '_check-answers.html' %}
 
