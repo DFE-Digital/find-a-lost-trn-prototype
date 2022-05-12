@@ -37,9 +37,6 @@ export const userResearch = router => {
 
   // Email match
   router.get('/user-research/scenario-e/', (req, res) => {
-    // Clear existing data
-    req.session.data = {}
-
     const data = req.session.data
     data.scenario = 'e'
     data.emailMatchJourney = true
