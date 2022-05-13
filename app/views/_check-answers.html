@@ -173,10 +173,10 @@
       } if change
     } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes', {
       key: {
-        text: "Phone number" if (data['phone-number'] and data.sms == 'Yes') else "Send TRN by text message"
+        text: "Phone number" if sendingTextMessage else "Send TRN by text message"
       },
       value: {
-        text: data['phone-number'] if (data['phone-number'] and data.sms == 'Yes') else "No"
+        text: data['phone-number'] if sendingTextMessage else "No"
       },
       actions: {
         items: [{
