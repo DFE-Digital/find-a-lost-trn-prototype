@@ -28,6 +28,11 @@ export default {
       on: false,
       name: 'Use validation',
       description: 'Show errors during journey'
+    },
+    sms: {
+      on: true,
+      name: 'TRNs by text message',
+      description: 'Ask users if they want their TRN by text message'
     }
   },
   dqt_record: {

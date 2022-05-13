@@ -171,6 +171,20 @@
           href: basePath + "/how-qts"
         }]
       } if change
-    } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes'
+    } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes', {
+      key: {
+        text: "Phone number" if sendingTextMessage else "Send TRN by text message"
+      },
+      value: {
+        text: data['phone-number'] if sendingTextMessage else "No"
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "whether you get your TRN by text",
+          href: basePath + "/sms"
+        }]
+      } if change
+    } if findTRNJourney and data.features.sms.on
   ]
 }) }}
