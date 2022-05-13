@@ -13,21 +13,36 @@ You will have a TRN if you:
 {% endset %}
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title }}</h1>
-{{ trnGuidance | govukMarkdown | safe }}
+<!-- <h1 class="govuk-heading-xl">{{ title }}</h1> -->
+<!-- {{ trnGuidance | govukMarkdown | safe }} -->
 
-{{ govukRadios({
+{{ govukCheckboxes({
   fieldset: {
     legend: {
-      classes: "govuk-fieldset__legend--m",
-      text: 'Do you think you have a TRN?'
+      classes: "govuk-fieldset__legend--xl",
+      isPageTitle: true,
+      text: 'Check if you have a TRN'
     }
   },
-  items: [{
-    text: "Yes"
-  }, {
-    text: "No"
-  }],
+  hint: {
+    text: 'Select any that apply to you'
+  },
+  items: [
+    { text: "I hold qualified teacher status (QTS) in England or Wales" },
+    { text: "I hold early years teacher status (EYTS) in England" },
+    { text: "I hold a national professional qualification (NPQ)" },
+    { text: "I am working towards QTS, EYTS or an NPQ" },
+    { text: "I contribute to the Teachers’ Pensions scheme" },
+    { text: "I have a relevant restriction in relation to teaching in England" },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "None of these apply to me",
+      behaviour: "exclusive"
+    }
+  ],
   decorate: "do-you-have-a-trn",
   validate: {
     presence: {
