@@ -1,0 +1,235 @@
+{% extends "layouts/default.html" %}
+{% set title = "Performance dashboard" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Find a lost teacher reference number (TRN)</span>
+        {{ title }}
+      </h1>
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-m">Last 7 days</h2>
+
+  <div class="govuk-!-margin-bottom-4">
+    <div class="app-card app-card--blue">
+      <span class="app-card__count">1,071</span>
+      requests in the last 7 days
+    </div>
+  </div>
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-4">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--green">
+        <span class="app-card__count">86%</span>
+        found their TRN<br />straight away<br />
+        (921 out of 1,071)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--light-blue">
+        <span class="app-card__count">12%</span>
+        generated a support ticket<br />
+        after we could not match<br />
+        (123 out of 1,071)
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-card app-card--grey">
+        <span class="app-card__count">2%</span>
+        did not complete their journey<br />
+        <br />
+        (27 out of 1,071)
+      </div>
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">TRN requests by day (last 7 days)</h2>
+
+  <table class="govuk-table app-performance-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header app-performance-table-column-divider app-performance-table-date-column">Date</th>
+        <th class="govuk-table__header govuk-!-padding-left-2">TRN found</th>
+        <th class="govuk-table__header">No match</th>
+        <th class="govuk-table__header app-performance-table-column-divider">Did not finish</th>
+        <th class="govuk-table__header govuk-!-padding-left-2">Total</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for i in range(0, 7) -%}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell app-performance-table-column-divider">{{ 12 - i }} May</td>
+
+          <td class="govuk-table__cell">{{ 52 - i }} <span class="govuk-hint govuk-!-font-size-16">(86%)</span></td>
+          <td class="govuk-table__cell">{{ 8 - i }} <span class="govuk-hint govuk-!-font-size-16">(12%)</span></td>
+          <td class="govuk-table__cell app-performance-table-column-divider">3 <span class="govuk-hint govuk-!-font-size-16">(2%)</span></td>
+          <td class="govuk-table__cell">{{ 52 - (i * 2) }} requests</td>
+        </tr>
+      {%- endfor %}
+      <tr class="govuk-table__row app-performance-table-total-row">
+        <th class="govuk-table__header app-performance-table-column-divider">Total in last 7 days</th>
+        <td class="govuk-table__cell">921 <span class="govuk-hint govuk-!-font-size-16">(86%)</span></td>
+        <td class="govuk-table__cell">123 <span class="govuk-hint govuk-!-font-size-16">(12%)</span></td>
+        <td class="govuk-table__cell app-performance-table-column-divider">27 <span class="govuk-hint govuk-!-font-size-16">(2%)</span></td>
+        <td class="govuk-table__cell">1,027 requests</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">TRN requests by month (last 12 months)</h2>
+
+  <table class="govuk-table app-performance-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header app-performance-table-column-divider app-performance-table-date-column">Month</th>
+        <th class="govuk-table__header">TRN found</th>
+        <th class="govuk-table__header">No match</th>
+        <th class="govuk-table__header app-performance-table-column-divider">Did not finish</th>
+        <th class="govuk-table__header">Total</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell app-performance-table-column-divider">May</td>
+        <td class="govuk-table__cell">2,054 <span class="govuk-hint govuk-!-font-size-16">(86%)</span></td>
+        <td class="govuk-table__cell">423 <span class="govuk-hint govuk-!-font-size-16">(12%)</span></td>
+        <td class="govuk-table__cell app-performance-table-column-divider">45 <span class="govuk-hint govuk-!-font-size-16">(2%)</span></td>
+        <td class="govuk-table__cell">2,744 requests</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell app-performance-table-column-divider">April</td>
+        <td class="govuk-table__cell">0</td>
+        <td class="govuk-table__cell">0</td>
+        <td class="govuk-table__cell app-performance-table-column-divider">0</td>
+        <td class="govuk-table__cell">0 requests</td>
+      </tr>
+      <tr class="govuk-table__row app-performance-table-total-row">
+        <th class="govuk-table__header app-performance-table-column-divider">Total in last 12 months</th>
+        <td class="govuk-table__cell">2,054 <span class="govuk-hint govuk-!-font-size-16">(86%)</span></td>
+        <td class="govuk-table__cell">423 <span class="govuk-hint govuk-!-font-size-16">(12%)</span></td>
+        <td class="govuk-table__cell app-performance-table-column-divider">45 <span class="govuk-hint govuk-!-font-size-16">(2%)</span></td>
+        <td class="govuk-table__cell">2,744 requests</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">How quickly did users get their TRN (last 7 days)</h2>
+
+  <table class="govuk-table app-performance-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Date</th>
+        <th class="govuk-table__header">90% of users<br />got their TRN within</th>
+        <th class="govuk-table__header">75% of users<br />got their TRN within</th>
+        <th class="govuk-table__header">50% of users<br />got their TRN within</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for i in range(0, 7) -%}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ 12 - i }} May</td>
+          <td class="govuk-table__cell">2 minutes 5{{ i + 1 }} seconds</td>
+          <td class="govuk-table__cell">2 minutes {{ i + 2 }} seconds</td>
+          <td class="govuk-table__cell">{{ 58 - i }} seconds</td>
+        </tr>
+      {%- endfor %}
+      <tr class="govuk-table__row app-performance-table-total-row">
+        <th class="govuk-table__header">Average over last 7 days</th>
+        <td class="govuk-table__cell">2 minutes 54 seconds</td>
+        <td class="govuk-table__cell">2 minutes 2 seconds</td>
+        <td class="govuk-table__cell">58 seconds</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">Which questions were needed before a TRN was found (last 7 days)</h2>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <table class="govuk-table app-performance-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header">Number of questions asked</th>
+            <th class="govuk-table__header">Number of users</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              3 questions<br />
+              <span class="govuk-hint">Email address, name and date of birth</span>
+            </td>
+            <td class="govuk-table__cell">1,023 users <span class="govuk-hint govuk-!-font-size-16">(80%)</span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              4 questions<br />
+              <span class="govuk-hint">+ National Insurance number</span>
+            </td>
+            <td class="govuk-table__cell">234 users <span class="govuk-hint govuk-!-font-size-16">(12%)</span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              5 questions (with a match)<br />
+              <span class="govuk-hint">+ ITT provider</span>
+            </td>
+            <td class="govuk-table__cell">24 users <span class="govuk-hint govuk-!-font-size-16">(8%)</span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              5 questions (without a match)<br />
+              <span class="govuk-hint">+ ITT provider</span>
+            </td>
+            <td class="govuk-table__cell">24 users <span class="govuk-hint govuk-!-font-size-16">(8%)</span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              5 questions and multiple attempts (with a match)<br />
+              <span class="govuk-hint">Correcting details after no match</span>
+            </td>
+            <td class="govuk-table__cell">24 users <span class="govuk-hint govuk-!-font-size-16">(8%)</span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              5 questions and multiple attempts (without a match)<br />
+              <span class="govuk-hint">Correcting details after no match</span>
+            </td>
+            <td class="govuk-table__cell">24 users <span class="govuk-hint govuk-!-font-size-16">(8%)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">About this service</h2>
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p>
+      This service is used to securely retrieve a <a class="govuk_link" href="https://www.gov.uk/guidance/teacher-reference-number-trn">teacher reference number (TRN)</a>. TRN holders need it to view their record on the Teaching Regulation Agency (TRA), give to employers for status checks, manage Teachers' Pensions contributions, or to begin early career teacher induction.
+    </p>
+
+    <h2 class="govuk-body govuk-!-margin-0">Visit this service</h2>
+    <p class="govuk-heading-m">
+      <a class="govuk-link" href="/start">Find a lost teacher reference number (TRN)</a>
+    </p>
+
+    <h2 class="govuk-body govuk-!-margin-0">Ministerial department:</h2>
+    <p class="govuk-heading-m">
+      Department for Education
+    </p>
+
+    <h2 class="govuk-body govuk-!-margin-0">User:</h2>
+    <p class="govuk-heading-m">
+      Individuals
+    </p>
+
+    <h2 class="govuk-body govuk-!-margin-0">Service costs paid by:</h2>
+    <p class="govuk-heading-m">
+      Department budget
+    </p>
+  </div>
+</div>
+{% endblock %}
