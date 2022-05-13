@@ -1,12 +1,13 @@
 {% extends "layouts/wizard.html" %}
 {% set title = "Check your answers" %}
+{% set sendingTextMessage = data.features.sms.on and data.sms == 'Yes' and data['phone-number'] %}
 {% set emailAddress = data['email-address'] or 'email@example.com' %}
 {% set buttonText = "Submit" %}
 
 {% block beforeForm %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-{% if data.sms == 'Yes' and data['phone-number'] %}
+{% if sendingTextMessage %}
   <p>We will send your TRN to {{ emailAddress }} and {{ data['phone-number'] }} if we find one matching your details.</p>
 {% else %}
   <p>We will send your TRN to {{ emailAddress }} if we find one matching your details.</p>

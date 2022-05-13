@@ -1,4 +1,5 @@
 {% extends "layouts/default.html" %}
+{% set sendingTextMessage = data.features.sms.on and data.sms == 'Yes' and data['phone-number'] %}
 
 {% set title = "Confirmation page" %}
 
@@ -6,7 +7,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {% set html %}
-        {% if data.sms == 'Yes' and data['phone-number'] %}
+        {% if sendingTextMessage %}
           <a class="app-hidden-link" href="/emails/email-with-trn">We’ve sent it to <br><strong>{{ data['email-address'] or data.dqt_record['email-address'] }}</strong> and <strong>{{ data['phone-number'] }}</strong></a>
         {% else %}
           <a class="app-hidden-link" href="/emails/email-with-trn">We’ve sent it to <br><strong>{{ data['email-address'] or data.dqt_record['email-address'] }}</strong></a>

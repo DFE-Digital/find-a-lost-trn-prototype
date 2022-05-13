@@ -1,8 +1,14 @@
 import { wizard } from 'govuk-prototype-rig'
 import { userMatchesDQTRecord } from '../utils/dqt.js'
 
+const hasUserMatchedRecord = (data) => {
+  return userMatchesDQTRecord(data) || data.emailMatchJourney
+}
+
 export default (req) => {
   const data = req.session.data
+  const successfulMatch = hasUserMatchedRecord(data)
+
   const journey = {
     '/start': {},
     '/trn-holder': {
@@ -13,22 +19,24 @@ export default (req) => {
     '/email': {},
     '/name': {},
     '/dob': {
-      '/sms': () => userMatchesDQTRecord(data) || data.emailMatchJourney
+      '/sms': () => data.features.sms.on && successfulMatch,
+      '/check-answers': () => successfulMatch
     },
     '/have-nino': {
-      '/sms': () => data['have-nino'] === 'No' && userMatchesDQTRecord(data),
       '/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/nino': {
-      '/sms': () => userMatchesDQTRecord(data)
+      '/sms': () => data.features.sms.on && successfulMatch,
+      '/check-answers': () => successfulMatch
     },
     '/have-qts': {
-      '/sms': { data: 'has-qts', value: 'No' }
+      '/sms': () => data.features.sms.on && data['has-qts'] === 'No',
+      '/check-answers': { data: 'has-qts', value: 'No' }
     },
     '/how-qts': {},
-    '/sms': {},
+    ...data.features.sms.on && { '/sms': {} },
     '/check-answers': {
-      '/trn-sent': () => userMatchesDQTRecord(data) || data.successfulJourney,
+      '/trn-sent': () => successfulMatch || data.successfulJourney,
       '/helpdesk-request-submitted': () => data.features.apiUnavailable.on
     },
     '/no-match': {
