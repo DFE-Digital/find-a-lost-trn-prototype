@@ -12,4 +12,8 @@ findLostTrnRoutes(router)
 apiRoutes(router)
 userResearch(router)
 
+router.get('/googled9cd283f899d5c89.html', (req, res) => {
+  res.render('googled9cd283f899d5c89')
+})
+
 export default router
