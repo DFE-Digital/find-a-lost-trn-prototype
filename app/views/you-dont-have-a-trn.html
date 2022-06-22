@@ -1,15 +1,19 @@
 {% extends "layouts/default.html" %}
-
+{% set title = "If you do not have a teacher reference number (TRN)"%}
 {% block pageNavigation %}
   {{ govukBackLink({
     href: paths.back
   }) }}
 {% endblock %}
 
-{% set title = "You do not have a TRN"%}
 {% set text %}
+## How to get a TRN
 
-## What a teacher reference number (TRN) is for
+If you’re eligible for a TRN in England, you should be allocated one automatically by the Teaching Regulation Agency or Capita Teachers’ Pensions.
+
+If you do not have a TRN but need one to do a national professional qualification (NPQ), you should get instructions about how to request one. If you do not receive these instructions, email qts.enquiries@education.gov.uk.
+
+## What a TRN is for
 
 You need a TRN to:
 
@@ -17,60 +21,13 @@ You need a TRN to:
 * give to employers so they can complete mandatory teacher status checks
 * manage records of your contributions to the Teachers’ Pensions scheme
 * give to the Department for Education (DfE) when you have been awarded QTS so you can begin your early career teacher induction
-* register for a national professional qualification (NPQ)
-
-## Get a TRN to register for an NPQ
-
-You do not need to be a teacher to get a TRN.
-
-### Request a TRN by email
-
-If you’ve never been given a TRN, email the Teaching Regulation Agency at [qts.enquiries@education.gov.uk](mailto:qts.enquiries@education.gov.uk). The team aim to respond to valid email requests within 5 working days.
-
-You’ll need to provide contact details and proof of ID.
-
-Use the free Galaxkey secure email platform to ensure your identification documents are protected.
-
-### Register to send a secure email
-
-To send a secure email to the department, go to the [Galaxkey site](https://manager.galaxkey.com/services/registerme).
-
-Enter the email address that you wish to sign up with and complete the registration process.
-
-You’ll be sent an email to activate your account once you have completed this step. You can then send secure emails to the Teaching Regulation Agency using Galaxkey.
-
-### Send your ID documents securely
-
-Follow these steps to send your documents through Galaxkey:
-
-1.  Select ‘Compose’ to create a new secure email.
-2.  Enter ‘qts.enquiries@education.gov.uk’ as the recipient.
-3.  Enter ‘Undertaking an NPQ, do not have a TRN and require a number to be issued’ as the subject line.
-4.  Include the following information in your email:
-    *   your full legal name
-    *   your date of birth
-    *   an email address for the team to reply to
-
-5.  Attach a scanned copy or photo of one of the following types of ID:
-    *   passport
-    *   driving licence (full or provisional)
-    *   certificate of residence
-    *   birth certificate
-
-Follow the guidance on screen to make sure you send the correct file size.
-
-Find out more about how the Teaching Regulation Agency processes your data on the [teacher self-service site](https://www.gov.uk/guidance/teacher-self-service-portal).
-
-### What happens next
-
-The Teaching Regulation Agency will use the information you send to create a permanent record and your TRN.
-
+* register for an NPQ
 {% endset %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-xl">You don’t have a TRN</h1>
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
 
       {{ text | govukMarkdown | safe }}
     </div>
