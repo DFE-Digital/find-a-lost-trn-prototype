@@ -15,7 +15,7 @@ export default (req) => {
       '/account/ask-questions': () => !emailHasAccount(data)
     },
     '/account/signed-in-as': {
-      '/account/return-to-service': () => true
+      '/account/return-to-service': true
     },
     '/account/ask-questions': {},
     '/account/trn-holder': {
@@ -40,11 +40,11 @@ export default (req) => {
     // Only include QTS questions if user has a TRN
     ...hasTrn
       ? {
-          '/account/have-qts': {
-            '/account/next-time': { data: 'has-qts', value: 'No' }
-          },
-          '/account/how-qts': {}
-        }
+        '/account/have-qts': {
+          '/account/next-time': { data: 'has-qts', value: 'No' }
+        },
+        '/account/how-qts': {}
+      }
       : {},
     '/account/next-time': {
       '/account/change-email': { data: 'account.next-time', value: 'different' }
@@ -57,7 +57,7 @@ export default (req) => {
     '/account/change-email': {},
     '/account/change-email-confirmation': {},
     '/account/change-email-next-time-confirmation': {
-      '/account/check-answers': () => true
+      '/account/check-answers': true
     }
   }
 
