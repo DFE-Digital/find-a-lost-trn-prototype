@@ -113,20 +113,16 @@
     }) }}
 
     {{ govukInput({
-      formGroup: {
-        classes: 'govuk-!-margin-bottom-4'
-      },
       label: {
-        text: "Teacher reference number (TRN)",
+        text: "Teacher reference number (TRN) (optional)",
         classes: "govuk-label--m"
+      },
+      hint: {
+        html: '<p class="govuk-hint">You can use the <a href="#">Find a lost TRN service<span class="govuk-visually-hidden"> (link)</span></a> if you do not know your TRN, or want to check if you have one.</p>'
       },
       classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
       decorate: "tv-trn"
     }) }}
-
-    <p class="govuk-!-margin-bottom-6">
-      <a href="/public/govuk-trn.html">Find a lost teacher reference number</a>
-    </p>
 
     {{ govukInput({
       label: {
