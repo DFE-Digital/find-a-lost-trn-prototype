@@ -14,6 +14,11 @@ export default {
       name: 'API unavailable',
       description: 'Disable any functionality that requires a backend data lookup'
     },
+    trnRequired: {
+      on: true,
+      name: 'TRN required when checking records',
+      description: 'Allow only users with a TRN to check their records'
+    },
     ittAutocomplete: {
       on: true,
       name: 'ITT provider autocomplete',
