@@ -50,7 +50,7 @@
         text: "Teacher reference number (TRN)"
       },
       value: {
-        text: data.account.trn if (data.account['do-you-know-your-trn'] === 'yes' or data.features.trnRequired.on) else 'I don’t know my TRN'
+        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
       },
       actions: {
         items: [{
