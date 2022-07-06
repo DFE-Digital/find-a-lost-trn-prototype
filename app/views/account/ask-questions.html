@@ -8,9 +8,17 @@
 <ul class="govuk-list govuk-list--bullet">
   <li>name</li>
   <li>date of birth</li>
-  <li>teacher reference number (TRN), if you have one</li>
+  {% if not data.features.trnRequired.on %}<li>teacher reference number (TRN), if you have one</li>{% endif %}
   <li>National Insurance number, if you have one</li>
+  {% if data.features.trnRequired.on %}<li>teacher reference number (TRN)</li>{% endif %}
 </ul>
 
-<p class="govuk-!-margin-bottom-6">If you do not have your TRN or National Insurance number available, we may ask some follow-up questions.</p>
+<p class="govuk-!-margin-bottom-6">
+  {% if not data.features.trnRequired.on %}
+    If you do not have your TRN or National Insurance number available, we may ask some follow-up questions.
+  {% else %}
+    We may also ask some follow-up questions.
+  {% endif %}
+</p>
+
 {% endblock %}

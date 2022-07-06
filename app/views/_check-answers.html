@@ -45,12 +45,12 @@
           href: basePath + "/trn-holder"
         }]
       } if change
-    } if accountJourney, {
+    } if accountJourney and not data.features.trnRequired.on, {
       key: {
         text: "Teacher reference number (TRN)"
       },
       value: {
-        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
+        text: data.account.trn if (data.account['do-you-know-your-trn'] === 'yes' or data.features.trnRequired.on) else 'I don’t know my TRN'
       },
       actions: {
         items: [{
@@ -59,7 +59,7 @@
           href: (basePath + "/trn") if data.account['do-you-know-your-trn'] === 'yes' else (basePath + "/trn-known")
         }]
       } if change
-    } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes', {
+    } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
       key: {
         text: "Name"
       },
@@ -130,6 +130,20 @@
         }]
       } if change
     } if data['have-nino'] === 'No', {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.account.trn
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "your TRN",
+          href: basePath + "/trn"
+        }]
+      } if change
+    } if accountJourney and data.features.trnRequired.on, {
       key: {
         text: "Have you been awarded QTS?"
       },

@@ -1,6 +1,6 @@
 {% extends "layouts/wizard.html" %}
 {% set useFullName = data.features.fullName.on %}
-{% set checkingAgainstTRNRecord = findTRNJourney or data.account['do-you-have-a-trn'] === 'Yes' %}
+{% set checkingAgainstTRNRecord = findTRNJourney or data.features.trnRequired.on or data.account['do-you-have-a-trn'] === 'Yes' %}
 {% set title = "Your name" %}
 
 {% block form %}
