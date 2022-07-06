@@ -42,18 +42,19 @@ export default (req) => {
     '/account/nino': {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
-    ...trnRequired
-      ? { '/account/trn': {} }
-      : {},
-
     // Only include QTS questions if user has a TRN
-    ...hasTrn
+    ...(hasTrn || trnRequired)
       ? {
         '/account/have-qts': {
-          '/account/next-time': { data: 'has-qts', value: 'No' }
+          ...trnRequired
+            ? { '/account/trn': { data: 'has-qts', value: 'No' } }
+            : { '/account/next-time': { data: 'has-qts', value: 'No' } }
         },
         '/account/how-qts': {}
       }
+      : {},
+    ...trnRequired
+      ? { '/account/trn': {} }
       : {},
     '/account/next-time': {
       '/account/change-email': { data: 'account.next-time', value: 'different' }

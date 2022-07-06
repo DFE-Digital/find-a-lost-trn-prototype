@@ -131,20 +131,6 @@
       } if change
     } if data['have-nino'] === 'No', {
       key: {
-        text: "Teacher reference number (TRN)"
-      },
-      value: {
-        text: data.account.trn
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "your TRN",
-          href: basePath + "/trn"
-        }]
-      } if change
-    } if accountJourney and data.features.trnRequired.on, {
-      key: {
         text: "Have you been awarded QTS?"
       },
       value: {
@@ -186,6 +172,20 @@
         }]
       } if change
     } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes', {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.account.trn
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "your TRN",
+          href: basePath + "/trn"
+        }]
+      } if change
+    } if accountJourney and data.features.trnRequired.on, {
       key: {
         text: "Phone number" if sendingTextMessage else "Send TRN by text message"
       },
