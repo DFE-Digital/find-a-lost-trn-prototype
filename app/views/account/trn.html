@@ -2,8 +2,22 @@
 {% set title = 'What’s your teacher reference number (TRN)?' %}
 
 {% block form %}
+  {% if data.features.trnRequired.on %}
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <p>Your TRN is 7 digits long, for example 4567814. It might include the letters RP and a slash, for example RP99/12345</p>
+
+    <p>You can use the <a href="#">Find a lost TRN service</a> if you do not know your TRN, or want to check if you have one.</p>
+  {% endif %}
+
   {{ govukInput({
+    formGroup: {
+      classes: 'govuk-!-margin-top-6'
+    } if data.features.trnRequired.on,
     label: {
+      text: 'Your TRN',
+      classes: "govuk-label--m"
+    } if data.features.trnRequired.on else {
       text: title,
       classes: "govuk-label--xl",
       isPageHeading: true
