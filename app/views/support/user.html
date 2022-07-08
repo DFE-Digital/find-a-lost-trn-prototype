@@ -1,0 +1,23 @@
+{% extends "layouts/default.html" %}
+{% set title = "Jane Doe" %}
+{% block pageNavigation %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Support",
+      href: "/support"
+    },
+    {
+      text: title
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+    </div>
+  </div>
+{% endblock %}
