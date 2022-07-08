@@ -56,22 +56,22 @@ export default {
         'last-name': 'Doe',
         dob: '1950-01-01',
         nino: true,
-        trn: 1234567,
+        trn: '1234567',
         created: '2022-01-13',
         accessed: '2022-06-20',
         dqt: true,
-        id: 14332
+        id: '123'
       },
       {
         'first-name': 'Jane',
         'last-name': 'Doe',
         dob: '1962-05-01',
         nino: true,
-        trn: 5234567,
+        trn: '5234567',
         created: '2022-04-13',
         accessed: '2022-05-20',
         dqt: false,
-        id: 14335
+        id: '321'
       }
     ]
   }

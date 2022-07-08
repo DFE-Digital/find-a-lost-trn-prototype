@@ -12,20 +12,19 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header">Name</th>
         <th class="govuk-table__header">TRN</th>
-        <th class="govuk-table__header">Last use</th>
+        <th class="govuk-table__header">Created</th>
+        <th class="govuk-table__header">Last accessed</th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="/support/user">Jane Doe</a></td>
-        <td class="govuk-table__cell">1234567</td>
-        <td class="govuk-table__cell">10 July 2022</td>
-      </tr>
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="#">Joe Schmoe</a></td>
-        <td class="govuk-table__cell">9876543</td>
-        <td class="govuk-table__cell">9 June 2022</td>
-      </tr>
+      {% for user in data.support.users %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/support/{{ user.id }}">{{ user['first-name'] }} {{ user['last-name'] }}</a></td>
+          <td class="govuk-table__cell">{{ user.trn }}</td>
+          <td class="govuk-table__cell">{{ user.created | govukDate }}</td>
+          <td class="govuk-table__cell">{{ user.accessed | govukDate }}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

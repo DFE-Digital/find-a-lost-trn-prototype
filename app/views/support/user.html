@@ -1,5 +1,5 @@
 {% extends "layouts/default.html" %}
-{% set title = "Jane Doe" %}
+{% set title = fullName(user) %}
 {% block pageNavigation %}
 {{ govukBreadcrumbs({
   items: [
@@ -20,4 +20,64 @@
       <h1 class="govuk-heading-xl">{{ title }}</h1>
     </div>
   </div>
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-9",
+    titleText: "Personal details",
+    rows: decorateRows([
+      {
+        key: 'Name',
+        value: fullName(user),
+        href: '#'
+      },
+      {
+        key: 'Preferred name',
+        value: 'Johnny Doe',
+        href: '#'
+      } if user.preferredName,
+      {
+        key: 'Date of birth',
+        value: user.dob | govukDate,
+        href: '#'
+      },
+      {
+        key: 'National Insurance number',
+        value: {
+          html: 'Given (<a href="#">Show number</a>)' if user.nino else 'Not given'
+        },
+        href: '#'
+      },
+      {
+        key: 'Teacher reference number (TRN)',
+        value: user.trn
+      }
+    ])
+  }) }}
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-9",
+    titleText: "About the user",
+    rows: decorateRows([
+      {
+        key: 'User ID',
+        value: user.id
+      },
+      {
+        key: 'Created',
+        value: user.created | govukDate
+      },
+      {
+        key: 'Last accessed',
+        value: user.accessed | govukDate
+      },
+      {
+        key: 'Linked to DQT',
+        value: 'Yes' if user.dqt else 'No'
+      },
+      {
+        key: 'ID verified',
+        value: 'Yes' if user.verified else 'No'
+      }
+    ])
+  }) }}
 {% endblock %}

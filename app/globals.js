@@ -29,6 +29,10 @@ export default () => {
     return providers.map(name => { return { text: name } })
   }
 
+  globals.fullName = function (data) {
+    return data['first-name'] + ' ' + data['last-name']
+  }
+
   globals.d = function (keyPath) {
     const data = this.ctx.data
     return _.get(data, _.toPath(keyPath))
