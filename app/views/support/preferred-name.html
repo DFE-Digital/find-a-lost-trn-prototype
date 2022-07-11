@@ -1,0 +1,41 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Change their preferred name" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Changes to a preferred name will:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>not update their legal name in Get an identity</li>
+    <li>not update DQT</li>
+  </ul>
+
+  <p>You do not need to verify a preferred name change.</p>
+
+  <h2 class="govuk-heading-m">Current name</h2>
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    rows: decorateRows([
+      {
+        key: 'Preferred name',
+        value: 'Jonathan Doe'
+      }
+    ])
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'First name',
+      classes: "govuk-label--m"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Last name',
+      classes: "govuk-label--m"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+{% endblock %}

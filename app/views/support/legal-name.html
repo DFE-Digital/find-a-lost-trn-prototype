@@ -1,0 +1,76 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Change their legal name" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Changes to a legal name will update their:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>name in Get an identity</li>
+    <li>legal name in DQT</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Verify this name change</h2>
+
+  <p>You must verify this name change by viewing a legal document confirming their new name.</p>
+
+  <p>This document must be one of the following:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>marriage certificate</li>
+    <li>civil agreement certificate</li>
+    <li>divorce decree absolute</li>
+    <li>birth certificate</li>
+    <li>statutory declaration</li>
+    <li>deed poll</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Current name</h2>
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    rows: decorateRows([
+      {
+        key: 'Legal name in DQT',
+        value: 'Jonathan Doe'
+      }
+    ])
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'First name',
+      classes: "govuk-label--m"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Last name',
+      classes: "govuk-label--m"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+
+  {{ govukCheckboxes({
+    formGroup: {
+      classes: "govuk-!-margin-top-7"
+    },
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Have you seen legal documents to verify this name?"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I’ve seen legal documents showing the new name"
+      }
+    ],
+    decorate: 'support.user.' + user.id + '.documents-seen',
+    validate: {
+      presence: {
+        message: "You must confirm you have seen legal documents before continuing"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}
