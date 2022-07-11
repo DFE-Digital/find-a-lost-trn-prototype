@@ -60,7 +60,8 @@ export default {
         created: '2022-01-13',
         accessed: '2022-06-20',
         dqt: true,
-        id: '123'
+        id: '123',
+        email: 'jon.doe@example.com'
       },
       {
         'first-name': 'Jane',
@@ -71,7 +72,8 @@ export default {
         created: '2022-04-13',
         accessed: '2022-05-20',
         dqt: false,
-        id: '321'
+        id: '321',
+        email: 'jane.doe@example.com'
       }
     ]
   }
