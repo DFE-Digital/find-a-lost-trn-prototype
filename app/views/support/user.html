@@ -1,0 +1,82 @@
+{% extends "layouts/default.html" %}
+{% set title = fullName(user) %}
+{% block pageNavigation %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Support",
+      href: "/support"
+    },
+    {
+      text: title
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+    </div>
+  </div>
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-9",
+    titleText: "Get an identity details",
+    rows: decorateRows([
+      {
+        key: 'Preferred name',
+        value: {
+          html: fullName(user) + '<br><span class="govuk-!-font-size-16 govuk-hint">Source: NQT registration – 23 Jun 2022<br />Preferred name matches DQT name</span>'
+        },
+        href: '#'
+      },
+      {
+        key: 'Email address',
+        value: {
+          html: user.email
+        },
+        href: '#'
+      },
+      {
+        key: 'Linked to DQT?',
+        value: {
+          html: 'Yes'
+        }
+      }
+    ])
+  }) }}
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-9",
+    titleText: "DQT record",
+    rows: decorateRows([
+      {
+        key: 'Legal name',
+        value: {
+          html: fullName(user)
+        },
+        href: '#'
+      },
+      {
+        key: 'Date of birth',
+        value: {
+          html: user.dob | govukDate
+        }
+      },
+      {
+        key: 'National Insurance number',
+        value: {
+          html: 'Given' if user.nino else 'Not given'
+        }
+      },
+      {
+        key: 'TRN',
+        value: {
+          html: user.trn
+        }
+      }
+    ])
+  }) }}
+{% endblock %}
