@@ -23,60 +23,59 @@
 
   {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-9",
-    titleText: "Personal details",
+    titleText: "Get an identity details",
     rows: decorateRows([
       {
-        key: 'Name',
-        value: fullName(user),
-        href: '#'
-      },
-      {
         key: 'Preferred name',
-        value: 'Johnny Doe',
-        href: '#'
-      } if user.preferredName,
-      {
-        key: 'Date of birth',
-        value: user.dob | govukDate,
-        href: '#'
-      },
-      {
-        key: 'National Insurance number',
         value: {
-          html: 'Given (<a href="#">Show number</a>)' if user.nino else 'Not given'
+          html: fullName(user) + '<br><span class="govuk-!-font-size-16 govuk-hint">Source: NQT registration – 23 Jun 2022<br />Preferred name matches DQT name</span>'
         },
         href: '#'
       },
       {
-        key: 'Teacher reference number (TRN)',
-        value: user.trn
+        key: 'Email address',
+        value: {
+          html: user.email
+        },
+        href: '#'
+      },
+      {
+        key: 'Linked to DQT?',
+        value: {
+          html: 'Yes'
+        }
       }
     ])
   }) }}
 
   {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-9",
-    titleText: "About the user",
+    titleText: "DQT record",
     rows: decorateRows([
       {
-        key: 'User ID',
-        value: user.id
+        key: 'Legal name',
+        value: {
+          html: fullName(user)
+        },
+        href: '#'
       },
       {
-        key: 'Created',
-        value: user.created | govukDate
+        key: 'Date of birth',
+        value: {
+          html: user.dob | govukDate
+        }
       },
       {
-        key: 'Last accessed',
-        value: user.accessed | govukDate
+        key: 'National Insurance number',
+        value: {
+          html: 'Given' if user.nino else 'Not given'
+        }
       },
       {
-        key: 'Linked to DQT',
-        value: 'Yes' if user.dqt else 'No'
-      },
-      {
-        key: 'ID verified',
-        value: 'Yes' if user.verified else 'No'
+        key: 'TRN',
+        value: {
+          html: user.trn
+        }
       }
     ])
   }) }}
