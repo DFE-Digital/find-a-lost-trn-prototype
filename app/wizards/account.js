@@ -58,6 +58,9 @@ export default (req) => {
       '/account/change-email': { data: 'account.next-time', value: 'different' }
     },
     '/account/check-answers': {},
+    '/account/no-match': {
+      '/account/check-answers': { data: 'account.try-again', value: 'yes' }
+    },
     '/account/finish': {},
     '/account/return-to-service': {},
 
