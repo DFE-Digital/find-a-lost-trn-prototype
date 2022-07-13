@@ -22,15 +22,15 @@ export default (req) => {
     ...!trnRequired
       ? {
         '/account/trn-holder': {
-          '/account/name': { data: 'account.do-you-have-a-trn', value: 'No' }
+          '/account/official-name': { data: 'account.do-you-have-a-trn', value: 'No' }
         },
         '/account/trn-known': {
-          '/account/name': { data: 'account.do-you-know-your-trn', value: 'no' }
+          '/account/official-name': { data: 'account.do-you-know-your-trn', value: 'no' }
         },
         '/account/trn': {}
       }
       : {},
-    '/account/name': {},
+    '/account/official-name': {},
     '/account/dob': {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
