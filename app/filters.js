@@ -26,12 +26,6 @@ export default (env) => {
    * @see {@link https://mozilla.github.io/nunjucks/api#custom-filters}
    */
 
-  // example: 7 December 2021
-  filters.dateWithYear = params => {
-    const datetime = DateTime.local(parseInt(params.year), parseInt(params.month), parseInt(params.day))
-    return datetime.toFormat('d MMMM yyyy')
-  }
-
   // stringify an object
   filters.stringify = obj => {
     return JSON.stringify(obj)
