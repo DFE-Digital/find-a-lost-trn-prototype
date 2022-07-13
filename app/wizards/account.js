@@ -26,8 +26,7 @@ export default (req) => {
         },
         '/account/trn-known': {
           '/account/official-name': { data: 'account.do-you-know-your-trn', value: 'no' }
-        },
-        '/account/trn': {}
+        }
       }
       : {},
     '/account/official-name': {},
@@ -35,7 +34,7 @@ export default (req) => {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
-      '/account/trn': () => trnRequired && data['have-nino'] === 'No',
+      '/account/trn-known': () => trnRequired && data['have-nino'] === 'No',
       '/account/have-qts': () => hasTrn && data['have-nino'] === 'No',
       '/account/next-time': { data: 'have-nino', value: 'No' }
     },
@@ -43,7 +42,7 @@ export default (req) => {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
     ...trnRequired
-      ? { '/account/trn': {} }
+      ? { '/account/trn-known': {} }
       : {},
 
     // Only include QTS questions if user has a TRN
