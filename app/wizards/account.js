@@ -35,9 +35,9 @@ export default (req) => {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
-      ...hasTrn
-        ? { '/account/have-qts': { data: 'have-nino', value: 'No' } }
-        : { '/account/next-time': { data: 'have-nino', value: 'No' } }
+      '/account/trn': () => trnRequired && data['have-nino'] === 'No',
+      '/account/have-qts': () => hasTrn && data['have-nino'] === 'No',
+      '/account/next-time': { data: 'have-nino', value: 'No' }
     },
     '/account/nino': {
       '/account/next-time': () => userMatchesDQTRecord(data)
