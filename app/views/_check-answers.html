@@ -92,7 +92,7 @@
         text: "Date of birth"
       },
       value: {
-        text: data['date-of-birth'] | govukDate
+        text: data['date-of-birth'] | isoDateFromDateInput| govukDate
       },
       actions: {
         items: [{
