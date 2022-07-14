@@ -52,28 +52,45 @@ export default {
   support: {
     users: [
       {
-        'first-name': 'Jonathan',
-        'last-name': 'Doe',
-        dob: '1950-01-01',
-        nino: true,
-        trn: '1234567',
+        id: '123',
+        name: {
+          'first-name': 'Jonathan',
+          'last-name': 'Doe',
+          verified: true,
+          'verified-on': '2022-01-13',
+          from: 'Register for an NPQ',
+          created: '2022-01-13'
+        },
         created: '2022-01-13',
         accessed: '2022-06-20',
-        dqt: true,
-        id: '123',
-        email: 'jon.doe@example.com'
+        email: 'jon.doe@example.com',
+        dqt: {
+          'first-name': 'Jonathan',
+          'last-name': 'Doe',
+          dob: '1950-01-01',
+          nino: true,
+          trn: '1234567'
+        }
       },
       {
-        'first-name': 'Jane',
-        'last-name': 'Doe',
-        dob: '1962-05-01',
-        nino: true,
-        trn: '5234567',
-        created: '2022-04-13',
-        accessed: '2022-05-20',
-        dqt: false,
-        id: '321',
-        email: 'jane.doe@example.com'
+        id: '124',
+        name: {
+          'first-name': 'Jane',
+          'last-name': 'Smith',
+          verified: false,
+          from: 'Register for an NPQ',
+          created: '2022-01-13'
+        },
+        created: '2022-01-13',
+        accessed: '2022-06-20',
+        email: 'jane.smith@example.com',
+        dqt: {
+          'first-name': 'Jane',
+          'last-name': 'Doe',
+          dob: '1950-01-01',
+          nino: true,
+          trn: '1234567'
+        }
       }
     ]
   }

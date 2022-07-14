@@ -1,5 +1,5 @@
 {% extends "layouts/default.html" %}
-{% set title = fullName(user) %}
+{% set title = fullName(user.name) %}
 {% block pageNavigation %}
 {{ govukBreadcrumbs({
   items: [
@@ -21,16 +21,38 @@
     </div>
   </div>
 
+  {% if not (fullName(user.dqt) === fullName(user.name)) %}
+    {{ govukWarningText({
+      text: 'Official name does not match DQT'
+    }) }}
+  {% endif %}
+
+  {% set officialName %}
+    <p>
+      {{ fullName(user.name) }}
+      {% if user.name.verified %}
+        <span class="govuk-!-margin-left-1 govuk-tag govuk-tag--green">Verified</span>
+      {% else %}
+        <span class="govuk-!-margin-left-1 govuk-tag govuk-tag--grey">Unverified</span>
+      {% endif %}
+    </p>
+
+    <span class="govuk-!-font-size-16 govuk-hint">
+      From: {{ user.name.from }}<br />
+      Created: {{ user.name.created | govukDate }}
+    </span>
+  {% endset %}
+
   {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-9",
     titleText: "Get an identity details",
     rows: decorateRows([
       {
-        key: 'Preferred name',
+        key: 'Official name',
         value: {
-          html: fullName(user) + '<br><span class="govuk-!-font-size-16 govuk-hint">Source: NQT registration – 23 Jun 2022<br />Preferred name matches DQT name</span>'
+          html: officialName
         },
-        href: '#'
+        href: '/support/' + user.id + '/official-name'
       },
       {
         key: 'Email address',
@@ -53,28 +75,27 @@
     titleText: "DQT record",
     rows: decorateRows([
       {
-        key: 'Legal name',
+        key: 'Official name',
         value: {
-          html: fullName(user)
-        },
-        href: '#'
+          html: fullName(user.dqt)
+        }
       },
       {
         key: 'Date of birth',
         value: {
-          html: user.dob | govukDate
+          html: user.dqt.dob | govukDate
         }
       },
       {
         key: 'National Insurance number',
         value: {
-          html: 'Given' if user.nino else 'Not given'
+          html: 'Given' if user.dqt.nino else 'Not given'
         }
       },
       {
         key: 'TRN',
         value: {
-          html: user.trn
+          html: user.dqt.trn
         }
       }
     ])
