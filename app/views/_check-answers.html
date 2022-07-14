@@ -56,7 +56,7 @@
         items: [{
           text: "Change",
           visuallyHiddenText: "your TRN",
-          href: (basePath + "/trn") if data.account['do-you-know-your-trn'] === 'yes' else (basePath + "/trn-known")
+          href: basePath + "/trn-known"
         }]
       } if change
     } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
@@ -92,7 +92,7 @@
         text: "Date of birth"
       },
       value: {
-        text: data['date-of-birth'] | dateWithYear
+        text: data['date-of-birth'] | isoDateFromDateInput| govukDate
       },
       actions: {
         items: [{
@@ -134,13 +134,13 @@
         text: "Teacher reference number (TRN)"
       },
       value: {
-        text: data.account.trn
+        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
       },
       actions: {
         items: [{
           text: "Change",
           visuallyHiddenText: "your TRN",
-          href: basePath + "/trn"
+          href: basePath + "/trn-known"
         }]
       } if change
     } if accountJourney and data.features.trnRequired.on, {

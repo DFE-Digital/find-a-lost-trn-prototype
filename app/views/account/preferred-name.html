@@ -1,0 +1,55 @@
+{% extends "layouts/wizard.html" %}
+{% set useFullName = data.features.fullName.on %}
+{% set checkingAgainstTRNRecord = findTRNJourney or data.features.trnRequired.on or data.account['do-you-have-a-trn'] === 'Yes' %}
+{% set title = "Is Jane Doe your preferred name?" %}
+
+{% block form %}
+  {% set name %}
+    <h2 class="govuk-heading-m govuk-!-margin-top-4">What is your preferred name?</h2>
+    {{ govukInput({
+      label: {
+        text: "Preferred first name",
+        classes: "govuk-label--s"
+      },
+      decorate: 'preferred-first-name'
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Preferred last name",
+        classes: "govuk-label--s"
+      },
+      decorate: 'preferred-last-name'
+    }) }}
+  {% endset %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    hint: {
+      html: "<p>We can use a different name in correspondence, and tell people what you prefer to be called.</p>"
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No, I prefer to be known by another name",
+        conditional: {
+          html: name
+        }
+      }
+    ],
+    decorate: 'report.teacher-details.know-nino',
+    validate: {
+      presence: {
+        message: "Tell us if you know the teacher’s National Insurance number"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}

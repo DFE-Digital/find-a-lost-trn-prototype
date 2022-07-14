@@ -22,28 +22,27 @@ export default (req) => {
     ...!trnRequired
       ? {
         '/account/trn-holder': {
-          '/account/name': { data: 'account.do-you-have-a-trn', value: 'No' }
+          '/account/official-name': { data: 'account.do-you-have-a-trn', value: 'No' }
         },
         '/account/trn-known': {
-          '/account/name': { data: 'account.do-you-know-your-trn', value: 'no' }
-        },
-        '/account/trn': {}
+          '/account/official-name': { data: 'account.do-you-know-your-trn', value: 'no' }
+        }
       }
       : {},
-    '/account/name': {},
+    '/account/official-name': {},
     '/account/dob': {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
-      ...hasTrn
-        ? { '/account/have-qts': { data: 'have-nino', value: 'No' } }
-        : { '/account/next-time': { data: 'have-nino', value: 'No' } }
+      '/account/trn-known': () => trnRequired && data['have-nino'] === 'No',
+      '/account/have-qts': () => hasTrn && data['have-nino'] === 'No',
+      '/account/next-time': { data: 'have-nino', value: 'No' }
     },
     '/account/nino': {
       '/account/next-time': () => userMatchesDQTRecord(data)
     },
     ...trnRequired
-      ? { '/account/trn': {} }
+      ? { '/account/trn-known': {} }
       : {},
 
     // Only include QTS questions if user has a TRN
@@ -59,6 +58,9 @@ export default (req) => {
       '/account/change-email': { data: 'account.next-time', value: 'different' }
     },
     '/account/check-answers': {},
+    '/account/no-match': {
+      '/account/check-answers': { data: 'account.try-again', value: 'yes' }
+    },
     '/account/finish': {},
     '/account/return-to-service': {},
 
