@@ -3,37 +3,6 @@
 {% set title = "What’s your name?" %}
 
 {% block form %}
-  {% set previousNameHtml %}
-    <h2 class="govuk-heading-m govuk-!-margin-top-4">What was your previous name?</h2>
-    <p>You don’t have to tell us your previous name, but it will help us identify you.</p>
-    <p>If we cannot match your current name against our records, we’ll try to match your previous name.</p>
-    <p>If you changed your name more than once, tell us your most recent previous name.</p>
-    {% if useFullName %}
-      {{ govukInput({
-        label: {
-          text: "Previous name"
-        },
-        decorate: 'previous-name'
-      }) }}
-    {% else %}
-      {{ govukInput({
-        label: {
-          text: "Previous first name (optional)",
-          classes: "govuk-label--s"
-        },
-        decorate: 'previous-first-name'
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Previous last name (optional)",
-          classes: "govuk-label--s"
-        },
-        decorate: 'previous-last-name'
-      }) }}
-    {% endif %}
-  {% endset %}
-
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   <h2 class="govuk-heading-m">Use the name on your official documents</h2>
@@ -73,29 +42,5 @@
     }) }}
   {% endif %}
 
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        classes: "govuk-fieldset__legend--m",
-        text: "Have you ever changed your name?"
-      }
-    },
-    items: [
-      {
-        value: "no",
-        text: "No, I haven’t changed my name"
-      },
-      {
-        value: "changed-name",
-        text: "Yes, I changed my name",
-        conditional: {
-          html: previousNameHtml
-        }
-      },
-      {
-        text: "Prefer not to say"
-      }
-    ],
-    decorate: 'account.changed-name'
-  }) }}
+  {% include "../_previous-name.html" %}
 {% endblock %}
