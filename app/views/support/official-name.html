@@ -1,0 +1,83 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Change their official name" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Changes to an official name will update their name in:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Get an identity</li>
+    <li>Database of Qualified Teachers (DQT)</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Verify this name change</h2>
+
+  <p>You must verify this name change with an official document confirming their new name.</p>
+
+  <p>You need the following documents:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>For marriage: a copy of their marriage certificate</li>
+    <li>For a civil partnership: a copy of their civil agreement certificate</li>
+    <li>For divorce: a copy of their decree absolute or birth certificate</li>
+    <li>For a statutory declaration: a copy of the statutory declaration</li>
+    <li>For deed poll: a copy of their deed poll</li>
+  </ul>
+
+  <p>To fix a typo, a copy of their passport is enough.</p>
+
+  <h2 class="govuk-heading-m">Current names</h2>
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    rows: decorateRows([
+      {
+        key: 'Get an identity',
+        value: fullName(user.name)
+      },
+      {
+        key: 'DQT',
+        value: fullName(user.dqt)
+      }
+    ])
+  }) }}
+
+  <h2 class="govuk-heading-m">New name</h2>
+
+  {{ govukInput({
+    label: {
+      text: 'First name',
+      classes: "govuk-label--s"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Last name',
+      classes: "govuk-label--s"
+    },
+    decorate: 'support.user.' + user.id + '.first-name'
+  }) }}
+
+  {{ govukCheckboxes({
+    formGroup: {
+      classes: "govuk-!-margin-top-7"
+    },
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Have you seen the correct documents to verify this name?"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I’ve seen the documents"
+      }
+    ],
+    decorate: 'support.user.' + user.id + '.documents-seen',
+    validate: {
+      presence: {
+        message: "You must confirm you have seen legal documents before continuing"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}
