@@ -70,7 +70,7 @@
         items: [{
           text: "Change",
           visuallyHiddenText: "name",
-          href: basePath + "/name"
+          href: basePath + "/official-name" if accountJourney else basePath + "/name"
         }]
       } if change
     } if data['full-name'], {
@@ -84,10 +84,10 @@
         items: [{
           text: "Change",
           visuallyHiddenText: "previous name",
-          href: basePath + "/name"
+          href: basePath + "/official-name" if accountJourney else basePath + "/name"
         }]
       } if change
-    } if data['previous-name'] and not data['previous-name'] === " ", {
+    } if data['previous-name'] and not (data['previous-name'] === " "), {
       key: {
         text: "Date of birth"
       },
