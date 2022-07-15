@@ -19,20 +19,6 @@
       } if change
     }, {
       key: {
-        text: "Use your email address to sign in?"
-      },
-      value: {
-        text: "Yes" if data.account['next-time'] !== "no" else "No"
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "if you want to use your email to sign in",
-          href: basePath + "/next-time"
-        }]
-      } if change
-    } if accountJourney and change, {
-      key: {
         text: "Do you have a TRN?"
       },
       value: {
@@ -199,6 +185,21 @@
           href: basePath + "/sms"
         }]
       } if change
-    } if findTRNJourney and data.features.sms.on
+    } if findTRNJourney and data.features.sms.on,
+    {
+      key: {
+        text: "Use your email address to sign in?"
+      },
+      value: {
+        text: "Yes" if data.account['next-time'] !== "no" else "No"
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "if you want to use your email to sign in",
+          href: basePath + "/next-time"
+        }]
+      } if change
+    } if accountJourney and change
   ]
 }) }}
