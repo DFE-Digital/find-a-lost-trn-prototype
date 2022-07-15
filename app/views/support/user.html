@@ -52,7 +52,21 @@
         value: {
           html: officialName
         },
-        href: '/support/' + user.id + '/official-name'
+        href: '/support/' + user.id + '/official-name',
+        actions: {
+          items: [
+            {
+              text: "Verify",
+              visuallyHiddenText: "name",
+              href: '/support/' + user.id + '/official-name'
+            },
+            {
+              text: "Change",
+              visuallyHiddenText: "name",
+              href: '/support/' + user.id + '/official-name'
+            }
+          ]
+        }
       },
       {
         key: 'Email address',
