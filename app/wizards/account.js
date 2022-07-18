@@ -8,6 +8,7 @@ function emailHasAccount (data) {
 export default (req) => {
   const data = req.session.data
   const trnRequired = data.features.trnRequired.on
+  const hasTrn = (data.account && data.account['do-you-have-a-trn'] === 'Yes') || trnRequired
 
   const journey = {
     '/account/email': {},
@@ -50,9 +51,13 @@ export default (req) => {
       '/account/change-email': { data: 'account.next-time', value: 'different' }
     },
     '/account/check-answers': {},
-    '/account/no-match': {
-      '/account/check-answers': { data: 'account.try-again', value: 'yes' }
-    },
+    ...hasTrn
+      ? {
+        '/account/no-match': {
+          '/account/check-answers': { data: 'account.try-again', value: 'yes' }
+        }
+      }
+      : {},
     '/account/finish': {},
     '/account/return-to-service': {},
 
