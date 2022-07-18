@@ -1,44 +1,14 @@
 {% extends "layouts/wizard.html" %}
 {% set useFullName = data.features.fullName.on %}
-{% set checkingAgainstTRNRecord = findTRNJourney or data.features.trnRequired.on or data.account['do-you-have-a-trn'] === 'Yes' %}
 {% set title = "What’s your name?" %}
 
 {% block form %}
-  {% set previousNameHtml %}
-    <h2 class="govuk-heading-m govuk-!-margin-top-4">Previous name</h2>
-    <p>If we cannot match your current name against TRA records, we’ll try to match your previous name.</p>
-    {% if useFullName %}
-      {{ govukInput({
-        label: {
-          text: "Previous name"
-        },
-        decorate: 'previous-name'
-      }) }}
-    {% else %}
-      {{ govukInput({
-        label: {
-          text: "Previous first name",
-          classes: "govuk-label--s"
-        },
-        decorate: 'previous-first-name'
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Previous last name",
-          classes: "govuk-label--s"
-        },
-        decorate: 'previous-last-name'
-      }) }}
-    {% endif %}
-  {% endset %}
-
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   <h2 class="govuk-heading-m">Use the name on your official documents</h2>
   <p>
     You should tell us the name that appears on your passport, driving licence or marriage certificate, if you have one.
-    We’ll match it against the Teaching Regulation Agency (TRA) records.
+    We’ll try to match it against our records.
   </p>
 
   <p>If the names on your documents are different, give us the most recent one.</p>
@@ -72,16 +42,5 @@
     }) }}
   {% endif %}
 
-  {% if checkingAgainstTRNRecord %}
-    {{ govukCheckboxes({
-      items: [
-        {
-          value: "changed-name",
-          text: "I’ve changed my name since I received my teacher reference number (TRN)",
-          conditional: { html: previousNameHtml }
-        }
-      ],
-      decorate: 'changed-name'
-    }) }}
-  {% endif %}
+  {% include "../_previous-name.html" %}
 {% endblock %}

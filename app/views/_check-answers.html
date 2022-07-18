@@ -19,20 +19,6 @@
       } if change
     }, {
       key: {
-        text: "Use your email address to sign in?"
-      },
-      value: {
-        text: "Yes" if data.account['next-time'] !== "no" else "No"
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "if you want to use your email to sign in",
-          href: basePath + "/next-time"
-        }]
-      } if change
-    } if accountJourney and change, {
-      key: {
         text: "Do you have a TRN?"
       },
       value: {
@@ -70,7 +56,7 @@
         items: [{
           text: "Change",
           visuallyHiddenText: "name",
-          href: basePath + "/name"
+          href: basePath + "/official-name" if accountJourney else basePath + "/name"
         }]
       } if change
     } if data['full-name'], {
@@ -84,10 +70,10 @@
         items: [{
           text: "Change",
           visuallyHiddenText: "previous name",
-          href: basePath + "/name"
+          href: basePath + "/official-name" if accountJourney else basePath + "/name"
         }]
       } if change
-    } if data['previous-name'] and not data['previous-name'] === " ", {
+    } if data['previous-name'] and not (data['previous-name'] === " "), {
       key: {
         text: "Date of birth"
       },
@@ -199,6 +185,21 @@
           href: basePath + "/sms"
         }]
       } if change
-    } if findTRNJourney and data.features.sms.on
+    } if findTRNJourney and data.features.sms.on,
+    {
+      key: {
+        text: "Use your email address to sign in?"
+      },
+      value: {
+        text: "Yes" if data.account['next-time'] !== "no" else "No"
+      },
+      actions: {
+        items: [{
+          text: "Change",
+          visuallyHiddenText: "if you want to use your email to sign in",
+          href: basePath + "/next-time"
+        }]
+      } if change
+    } if accountJourney and change
   ]
 }) }}

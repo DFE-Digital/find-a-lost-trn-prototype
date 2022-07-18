@@ -15,7 +15,7 @@ export default {
       description: 'Disable any functionality that requires a backend data lookup'
     },
     trnRequired: {
-      on: true,
+      on: false,
       name: 'TRN required when checking records',
       description: 'Allow only users with a TRN to check their records'
     },

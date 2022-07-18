@@ -1,39 +1,11 @@
 {% extends "layouts/wizard.html" %}
 {% set useFullName = data.features.fullName.on %}
-{% set checkingAgainstTRNRecord = findTRNJourney or data.features.trnRequired.on or data.account['do-you-have-a-trn'] === 'Yes' %}
 {% set title = "Your name" %}
 
 {% block form %}
-  {% set previousNameHtml %}
-    {% if useFullName %}
-      {{ govukInput({
-        label: {
-          text: "Previous name"
-        },
-        decorate: 'previous-name'
-      }) }}
-    {% else %}
-      {{ govukInput({
-        label: {
-          text: "Previous first name"
-        },
-        decorate: 'previous-first-name'
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Previous last name"
-        },
-        decorate: 'previous-last-name'
-      }) }}
-    {% endif %}
-  {% endset %}
-
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  {% if checkingAgainstTRNRecord %}
-    <p>We’ll match your name against the Teaching Regulation Agency records.</p>
-  {% endif %}
+  <p>We’ll match your name against the Teaching Regulation Agency records.</p>
 
   {% if useFullName %}
     {{ govukInput({
@@ -61,16 +33,5 @@
     }) }}
   {% endif %}
 
-  {% if checkingAgainstTRNRecord %}
-    {{ govukCheckboxes({
-      items: [
-        {
-          value: "changed-name",
-          text: "I’ve changed my name since I received my TRN",
-          conditional: { html: previousNameHtml }
-        }
-      ],
-      decorate: 'changed-name'
-    }) }}
-  {% endif %}
+  {% include "../_previous-name.html" %}
 {% endblock %}
