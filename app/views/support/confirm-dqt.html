@@ -1,0 +1,89 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Check the DQT record we’ve found and confirm" %}
+{% set buttonText = "Confirm" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">{{ fullName(user.name) }}</span>
+    {{ title }}
+  </h1>
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Get an identity details",
+    rows: decorateRows([
+      {
+        key: 'Official name',
+        value: {
+          html: fullName(user.name)
+        }
+      },
+      {
+        key: 'Email address',
+        value: {
+          html: user.email
+        }
+      }
+    ])
+  }) }}
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "DQT record",
+    rows: decorateRows([
+      {
+        key: 'Official name',
+        value: {
+          html: 'Keanu Greeves'
+        }
+      },
+      {
+        key: 'Date of birth',
+        value: {
+          html: '1 January 1970'
+        }
+      },
+      {
+        key: 'National Insurance number',
+        value: {
+          html: 'QQ 12 34 56 C'
+        }
+      },
+      {
+        key: 'Has QTS?',
+        value: {
+          html: 'Yes'
+        }
+      },
+      {
+        key: 'TRN',
+        value: {
+          text: '1234567'
+        }
+      }
+    ])
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you want to connect this DQT record?"
+      }
+    },
+    items: [
+      {
+        text: "Yes, connect them"
+      },
+      {
+        text: "No, this is the wrong record"
+      }
+    ],
+    decorate: 'have-nino',
+    validate: {
+      presence: {
+        message: "Tell us if you have a National Insurance number"
+      }
+    } if data.features.validation.on
+  }) }}
+{% endblock %}

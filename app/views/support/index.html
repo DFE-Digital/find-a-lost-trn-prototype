@@ -11,18 +11,30 @@
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header">Name</th>
+        <th class="govuk-table__header">Name verified?</th>
+        <th class="govuk-table__header">Connected with DQT?</th>
         <th class="govuk-table__header">TRN</th>
-        <th class="govuk-table__header">Created</th>
-        <th class="govuk-table__header">Last accessed</th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
       {% for user in data.support.users %}
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="/support/{{ user.id }}">{{ user['first-name'] }} {{ user['last-name'] }}</a></td>
-          <td class="govuk-table__cell">{{ user.trn }}</td>
-          <td class="govuk-table__cell">{{ user.created | govukDate }}</td>
-          <td class="govuk-table__cell">{{ user.accessed | govukDate }}</td>
+          <td class="govuk-table__cell">
+            <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
+          </td>
+          <td class="govuk-table__cell">
+            {% if user.name.verified %}
+              <span class="govuk-tag govuk-tag--green">Verified</span>
+            {% else %}
+              <span class="govuk-tag govuk-tag--grey">Unverified</span>
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell">
+            {{ 'Yes' if user.dqt else '<a href="#">Connect with DQT</a>' | safe }}
+          </td>
+          <td class="govuk-table__cell">
+            {{ user.dqt.trn }}
+          </td>
         </tr>
       {% endfor %}
     </tbody>
