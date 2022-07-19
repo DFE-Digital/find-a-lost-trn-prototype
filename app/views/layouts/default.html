@@ -33,6 +33,22 @@
   }) }}
 
   {% block pageNavigation %}{% endblock %}
+
+  {% if appSuccess %}
+    {% set successHtml %}
+      {% if appSuccess.heading %}
+      <h3 class="govuk-notification-banner__heading">
+        {{ appSuccess.heading }}
+      </h3>
+      {% endif %}
+      {{ appSuccess.body if appSuccess.body }}
+    {% endset %}
+    {{ govukNotificationBanner({
+      html: successHtml,
+      type: "success",
+      classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-0"
+    }) if appSuccess }}
+  {% endif %}
 {% endblock %}
 
 {% block footer %}

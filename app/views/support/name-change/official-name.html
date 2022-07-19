@@ -47,7 +47,7 @@
       text: 'First name',
       classes: "govuk-label--s"
     },
-    decorate: 'support.user.' + user.id + '.first-name'
+    decorate: dataPath + '.name.first-name'
   }) }}
 
   {{ govukInput({
@@ -55,7 +55,7 @@
       text: 'Last name',
       classes: "govuk-label--s"
     },
-    decorate: 'support.user.' + user.id + '.first-name'
+    decorate: dataPath + '.name.last-name'
   }) }}
 
   {{ govukCheckboxes({
@@ -73,11 +73,11 @@
         text: "Yes, I’ve seen the documents"
       }
     ],
-    decorate: 'support.user.' + user.id + '.documents-seen',
+    decorate: randomNumber(),
     validate: {
       presence: {
-        message: "You must confirm you have seen legal documents before continuing"
+        message: "You must confirm you’ve seen the correct documents before continuing"
       }
-    } if data.features.validation.on
+    }
   }) }}
 {% endblock %}

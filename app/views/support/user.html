@@ -52,18 +52,17 @@
         value: {
           html: officialName
         },
-        href: '/support/' + user.id + '/official-name',
         actions: {
           items: [
             {
               text: "Verify",
               visuallyHiddenText: "name",
-              href: '/support/' + user.id + '/official-name'
+              href: '#'
             },
             {
               text: "Change",
               visuallyHiddenText: "name",
-              href: '/support/' + user.id + '/official-name'
+              href: urlPath + '/name-change/official-name'
             }
           ]
         }
