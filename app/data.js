@@ -102,7 +102,14 @@ export default {
         },
         created: '2022-03-12',
         accessed: '2022-03-12',
-        email: 'keanu.greeves@example.com'
+        email: 'keanu.greeves@example.com',
+        'inactive-dqt': {
+          'first-name': 'Keanu',
+          'last-name': 'Greeves',
+          dob: '1950-01-01',
+          nino: true,
+          trn: '1234567'
+        }
       }
     }
   }

@@ -11,7 +11,14 @@ export default (req) => {
         data: `support.users.${userId}.link-dqt`,
         value: 'No'
       },
-      [`${basePath}?success=dqt-linked`]: true
+      [`${basePath}?success=dqt-linked`]: () => {
+        const user = req.session.data.support.users[userId]
+        if (user['link-dqt'] === 'Yes') {
+          delete Object.assign(user, { dqt: user['inactive-dqt'] })['inactive-dqt']
+          delete user['link-dqt']
+        }
+        return true
+      }
     }
   }
 

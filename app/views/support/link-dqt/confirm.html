@@ -33,31 +33,25 @@
       {
         key: 'Official name',
         value: {
-          html: 'Keanu Greeves'
+          html: fullName(user['inactive-dqt'])
         }
       },
       {
         key: 'Date of birth',
         value: {
-          html: '1 January 1970'
+          html: user['inactive-dqt'].dob | govukDate
         }
       },
       {
         key: 'National Insurance number',
         value: {
-          html: 'QQ 12 34 56 C'
-        }
-      },
-      {
-        key: 'QTS',
-        value: {
-          html: 'Yes'
+          html: 'Given' if user['inactive-dqt'].nino else 'Not given'
         }
       },
       {
         key: 'TRN',
         value: {
-          text: '1234567'
+          html: user['inactive-dqt'].trn
         }
       }
     ])
