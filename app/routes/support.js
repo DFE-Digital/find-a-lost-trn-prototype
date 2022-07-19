@@ -39,7 +39,7 @@ export const supportRoutes = router => {
           res.locals.appSuccess = { heading: 'Name changed successfully' }
           break
         case 'dqt-linked':
-          res.locals.appSuccess = { heading: 'DQT record added to this identity' }
+          res.locals.appSuccess = { heading: 'DQT record added' }
           break
         default:
           res.locals.appSuccess = { heading: 'Changes saved' }
