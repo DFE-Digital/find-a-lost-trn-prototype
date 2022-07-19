@@ -1,0 +1,84 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "We found a DQT record, is it the right one?" %}
+{% set buttonText = "Finish" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Get an identity",
+    rows: decorateRows([
+      {
+        key: 'Official name',
+        value: {
+          html: fullName(user.name)
+        }
+      },
+      {
+        key: 'Email address',
+        value: {
+          html: user.email
+        }
+      }
+    ])
+  }) }}
+
+  {{ xGovukSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "DQT record",
+    rows: decorateRows([
+      {
+        key: 'Official name',
+        value: {
+          html: fullName(user['inactive-dqt'])
+        }
+      },
+      {
+        key: 'Date of birth',
+        value: {
+          html: user['inactive-dqt'].dob | govukDate
+        }
+      },
+      {
+        key: 'National Insurance number',
+        value: {
+          html: 'Given' if user['inactive-dqt'].nino else 'Not given'
+        }
+      },
+      {
+        key: 'TRN',
+        value: {
+          html: user['inactive-dqt'].trn
+        }
+      }
+    ])
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you want to add this DQT record?"
+      }
+    },
+    items: [
+      {
+        text: "Yes, add this record",
+        value: "Yes"
+      },
+      {
+        text: "No, this is the wrong record",
+        value: "No"
+      }
+    ],
+    decorate: dataPath + '.link-dqt',
+    validate: {
+      presence: {
+        message: "Tell us if you have a National Insurance number"
+      }
+    }
+  }) }}
+{% endblock %}

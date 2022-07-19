@@ -1,0 +1,20 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "What is their teacher reference number (TRN)?" %}
+{% set buttonText = "Find record" %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      isPageHeading: true,
+      classes: "govuk-label--xl"
+    },
+    classes: 'govuk-!-width-one-third',
+    decorate: 'support.' + user.id + '.trn',
+    validate: {
+      presence: {
+        message: "Tell us their teacher reference number"
+      }
+    }
+  }) }}
+{% endblock %}

@@ -29,6 +29,10 @@ export default () => {
     return providers.map(name => { return { text: name } })
   }
 
+  globals.randomNumber = function () {
+    return _.random(0, 100000)
+  }
+
   globals.fullName = function (data) {
     return data['first-name'] + ' ' + data['last-name']
   }
