@@ -50,8 +50,8 @@ export default {
     trn: '7651234'
   },
   support: {
-    users: [
-      {
+    users: {
+      123: {
         id: '123',
         name: {
           'first-name': 'Jonathan',
@@ -72,7 +72,7 @@ export default {
           trn: '1234567'
         }
       },
-      {
+      124: {
         id: '124',
         name: {
           'first-name': 'Jane',
@@ -92,7 +92,7 @@ export default {
           trn: '1234567'
         }
       },
-      {
+      101: {
         id: '101',
         name: {
           'first-name': 'Keanu',
@@ -104,7 +104,7 @@ export default {
         accessed: '2022-03-12',
         email: 'keanu.greeves@example.com'
       }
-    ]
+    }
   }
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',

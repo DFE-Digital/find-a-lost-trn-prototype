@@ -5,8 +5,7 @@ export const supportRoutes = router => {
   })
 
   router.all(['/support/:user', '/support/:user/*'], (req, res, next) => {
-    const users = req.session.data.support.users
-    res.locals.user = users.find(u => u.id === req.params.user)
+    res.locals.user = req.session.data.support.users[req.params.user]
     next()
   })
 

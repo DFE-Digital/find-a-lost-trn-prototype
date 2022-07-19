@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody class="govuk-table__body">
-      {% for user in data.support.users %}
+      {% for id, user in data.support.users %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
