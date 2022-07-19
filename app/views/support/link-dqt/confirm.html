@@ -1,16 +1,15 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Check the DQT record we’ve found and confirm" %}
-{% set buttonText = "Confirm" %}
+{% set title = "We found a DQT record, is it the right one?" %}
+{% set buttonText = "Finish" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">{{ fullName(user.name) }}</span>
     {{ title }}
   </h1>
 
   {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "Get an identity details",
+    titleText: "Get an identity",
     rows: decorateRows([
       {
         key: 'Official name',
@@ -50,7 +49,7 @@
         }
       },
       {
-        key: 'Has QTS?',
+        key: 'QTS',
         value: {
           html: 'Yes'
         }
@@ -68,22 +67,24 @@
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Do you want to connect this DQT record?"
+        text: "Do you want to add this DQT record?"
       }
     },
     items: [
       {
-        text: "Yes, connect them"
+        text: "Yes, add this record",
+        value: "Yes"
       },
       {
-        text: "No, this is the wrong record"
+        text: "No, this is the wrong record",
+        value: "No"
       }
     ],
-    decorate: 'have-nino',
+    decorate: dataPath + '.link-dqt',
     validate: {
       presence: {
         message: "Tell us if you have a National Insurance number"
       }
-    } if data.features.validation.on
+    }
   }) }}
 {% endblock %}

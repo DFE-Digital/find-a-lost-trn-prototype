@@ -75,11 +75,21 @@
         href: '#'
       },
       {
-        key: 'Connected to DQT?',
+        key: 'DQT record',
         value: {
-          html: 'Yes' if user.dqt else 'No'
+          html: 'Yes' if user.dqt else 'No record linked'
         },
-        href: '/support/' + user.id + '/trn'
+        actions: {
+          items: [
+            {
+              text: "Change record",
+              href: "#"
+            } if user.dqt else {
+              text: "Add record",
+              href: urlPath + '/link-dqt/trn'
+            }
+          ]
+        }
       }
     ])
   }) }}

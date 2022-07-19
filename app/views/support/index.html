@@ -12,7 +12,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header">Name</th>
         <th class="govuk-table__header">Name verified?</th>
-        <th class="govuk-table__header">Connected with DQT?</th>
+        <th class="govuk-table__header">DQT record</th>
         <th class="govuk-table__header">TRN</th>
       </tr>
     </thead>
@@ -30,7 +30,7 @@
             {% endif %}
           </td>
           <td class="govuk-table__cell">
-            {{ 'Yes' if user.dqt else '<a href="#">Connect with DQT</a>' | safe }}
+            {{ 'Yes' if user.dqt else ('No (<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>)') | safe }}
           </td>
           <td class="govuk-table__cell">
             {{ user.dqt.trn }}
