@@ -2,204 +2,66 @@
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9" if change,
-  rows: [
+  rows: decorateRows([
     {
-      key: {
-        text: "Email address"
-      },
-      value: {
-        text: data['email-address'] or 'email@example.com'
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "email address",
-          href: basePath + "/email"
-        }]
-      } if change
+      key: "Email address",
+      value: data['email-address'] or 'email@example.com',
+      href: basePath + "/email" if change
     }, {
-      key: {
-        text: "Do you have a TRN?"
-      },
-      value: {
-        text: data.account['do-you-have-a-trn']
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "if you have a TRN",
-          href: basePath + "/trn-holder"
-        }]
-      } if change
+      key: "Do you have a TRN?",
+      data: "account.do-you-have-a-trn",
+      href: basePath + "/trn-holder" if change
     } if accountJourney and not data.features.trnRequired.on, {
-      key: {
-        text: "Teacher reference number (TRN)"
-      },
-      value: {
-        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "your TRN",
-          href: basePath + "/trn-known"
-        }]
-      } if change
+      key: "Teacher reference number (TRN)",
+      value: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
+      href: basePath + "/trn-known" if change
     } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
-      key: {
-        text: "Name"
-      },
-      value: {
-        text: data['full-name']
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "name",
-          href: basePath + "/official-name" if accountJourney else basePath + "/name"
-        }]
-      } if change
-    } if data['full-name'], {
-    key: {
-        text: "Previous name"
-      },
-      value: {
-        text: data['previous-name']
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "previous name",
-          href: basePath + "/official-name" if accountJourney else basePath + "/name"
-        }]
-      } if change
+      key: "Name",
+      data: "full-name",
+      href: (basePath + "/official-name" if accountJourney else basePath + "/name") if change,
+      condition: "full-name"
+    }, {
+      key: "Previous name",
+      data: "previous-name",
+      href: (basePath + "/official-name" if accountJourney else basePath + "/name") if change
     } if data['previous-name'] and not (data['previous-name'] === " "), {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: data['date-of-birth'] | isoDateFromDateInput| govukDate
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "date of birth",
-          href: basePath + "/dob"
-        }]
-      } if change
+      key: "Date of birth",
+      value: data['date-of-birth'] | isoDateFromDateInput| govukDate,
+      href: basePath + "/dob" if change
     } if data['date-of-birth'], {
-      key: {
-        text: "National Insurance number"
-      },
-      value: {
-        text: data['national-insurance-number'] or 'Not given'
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "National Insurance number",
-          href: basePath + "/nino"
-        }]
-      } if change
+      key: "National Insurance number",
+      value: data['national-insurance-number'] or 'Not given',
+      href: basePath + "/nino" if change
     } if data['have-nino'] !== 'No' and not data.emailMatchJourney, {
-      key: {
-        text: "Do you have a National Insurance number?"
-      },
-      value: {
-        text: "No"
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "National Insurance number",
-          href: basePath + "/have-nino"
-        }]
-      } if change
+      key: "Do you have a National Insurance number?",
+      value: "No",
+      href: basePath + "/have-nino" if change
     } if data['have-nino'] === 'No', {
-      key: {
-        text: "Teacher reference number (TRN)"
-      },
-      value: {
-        text: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "your TRN",
-          href: basePath + "/trn-known"
-        }]
-      } if change
+      key: "Teacher reference number (TRN)",
+      value: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
+      href: basePath + "/trn-known" if change
     } if accountJourney and data.features.trnRequired.on, {
-      key: {
-        text: "Have you been awarded QTS?"
-      },
-      value: {
-        text: data['has-qts']
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "if you have QTS",
-          href: basePath + "/have-qts"
-        }]
-      } if change
-    } if data['has-qts'], {
-      key: {
-        text: "Where did you get your QTS?"
-      },
-      value: {
-        text: data['itt-provider'] if data['itt-provider'] else 'Not given'
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "where you got your QTS",
-          href: basePath + "/how-qts"
-        }]
-      } if change
+      key: "Have you been awarded QTS?",
+      data: "has-qts",
+      href: basePath + "/have-qts" if change,
+      condition: "has-qts"
+    }, {
+      key: "Where did you get your QTS?",
+      value: data['itt-provider'] if data['itt-provider'] else 'Not given',
+      href: basePath + "/how-qts" if change
     } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] === 'Yes', {
-      key: {
-        text: "Did a university, SCITT or school award your QTS?"
-      },
-      value: {
-        text: data['has-qts-from-provider']
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "where you got your QTS",
-          href: basePath + "/how-qts"
-        }]
-      } if change
+      key: "Did a university, SCITT or school award your QTS?",
+      data: "has-qts-from-provider",
+      href: basePath + "/how-qts" if change
     } if data['has-qts'] === 'Yes' and data['has-qts-from-provider'] !== 'Yes', {
-      key: {
-        text: "Phone number" if sendingTextMessage else "Send TRN by text message"
-      },
-      value: {
-        text: data['phone-number'] if sendingTextMessage else "No"
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "whether you get your TRN by text",
-          href: basePath + "/sms"
-        }]
-      } if change
+      key: "Phone number" if sendingTextMessage else "Send TRN by text message",
+      value: data['phone-number'] if sendingTextMessage else "No",
+      href: basePath + "/sms" if change
     } if findTRNJourney and data.features.sms.on,
     {
-      key: {
-        text: "Use your email address to sign in?"
-      },
-      value: {
-        text: "Yes" if data.account['next-time'] !== "no" else "No"
-      },
-      actions: {
-        items: [{
-          text: "Change",
-          visuallyHiddenText: "if you want to use your email to sign in",
-          href: basePath + "/next-time"
-        }]
-      } if change
+      key: "Use your email address to sign in?",
+      value: "Yes" if data.account['next-time'] !== "no" else "No",
+      href: basePath + "/next-time" if change
     } if accountJourney and change
-  ]
+  ])
 }) }}
