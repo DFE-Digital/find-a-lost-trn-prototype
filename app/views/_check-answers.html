@@ -57,11 +57,6 @@
       key: "Phone number" if sendingTextMessage else "Send TRN by text message",
       value: data['phone-number'] if sendingTextMessage else "No",
       href: basePath + "/sms" if change
-    } if findTRNJourney and data.features.sms.on,
-    {
-      key: "Use your email address to sign in?",
-      value: "Yes" if data.account['next-time'] !== "no" else "No",
-      href: basePath + "/next-time" if change
-    } if accountJourney and change
+    } if findTRNJourney and data.features.sms.on
   ])
 }) }}
