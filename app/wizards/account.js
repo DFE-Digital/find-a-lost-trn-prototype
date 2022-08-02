@@ -32,25 +32,22 @@ export default (req) => {
       : {},
     '/account/official-name': {},
     '/account/dob': {
-      '/account/next-time': () => userMatchesDQTRecord(data)
+      '/account/check-answers': () => userMatchesDQTRecord(data)
     },
     '/account/have-nino': {
       '/account/trn-known': () => trnRequired && data['have-nino'] === 'No',
       '/account/have-qts': { data: 'have-nino', value: 'No' }
     },
     '/account/nino': {
-      '/account/next-time': () => userMatchesDQTRecord(data)
+      '/account/check-answers': () => userMatchesDQTRecord(data)
     },
     ...trnRequired
       ? { '/account/trn-known': {} }
       : {},
     '/account/have-qts': {
-      '/account/next-time': { data: 'has-qts', value: 'No' }
+      '/account/check-answers': { data: 'has-qts', value: 'No' }
     },
     '/account/how-qts': {},
-    '/account/next-time': {
-      '/account/change-email': { data: 'account.next-time', value: 'different' }
-    },
     '/account/check-answers': {},
     ...(hasTrn && noMatchJourney)
       ? {
@@ -60,14 +57,7 @@ export default (req) => {
       }
       : {},
     '/account/finish': {},
-    '/account/return-to-service': {},
-
-    // Change email account flow
-    '/account/change-email': {},
-    '/account/change-email-confirmation': {},
-    '/account/change-email-next-time-confirmation': {
-      '/account/check-answers': true
-    }
+    '/account/return-to-service': {}
   }
 
   return wizard(journey, req)
