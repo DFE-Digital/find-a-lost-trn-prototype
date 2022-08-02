@@ -15,9 +15,14 @@ export default {
       description: 'Disable any functionality that requires a backend data lookup'
     },
     trnRequired: {
-      on: false,
+      on: true,
       name: 'TRN required when checking records',
       description: 'Allow only users with a TRN to check their records'
+    },
+    noMatchJourney: {
+      on: false,
+      name: 'Show the No match page',
+      description: 'Include the ‘no match’ page in the Get an identity journey'
     },
     ittAutocomplete: {
       on: true,

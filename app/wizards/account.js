@@ -9,6 +9,7 @@ export default (req) => {
   const data = req.session.data
   const trnRequired = data.features.trnRequired.on
   const hasTrn = (data.account && data.account['do-you-have-a-trn'] === 'Yes') || trnRequired
+  const noMatchJourney = data.features.noMatchJourney.on
 
   const journey = {
     '/account/email': {},
@@ -51,7 +52,7 @@ export default (req) => {
       '/account/change-email': { data: 'account.next-time', value: 'different' }
     },
     '/account/check-answers': {},
-    ...hasTrn
+    ...(hasTrn && noMatchJourney)
       ? {
         '/account/no-match': {
           '/account/check-answers': { data: 'account.try-again', value: 'yes' }
