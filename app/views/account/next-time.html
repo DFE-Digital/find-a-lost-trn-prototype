@@ -1,48 +1,15 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Next time you use this service" %}
+{% set title = "Next time, you can skip these questions" %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
-<h2 class="govuk-heading-m">Use your email address to sign in the next time</h2>
+<p>When you sign in with your email address next time, you will skip these questions. We do not need to ask them again.</p>
 
-<p>You can choose to use your email address to sign in the next time you use this&nbsp;service.</p>
-
-<p>You might return to this service to:</p>
+<!-- <p>You might return to this service to:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>edit or check your registration</li>
   <li>register for another NPQ</li>
   <li>download your NPQ certificates</li>
-</ul>
-
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      classes: "govuk-fieldset__legend--m",
-      text: 'Do you want to use your email address to sign in next time?'
-    }
-  },
-  items: [
-    {
-      html: "Yes, I will use <b>" + (data['email-address'] or "email@example.com") + "</b>",
-      value: "yes"
-    }, {
-      text: "No, I will answer the same questions again",
-      value: "no"
-    },
-    {
-      divider: 'or'
-    },
-    {
-      text: "I want to change the email address I will use",
-      value: "different"
-    }
-  ],
-  decorate: "account.next-time",
-  validate: {
-    presence: {
-      message: "Tell us if you want to use your email address to sign in"
-    }
-  }
-}) }}
+</ul> -->
 {% endblock %}
