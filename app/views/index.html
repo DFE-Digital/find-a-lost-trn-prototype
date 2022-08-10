@@ -29,7 +29,23 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h2 class="govuk-heading-m">Find a lost TRN</h2>
+      <h2 class="govuk-heading-m">Get an identity to access Teacher Services</h2>
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/get-an-identity/email'
+      }) }}
+
+      <ul class="govuk-list">
+        <li>
+          <a href="https://npq-wrapper-prototype.herokuapp.com/start">NPQ service wrapper</a>
+        </li>
+        <li>
+          <a href="/support">Support for Get an identity</a>
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Find a lost TRN</h2>
 
       {{ govukButton({
         text: 'View prototype',
@@ -54,22 +70,6 @@
         </li>
       </ul>
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-7">User flow for ‘Get an identity to access Teacher Services’</h2>
-
-      {{ govukButton({
-        text: 'View prototype',
-        href: '/account/email'
-      }) }}
-
-      <ul class="govuk-list">
-        <li>
-          <a href="https://npq-wrapper-prototype.herokuapp.com/start">NPQ service wrapper</a>
-        </li>
-        <li>
-          <a href="/support">Support for Get an identity</a>
-        </li>
-      </ul>
-
       <h2 class="govuk-heading-m govuk-!-margin-top-5">Related links</h2>
 
       <ul class="govuk-list">
@@ -85,7 +85,7 @@
         </li>
         <li>
           <a href="https://github.com/DFE-Digital/tra-digital-design-history">
-            Design history GitHub repository
+            Design history Github repository
           </a>
         </li>
       </ul>

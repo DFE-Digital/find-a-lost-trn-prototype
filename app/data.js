@@ -9,39 +9,34 @@
 export default {
   // Set feature flags using the `features` key
   features: {
-    apiUnavailable: {
-      on: false,
-      name: 'API unavailable',
-      description: 'Disable any functionality that requires a backend data lookup'
-    },
-    trnRequired: {
-      on: true,
-      name: 'TRN required when checking records',
-      description: 'Allow only users with a TRN to check their records'
-    },
-    noMatchJourney: {
-      on: false,
-      name: 'Show the No match page',
-      description: 'Include the ‘no match’ page in the Get an identity journey'
-    },
-    ittAutocomplete: {
-      on: true,
-      name: 'ITT provider autocomplete',
-      description: 'Use an autocomplete for ITT providers, otherwise use a free text input'
-    },
-    fullName: {
-      on: false,
-      name: 'Use full name',
-      description: 'Use full name rather than first name, last name'
-    },
     validation: {
       on: false,
       name: 'Use validation',
       description: 'Show errors during journey'
     },
-    sms: {
+    trnRequired: {
       on: true,
-      name: 'TRNs by text message',
+      name: 'Get an identity: TRN required',
+      description: 'Journey assumes all users will have a TRN (MVP before we introduced flows for users without a TRN)'
+    },
+    noMatchJourney: {
+      on: false,
+      name: 'Get an identity: Show the No match page',
+      description: 'Include the ‘no match’ page in the journey'
+    },
+    apiUnavailable: {
+      on: false,
+      name: 'Find: API unavailable',
+      description: 'Disable any functionality that requires a backend data lookup'
+    },
+    fullName: {
+      on: false,
+      name: 'Find: Use full name',
+      description: 'Use full name rather than first name, last name'
+    },
+    sms: {
+      on: false,
+      name: 'Find: TRNs by text message',
       description: 'Ask users if they want their TRN by text message'
     }
   },

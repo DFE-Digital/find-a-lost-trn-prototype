@@ -19,7 +19,7 @@
     homepageUrl: "/",
     productName: productName,
     serviceName: serviceName if not productName,
-    serviceUrl: "/start",
+    serviceUrl: serviceUrl or "/start",
     containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}

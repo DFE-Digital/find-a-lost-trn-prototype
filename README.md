@@ -1,8 +1,20 @@
-# Find a lost TRN prototype
+# Prototypes
 
-Prototype: https://find-a-lost-trn-prototype.herokuapp.com/
+Prototypes for:
 
-Design history: https://tra-digital-design-history.herokuapp.com/
+- Find a lost teacher reference number (TRN)
+- Get an identity to access Teacher Services
+
+They share a repository as they reuse many of the same designs. For example, asking for name, date of birth, email address and QTS.
+
+Prototype:
+
+https://find-a-lost-trn-prototype.herokuapp.com/
+
+Design histories:
+
+https://tra-digital-design-history.herokuapp.com/find-a-lost-trn/
+https://tra-digital-design-history.herokuapp.com/get-an-identity/
 
 Built using the [GOV.UK Prototype Rig](https://govuk-prototype-rig.herokuapp.com).
 
