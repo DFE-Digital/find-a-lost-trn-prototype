@@ -24,11 +24,6 @@ export default {
       name: 'Show the No match page',
       description: 'Include the ‘no match’ page in the Get an identity journey'
     },
-    ittAutocomplete: {
-      on: true,
-      name: 'ITT provider autocomplete',
-      description: 'Use an autocomplete for ITT providers, otherwise use a free text input'
-    },
     fullName: {
       on: false,
       name: 'Use full name',
