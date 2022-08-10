@@ -6,7 +6,7 @@
 
   <p>This could be because you:</p>
   <ul class="govuk-list govuk-list--bullet">
-    {% if data.account['do-you-have-a-trn'] === 'Yes' and not data.account.trn %}
+    {% if data.identity['do-you-have-a-trn'] === 'Yes' and not data.identity.trn %}
       <li>did not give us your teacher reference number (TRN)</li>
     {% endif %}
     {% if data['have-nino'] and not data['national-insurance-number'] %}
@@ -37,6 +37,6 @@
       text: "No, use these details, they are correct",
       value: "no"
     }],
-    decorate: "account.try-again"
+    decorate: "identity.try-again"
   }) }}
 {% endblock %}

@@ -1,4 +1,4 @@
-{% set basePath = "/account" if accountJourney else "" %}
+{% set basePath = "/get-an-identity" if getAnIdentityJourney else "" %}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-9" if change,
@@ -9,21 +9,21 @@
       href: basePath + "/email" if change
     }, {
       key: "Do you have a TRN?",
-      data: "account.do-you-have-a-trn",
+      data: "identity.do-you-have-a-trn",
       href: basePath + "/trn-holder" if change
-    } if accountJourney and not data.features.trnRequired.on, {
+    } if getAnIdentityJourney and not data.features.trnRequired.on, {
       key: "Teacher reference number (TRN)",
-      value: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
+      value: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
       href: basePath + "/trn-known" if change
-    } if accountJourney and data.account['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
+    } if getAnIdentityJourney and data.identity['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
       key: "Name",
       data: "full-name",
-      href: (basePath + "/official-name" if accountJourney else basePath + "/name") if change,
+      href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change,
       condition: "full-name"
     }, {
       key: "Previous name",
       data: "previous-name",
-      href: (basePath + "/official-name" if accountJourney else basePath + "/name") if change
+      href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change
     } if data['previous-name'] and not (data['previous-name'] === " "), {
       key: "Date of birth",
       value: data['date-of-birth'] | isoDateFromDateInput| govukDate,
@@ -38,9 +38,9 @@
       href: basePath + "/have-nino" if change
     } if data['have-nino'] === 'No', {
       key: "Teacher reference number (TRN)",
-      value: data.account.trn if data.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
+      value: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
       href: basePath + "/trn-known" if change
-    } if accountJourney and data.features.trnRequired.on, {
+    } if getAnIdentityJourney and data.features.trnRequired.on, {
       key: "Have you been awarded QTS?",
       data: "has-qts",
       href: basePath + "/have-qts" if change,

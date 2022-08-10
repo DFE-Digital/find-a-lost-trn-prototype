@@ -48,21 +48,21 @@ export const userResearch = router => {
   // First time account journey
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
-    data.accountServiceName = 'Register for a National Professional Qualification'
+    data.identityServiceName = 'Register for a National Professional Qualification'
     data.returnToService = returnToService()
     data.scenario = '1'
-    data.hasAccount = false
-    res.redirect('/account/email')
+    data.hasIdentity = false
+    res.redirect('/get-an-identity/email')
   })
 
   // Has account journey
   router.get('/user-research/scenario-2/', (req, res) => {
     const data = req.session.data
-    data.accountServiceName = 'Register for a National Professional Qualification'
+    data.identityServiceName = 'Register for a National Professional Qualification'
     data.returnToService = returnToService()
     data.scenario = '2'
-    data.hasAccount = true
-    res.redirect('/account/email')
+    data.hasIdentity = true
+    res.redirect('/get-an-identity/email')
   })
 
   const returnToService = () => {
