@@ -4,6 +4,7 @@ export const getAnIdentityRoutes = router => {
   router.all('/get-an-identity/:view', (req, res, next) => {
     res.locals.paths = wizard(req)
     res.locals.getAnIdentityJourney = true
+    res.locals.serviceUrl = '/get-an-identity/email'
     res.locals.serviceName = req.session.data.identityServiceName || 'Get an identity to access Teacher Services'
     next()
   })
