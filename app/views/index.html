@@ -29,7 +29,23 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h2 class="govuk-heading-m">Find a lost TRN</h2>
+      <h2 class="govuk-heading-m">Get an identity to access Teacher Services</h2>
+
+      {{ govukButton({
+        text: 'View prototype',
+        href: '/account/email'
+      }) }}
+
+      <ul class="govuk-list">
+        <li>
+          <a href="https://npq-wrapper-prototype.herokuapp.com/start">NPQ service wrapper</a>
+        </li>
+        <li>
+          <a href="/support">Support for Get an identity</a>
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Find a lost TRN</h2>
 
       {{ govukButton({
         text: 'View prototype',
@@ -51,22 +67,6 @@
           <a href="https://github.com/DFE-Digital/find-a-lost-trn">
             Service Github repository
           </a>
-        </li>
-      </ul>
-
-      <h2 class="govuk-heading-m govuk-!-margin-top-7">Get an identity to access Teacher Services</h2>
-
-      {{ govukButton({
-        text: 'View prototype',
-        href: '/account/email'
-      }) }}
-
-      <ul class="govuk-list">
-        <li>
-          <a href="https://npq-wrapper-prototype.herokuapp.com/start">NPQ service wrapper</a>
-        </li>
-        <li>
-          <a href="/support">Support for Get an identity</a>
         </li>
       </ul>
 
