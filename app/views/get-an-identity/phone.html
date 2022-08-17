@@ -1,0 +1,22 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Your mobile phone number" %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    },
+    classes: 'govuk-input--width-20',
+    hint: {
+      html: '<p>We’ll only use your phone number to keep your account secure.</p>'
+    },
+    decorate: 'identity.phone',
+    validate: {
+      presence: {
+        message: "Enter your mobile phone number"
+      }
+    }
+  }) }}
+{% endblock %}

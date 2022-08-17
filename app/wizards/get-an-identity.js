@@ -14,11 +14,13 @@ export default (req) => {
   const journey = {
     '/get-an-identity/email': {},
     '/get-an-identity/email-confirmation': {
-      '/get-an-identity/ask-questions': () => !emailhasIdentity(data)
+      '/get-an-identity/phone': () => !emailhasIdentity(data)
     },
     '/get-an-identity/signed-in-as': {
       '/get-an-identity/return-to-service': true
     },
+    '/get-an-identity/phone': {},
+    '/get-an-identity/phone-confirmation': {},
     '/get-an-identity/ask-questions': {},
     ...!trnRequired
       ? {

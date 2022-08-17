@@ -1,0 +1,21 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Confirm your mobile phone number' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We’ve sent a confirmation code by text message to {{ d('identity.phone') }}</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your code",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-quarter',
+    decorate: 'identity.email-code'
+  }) }}
+
+  <p>
+    <a href="#">I have not received a text message</a>
+  </p>
+{% endblock %}

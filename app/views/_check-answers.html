@@ -8,6 +8,10 @@
       value: data['email-address'] or 'email@example.com',
       href: basePath + "/email" if change
     }, {
+      key: "Mobile number",
+      value: data['phone'] or '07123456789',
+      href: basePath + "/phone" if change
+    }, {
       key: "Do you have a TRN?",
       data: "identity.do-you-have-a-trn",
       href: basePath + "/trn-holder" if change
