@@ -1,30 +1,29 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "You’ve used a different email address to the one we have on record" %}
+{% set title = "You’ve signed in with a different email address" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>You’ve used the email address:</p>
-
-  <div class="govuk-inset-text">
-    <p>{{ d('email-address') }}</p>
-  </div>
+  <p>Your email address is different to the one we have on record.</p>
 
   {{ govukRadios({
     fieldset: {
       legend: {
         classes: "govuk-fieldset__legend--m",
-        text: "Do you always want to use this email address?"
+        text: "Which email address should we use?"
       }
+    },
+    formGroup: {
+      classes: "govuk-!-margin-top-7"
     },
     hint: {
       html: nino
     },
     items: [{
-      text: "Yes, use this email address and remove my old one",
+      text: d('email-address') or 'jane.doe@example.com',
       value: "yes"
     }, {
-      text: "No, keep my old email address",
+      text: "jane.doe@school.sch.gov.uk",
       value: "no"
     }],
     decorate: "identity.replace-email"

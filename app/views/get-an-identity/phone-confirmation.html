@@ -1,18 +1,18 @@
 {% extends "layouts/wizard.html" %}
-{% set title = 'Confirm your mobile phone number' %}
+{% set title = 'Check your phone' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>We’ve sent a confirmation code by text message to {{ d('identity.phone') }}</p>
+  <p>We’ve sent a text message with a security code to {{ d('identity.phone') }}.</p>
 
   {{ govukInput({
     label: {
-      text: "Enter your code",
+      text: "Security code",
       classes: "govuk-label--s"
     },
-    classes: 'govuk-!-width-one-quarter',
-    decorate: 'identity.email-code'
+    classes: 'govuk-input--width-10',
+    decorate: 'identity.phone-code'
   }) }}
 
   <p>
