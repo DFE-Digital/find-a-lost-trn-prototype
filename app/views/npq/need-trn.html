@@ -1,0 +1,32 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "You need a teacher reference number to register for an NPQ" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>You’ll need a teacher reference number (TRN) to register for an NPQ, even if you are not a teacher. We use your TRN to check you’re eligible to study for an NPQ.</p>
+
+  <p>You may not have a TRN if you are working in early years, further education or qualified as a teacher outside England.</p>
+
+  <p>You can use the <a href="#">Find a lost TRN service</a> if you do not know your TRN, or want to check if you have one.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--m",
+        text: "Do you have a TRN?"
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        value: "yes"
+      },
+      {
+        text: "No, I need help getting one",
+        value: "no"
+      }
+    ],
+    decorate: 'npq.need-trn'
+  }) }}
+{% endblock %}

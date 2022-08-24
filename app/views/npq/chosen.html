@@ -1,0 +1,25 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Have you already chosen an NPQ and provider?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    items: [
+      {
+        text: "Yes, I have chosen my NPQ and provider",
+        value: "yes"
+      },
+      {
+        text: "No, I do not know my NPQ or provider",
+        value: "no"
+      }
+    ],
+    decorate: 'npq.provider'
+  }) }}
+{% endblock %}

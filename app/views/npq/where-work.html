@@ -1,0 +1,38 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Where do you work?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    items: [
+      {
+        text: "England"
+      },
+      {
+        text: "Scotland"
+      },
+      {
+        text: "Wales"
+      },
+      {
+        text: "Northern Ireland"
+      },
+      {
+        text: "Jersey, Guernsey or the Isle of Man"
+      },
+      {
+        divider: "or"
+      },
+      {
+        text: "Another country"
+      }
+    ],
+    decorate: 'npq.where-work'
+  }) }}
+{% endblock %}
