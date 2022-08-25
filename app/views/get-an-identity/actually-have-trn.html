@@ -1,0 +1,21 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "You have a teacher reference number (TRN)" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+<p>You told us you didn’t have a TRN.</p>
+
+<p>When we checked our records, we found that you do.</p>
+
+<h2 class="govuk-heading-m">Your TRN</h2>
+
+<div class="govuk-inset-text">
+  <p>
+    Your teacher reference number is:<br />
+    <strong>1234567</strong>
+  </p>
+</div>
+
+<p class="govuk-!-margin-bottom-6">Keep this number somewhere safe.</p>
+{% endblock %}
