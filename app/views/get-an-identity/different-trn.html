@@ -1,0 +1,35 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Your teacher reference number (TRN) is different to the one you gave us" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+<p>You gave us the number:</p>
+<p><strong>1234557</strong></p>
+
+<p>But our records show your TRN is:</p>
+<p><strong>1234567</strong></p>
+
+<p class="govuk-!-margin-bottom-6">Keep the correct number somewhere safe.</p>
+
+<h2 class="govuk-heading-m">Why are they different?</h2>
+
+<p>Your TRN might be different because:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>you made a mistake when entering your TRN</li>
+  <li>you gave us the wrong number</li>
+  <li>your TRN has changed</li>
+</ul>
+
+<h2 class="govuk-heading-m">Contact support if you need help</h2>
+
+<p>If you think there’s been a mistake, you can call the Teaching Regulation Agency (TRA).</p>
+
+<div class="govuk-inset-text">
+  {% include '_phone-line.html' %}
+</div>
+
+<div class="govuk-!-margin-bottom-6"></div>
+
+{% endblock %}
