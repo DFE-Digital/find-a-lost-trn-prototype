@@ -6,9 +6,17 @@ export default (req) => {
     '/govuk-account/enter-email-create': {},
     '/govuk-account/check-email': {},
     '/govuk-account/create-password': {},
-    '/govuk-account/get-security-codes': {},
+    '/govuk-account/get-security-codes': {
+      '/govuk-account/setup-authenticator-app': {
+        data: 'govuk-account.security-codes',
+        value: 'authenticator'
+      }
+    },
     '/govuk-account/enter-phone-number': {},
-    '/govuk-account/check-your-phone': {},
+    '/govuk-account/check-your-phone': {
+      '/govuk-account/account-created': true
+    },
+    '/govuk-account/setup-authenticator-app': {},
     '/govuk-account/account-created': {}
   }
 
