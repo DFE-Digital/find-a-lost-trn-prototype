@@ -1,0 +1,41 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Set up an authenticator app" %}
+
+{% block form %}
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  <p>1. Open your authenticator app on your smartphone, tablet or computer.</p>
+
+  {% set html %}
+    <p>You can download an authenticator app for your smartphone or tablet from your app store.</p>
+    <p>If you don't have a smartphone or tablet, search online for an authenticator app for your computer.</p>
+    <p>You can use any authenticator app.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "I don't have an authenticator app",
+    html: html
+  }) }}
+
+  <p>2. Use your authenticator app to scan the QR code or type the secret key into your authenticator app. Some authenticator apps call the secret key a 'code'.</p>
+
+  <img src="/public/images/qr-code.png" class="govuk-!-margin-bottom-3" />
+
+  <p>Secret key:<br ><strong>ABCDABCDABCD3UJKUJKUJK4R4R4R</strong></p>
+
+  <p>3. The authenticator app will show a security code.</p>
+
+  <p>4. Enter the security code.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Security code"
+    },
+    hint: {
+      text: "This is the 6-digit number shown in your authenticator app"
+    },
+    classes: 'govuk-input--width-10',
+    decorate: 'govuk-account.authenticator-code'
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Choose how to get security codes' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--l",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    hint: {
+      html: "<p>To finish creating your account, you need to choose a way to prove it's you when you sign in.</p>"
+    },
+    items: [{
+      text: "Text message",
+      value: "text"
+    }, {
+      text: "Authenticator app for smartphone, tablet or computer",
+      value: "authenticator"
+    }],
+    decorate: "govuk-account.security-codes"
+  }) }}
+
+  {% set html %}
+    <p>An authenticator app creates a security code that helps confirm it's you when you sign in.</p>
+    <p>You can use an authenticator app on your smartphone, tablet or desktop computer. Download an authenticator app for your smartphone or tablet from your app store or search online for an authenticator app for your computer.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: 'What is an authenticator app?',
+    html: html
+  }) }}
+
+{% endblock %}
