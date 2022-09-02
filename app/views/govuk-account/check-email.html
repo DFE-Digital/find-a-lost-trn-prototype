@@ -1,0 +1,32 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Check your email' %}
+
+{% block form %}
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  <div class="govuk-inset-text">
+    <p>We have sent an email to: <br /><strong>{{ d('govuk-account.email-address') }}</strong></p>
+  </div>
+
+  <p>The email contains a 6 digit security code.</p>
+
+  <p>Your email might take a few minutes to arrive. If you do not get an email, check your spam folder.</p>
+
+  <p>The code will expire after 15 minutes.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter the 6 digit security code"
+    },
+    decorate: 'govuk-account.email-code'
+  }) }}
+
+  {% set html %}
+    <p>We can <a href="#">send the code again</a> or you can <a href="#">use a different email address</a>.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: 'Problems with the code?',
+    html: html
+  }) }}
+{% endblock %}

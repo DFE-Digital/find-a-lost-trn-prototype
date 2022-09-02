@@ -1,0 +1,21 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Enter your email address" %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--l",
+      isPageHeading: true
+    },
+    decorate: 'govuk-account.email-address',
+    validate: {
+      presence: {
+        message: "Enter your email address"
+      },
+      email: {
+        message: "Enter an email address in the correct format, like name@example.com"
+      }
+    }
+  }) }}
+{% endblock %}

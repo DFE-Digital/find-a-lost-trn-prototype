@@ -1,0 +1,30 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Check your phone' %}
+
+{% block form %}
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  <div class="govuk-inset-text">
+    <p>We have sent a code to: <br /><strong>{{ d('govuk-account.phone-number') }}</strong></p>
+  </div>
+
+  <p>It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter the 6 digit security code"
+    },
+    classes: 'govuk-input--width-10',
+    decorate: 'govuk-account.email-code'
+  }) }}
+
+  {% set html %}
+    <p>We can <a href="#">send the code again</a> or you can <a href="#">use a different phone number</a>.</p>
+    <p><a href="#">Get a code another way</a>.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: 'Problems with the code?',
+    html: html
+  }) }}
+{% endblock %}

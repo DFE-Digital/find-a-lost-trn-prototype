@@ -13,9 +13,11 @@
       <form method="post" novalidate {% if data.features.validation.on %}data-validate{% endif %}>
         {% block form %}{% endblock %}
 
-        {{ govukButton({
-          html: buttonText if buttonText else 'Continue'
-        }) }}
+        {% if not hideButton %}
+          {{ govukButton({
+            html: buttonText if buttonText else 'Continue'
+          }) }}
+        {% endif %}
       </form>
     </div>
   </div>
