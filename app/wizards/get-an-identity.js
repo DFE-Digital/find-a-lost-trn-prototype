@@ -1,8 +1,8 @@
 import { wizard } from 'govuk-prototype-rig'
 import { userMatchesDQTRecord } from '../utils/dqt.js'
 
-function emailhasIdentity (data) {
-  return data.hasIdentity
+function emailHasIdentity (data) {
+  return data.hasIdentity || data['email-address'] === 'existing.user@example.com'
 }
 
 export default (req) => {
@@ -14,7 +14,7 @@ export default (req) => {
   const journey = {
     '/get-an-identity/email': {},
     '/get-an-identity/email-confirmation': {
-      '/get-an-identity/ask-questions': () => !emailhasIdentity(data)
+      '/get-an-identity/ask-questions': () => !emailHasIdentity(data)
     },
     '/get-an-identity/signed-in-as': {
       '/get-an-identity/return-to-service': true
