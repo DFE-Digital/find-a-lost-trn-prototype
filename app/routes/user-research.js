@@ -65,6 +65,16 @@ export const userResearch = router => {
     res.redirect('/get-an-identity/email')
   })
 
+  // Teacher self-serve
+  router.get('/user-research/scenario-3/', (req, res) => {
+    const data = req.session.data
+    data.identityServiceName = 'Teacher self-service'
+    data.returnToService = 'https://teacher-self-serve-prototype.herokuapp.com/v3/dashboard/index'
+    data.scenario = '3'
+    data.hasIdentity = false
+    res.redirect('/get-an-identity/email')
+  })
+
   const returnToService = () => {
     const isProduction = process.env.NODE_ENV === 'production'
     const domain = isProduction
