@@ -1,0 +1,16 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Thank you, we’ve finished checking our records" %}
+{% block pageNavigation %}{% endblock %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {% if data.onwardContinue %}
+    <p>You can continue {{ data.onwardContinue }}.</p>
+  {% else %}
+    <p>You can continue to:</p>
+    <div class="govuk-inset-text">
+      {{ data.identityServiceName }}
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "layouts/wizard-interruption.html" %}
 {% set matched = not d('identity.try-again') === 'no' %}
-{% set title = "Continue with your NPQ registration" %}
+{% set title = ("Continue " + data.onwardContinue) if data.onwardContinue else "You can continue" %}
 
 {% block form %}
   <h1 class="govuk-panel__title">{{ title }}</h1>

@@ -49,6 +49,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
     data.identityServiceName = 'Register for a National Professional Qualification'
+    data.onwardContinue = 'with your NPQ registration'
     data.returnToService = returnToService()
     data.scenario = '1'
     data.hasIdentity = false
@@ -59,6 +60,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-2/', (req, res) => {
     const data = req.session.data
     data.identityServiceName = 'Register for a National Professional Qualification'
+    data.onwardContinue = 'with your NPQ registration'
     data.returnToService = returnToService()
     data.scenario = '2'
     data.hasIdentity = true
@@ -69,6 +71,7 @@ export const userResearch = router => {
   router.get('/user-research/scenario-3/', (req, res) => {
     const data = req.session.data
     data.identityServiceName = 'Teacher self-service'
+    data.onwardContinue = 'to teacher self-service'
     data.returnToService = 'https://teacher-self-serve-prototype.herokuapp.com/v3/dashboard/index'
     data.scenario = '3'
     data.hasIdentity = false
