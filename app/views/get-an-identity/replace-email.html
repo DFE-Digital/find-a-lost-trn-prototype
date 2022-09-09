@@ -1,0 +1,25 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Which email address do you want to use?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    items: [{
+      text: d('email') or 'jane.doe@example.com'
+    }, {
+      text: 'jane.doe@st-marys.sch.uk'
+    }],
+    decorate: "identity.do-you-know-your-trn",
+    validate: {
+      presence: {
+        message: "Tell us if you know your TRN"
+      }
+    }
+  }) }}
+{% endblock %}

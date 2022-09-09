@@ -1,0 +1,53 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Your email address is different to the one on record' %}
+{% set hideButton = true %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>It might be because you’ve used this service before, and you are:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>using a different personal or work email address</li>
+    <li>using a new work email address</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">Confirm your email address to continue</h2>
+
+  <p>We’ve sent a confirmation code to:</p>
+  <div class="govuk-inset-text">
+    j***@***.sch.uk
+  </div>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your code",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-quarter',
+    decorate: 'identity.email-code'
+  }) }}
+
+  {{ govukButton({
+    html: buttonText if buttonText else 'Continue'
+  }) }}
+
+  <h2 class="govuk-heading-m">Help if you cannot confirm this email address</h2>
+
+  <ul class="govuk-list">
+    <li><a href="#">I do not recognise this email address</a></li>
+    <li><a href="#">I cannot access this email address</a></li>
+    <li><a href="#">I have not received an email</a></li>
+  </ul>
+
+  <p>
+
+  </p>
+
+  <p>
+
+  </p>
+
+  <p>
+
+  </p>
+{% endblock %}
