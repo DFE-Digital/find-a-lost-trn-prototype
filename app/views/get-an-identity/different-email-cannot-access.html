@@ -1,0 +1,10 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "A support agent will be in touch" %}
+{% set hideButton = true %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+<p>You’ve told us you cannot access the email address we have on record, a support agent will be in touch to help you get access to your account.</p>
+
+{% endblock %}
