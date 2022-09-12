@@ -70,8 +70,8 @@ export const userResearch = router => {
   // Teacher self-serve
   router.get('/user-research/scenario-3/', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = 'Teacher self-service'
-    data.onwardContinue = 'to teacher self-service'
+    data.identityServiceName = 'Access your teaching profile'
+    data.onwardContinue = 'to Access your teaching profile'
     data.returnToService = 'https://teacher-self-serve-prototype.herokuapp.com/v3/dashboard/index'
     data.scenario = '3'
     data.hasIdentity = false
