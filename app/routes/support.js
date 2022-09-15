@@ -1,4 +1,5 @@
 import supportNameChangeWizard from '../wizards/support-name-change-wizard.js'
+import supportEmailChangeWizard from '../wizards/support-email-change-wizard.js'
 import supportDQTLinkWizard from '../wizards/support-dqt-link-wizard.js'
 
 export const supportRoutes = router => {
@@ -16,6 +17,11 @@ export const supportRoutes = router => {
 
   router.all(['/support/:user/name-change', '/support/:user/name-change/*'], (req, res, next) => {
     res.locals.paths = supportNameChangeWizard(req, res)
+    next()
+  })
+
+  router.all(['/support/:user/email-change', '/support/:user/email-change/*'], (req, res, next) => {
+    res.locals.paths = supportEmailChangeWizard(req, res)
     next()
   })
 
@@ -37,6 +43,9 @@ export const supportRoutes = router => {
       switch (req.query.success) {
         case 'name-change':
           res.locals.appSuccess = { heading: 'Name changed successfully' }
+          break
+        case 'email-change':
+          res.locals.appSuccess = { heading: 'Email changed successfully' }
           break
         case 'dqt-linked':
           res.locals.appSuccess = { heading: 'DQT record added' }

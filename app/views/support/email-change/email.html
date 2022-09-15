@@ -1,0 +1,14 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Change email address" %}
+{% set buttonText = "Save" %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    },
+    decorate: dataPath + '.email'
+  }) }}
+{% endblock %}
