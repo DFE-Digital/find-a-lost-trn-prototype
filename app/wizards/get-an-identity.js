@@ -10,6 +10,7 @@ export default (req) => {
   const trnRequired = data.features.trnRequired.on
   const hasTrn = (data.identity && data.identity['do-you-have-a-trn'] === 'Yes') || trnRequired
   const noMatchJourney = data.features.noMatchJourney.on
+  const replacingEmail = data.features.replacingEmail.on
 
   const journey = {
     '/get-an-identity/email': {},
@@ -54,6 +55,12 @@ export default (req) => {
         '/get-an-identity/no-match': {
           '/get-an-identity/check-answers': { data: 'identity.try-again', value: 'yes' }
         }
+      }
+      : {},
+    ...(replacingEmail)
+      ? {
+        '/get-an-identity/different-email': {},
+        '/get-an-identity/replace-email': {}
       }
       : {},
     '/get-an-identity/finish': {},

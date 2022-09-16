@@ -24,6 +24,11 @@ export default {
       name: 'Get an identity: Show the No match page',
       description: 'Include the ‘no match’ page in the journey'
     },
+    replacingEmail: {
+      on: false,
+      name: 'Get an identity: Existing email doest not match',
+      description: 'Test the journey when a user matches an existing account but they used a different email address'
+    },
     apiUnavailable: {
       on: false,
       name: 'Find: API unavailable',
