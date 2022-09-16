@@ -10,7 +10,7 @@ export default (req) => {
   const trnRequired = data.features.trnRequired.on
   const hasTrn = (data.identity && data.identity['do-you-have-a-trn'] === 'Yes') || trnRequired
   const noMatchJourney = data.features.noMatchJourney.on
-  const replacingEmail = true
+  const replacingEmail = data.features.replacingEmail.on
 
   const journey = {
     '/get-an-identity/email': {},
