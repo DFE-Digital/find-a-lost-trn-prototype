@@ -32,6 +32,7 @@ export default (req) => {
       }
       : {},
     '/get-an-identity/official-name': {},
+    '/get-an-identity/preferred-name': {},
     '/get-an-identity/dob': {
       '/get-an-identity/check-answers': () => userMatchesDQTRecord(data)
     },
