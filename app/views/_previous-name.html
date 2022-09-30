@@ -1,8 +1,8 @@
 {% set previousNameHtml %}
   <h2 class="govuk-heading-m govuk-!-margin-top-4">What was your previous name?</h2>
-  <p>You don’t have to tell us your previous name, but it will help us identify you.</p>
+  <p>You do not have to tell us your previous name, but it will help us identify you.</p>
   <p>If we cannot match your current name against our records, we’ll try to match your previous name.</p>
-  <p>If you changed your name more than once, tell us your most recent previous name.</p>
+  <p>If you've changed your name more than once, tell us your most recent previous name.</p>
   {% if useFullName %}
     {{ govukInput({
       label: {
@@ -39,11 +39,11 @@
   items: [
     {
       value: "no",
-      text: "No, I haven’t changed my name"
+      text: "No"
     },
     {
       value: "changed-name",
-      text: "Yes, I changed my name",
+      text: "Yes",
       conditional: {
         html: previousNameHtml
       }
