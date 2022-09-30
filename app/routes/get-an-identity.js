@@ -18,6 +18,13 @@ export const getAnIdentityRoutes = router => {
     next()
   })
 
+  router.post(['/get-an-identity/preferred-name'], (req, res, next) => {
+    const data = req.session.data
+      req.session.data['preferred-name'] = `${req.body['preferred-first-name']} ${req.body['preferred-last-name']}`  
+    next()
+  })
+
+
   router.get('/get-an-identity/email', (req, res) => {
     res.render('email')
   })

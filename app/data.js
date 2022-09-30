@@ -8,6 +8,10 @@
  */
 export default {
   // Set feature flags using the `features` key
+
+  'first-name': 'Jane',
+  'last-name': 'Doe',
+  'date-of-birth': { day: 27, month: 3, year: 1987 },
   features: {
     validation: {
       on: false,
@@ -118,6 +122,8 @@ export default {
       }
     }
   }
+
+  
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',
   // 'full-name': 'Jane Smith',

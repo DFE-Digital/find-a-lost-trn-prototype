@@ -17,7 +17,7 @@
       href: basePath + "/trn-known" if change
     } if getAnIdentityJourney and data.identity['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
       key: "Name",
-      data: "full-name",
+      value: data['full-name'] | title,
       href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change,
       condition: "full-name"
     }, {
@@ -25,6 +25,10 @@
       data: "previous-name",
       href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change
     } if data['previous-name'] and not (data['previous-name'] === " "), {
+      key: "Preferred name",
+      value: data['preferred-name'] | title,
+      href: basePath + "/preferred-name " if change
+    } if data['preferred-name'] and not (data['preferred-name'] === " "), {
       key: "Date of birth",
       value: data['date-of-birth'] | isoDateFromDateInput| govukDate,
       href: basePath + "/dob" if change
