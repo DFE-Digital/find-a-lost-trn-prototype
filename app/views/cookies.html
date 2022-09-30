@@ -3,46 +3,65 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-xl">Name goes here</h1>
+      <h1 class="govuk-heading-xl">Cookies</h1>
+
+      <p>Cookies are small files saved on your phone, tablet or computer when you visit a website.</p>
+
+      <p>We use cookies to store information about how you use Get an identity to access Teacher Services, such as the pages you visit.</p>
+
+      <h2 class="govuk-heading-m">Essential cookies</h2>
+
+      <p>Essential cookies keep your information secure while you use the service. We do not need to ask permission to use them.</p>
+
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       {{ govukTable({
-        caption: "Dates and amounts",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: true,
+        firstCellIsHeader: false,
         head: [
           {
-            text: "Date"
+            text: "Name"
           },
           {
-            text: "Amount"
+            text: "Purpose"
+          },
+          {
+            text: "Expires"
           }
         ],
         rows: [
           [
             {
-              text: "First 6 weeks"
+              text: "tis-auth"
             },
             {
-              text: "£109.80 per week"
+              text: "Keeps you signed in"
+            },
+            {
+              text: "When the session ends"
             }
           ],
           [
             {
-              text: "Next 33 weeks"
+              text: "tis-antiforgery"
             },
             {
-              text: "£109.80 per week"
+              text: "Prevents forgery attacks"
+            },
+            {
+              text: "When the session ends"
             }
           ],
           [
             {
-              text: "Total estimated pay"
+              text: "tis-session"
             },
             {
-              text: "£4,282.20"
+              text: "Stores authentication information"
+            },
+            {
+              text: "When the session ends"
             }
           ]
         ]
@@ -50,7 +69,7 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
- 
+
     </div>
   </div>
 {% endblock %}
