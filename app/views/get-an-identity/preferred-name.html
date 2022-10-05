@@ -1,7 +1,7 @@
 {% extends "layouts/wizard.html" %}
 {% set useFullName = data.features.fullName.on %}
 {% set checkingAgainstTRNRecord = findTRNJourney or data.features.trnRequired.on or data.identity['do-you-have-a-trn'] === 'Yes' %}
-{% set title = "Is Jane Doe your preferred name?" %}
+{% set title %} Is {{ data['first-name'] | title}} {{ data['last-name'] | title}} your preferred name? {% endset%}
 
 {% block form %}
   {% set name %}
@@ -28,7 +28,7 @@
       legend: {
         classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
         isPageHeading: true,
-        text: title
+        html: title
       }
     },
     hint: {
@@ -36,19 +36,21 @@
     },
     items: [
       {
-        text: "Yes"
+        text: "Yes",
+        value: "Yes"
       },
       {
-        text: "No, I prefer to be known by another name",
+        text: "No, I prefer to be known by another name ",
+        value: "no",
         conditional: {
           html: name
         }
       }
     ],
-    decorate: 'report.teacher-details.know-nino',
+    decorate: 'have-preferred-name',
     validate: {
       presence: {
-        message: "Tell us if you know the teacher’s National Insurance number"
+        message: "Tell us if you have a preferred name"
       }
     }
   }) }}
