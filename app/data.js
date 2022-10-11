@@ -12,6 +12,8 @@ export default {
   'first-name': 'Jane',
   'last-name': 'Doe',
   'date-of-birth': { day: 27, month: 3, year: 1987 },
+  'full-name': 'Johanna Smith',
+  'preferred-name': 'Jo Smith',
   features: {
     validation: {
       on: false,

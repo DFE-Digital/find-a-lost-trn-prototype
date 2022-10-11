@@ -1,9 +1,21 @@
 {% extends "layouts/wizard-interruption.html" %}
-{% set title = "We’ll ask you some questions to check against our records" %}
+{% if getAnIdentityJourney %}
+  {% set title = "Your details" %}
+
+  {% else %}
+
+  {% set title = "We’ll ask you some questions to check against our records" %}
+{% endif %}
+
+
 
 {% block beforeForm %}
 <h1 class="govuk-panel__title">{{ title }}</h1>
-
+<p>
+  {% if getAnIdentityJourney %}
+    Before you register for an NPQ, we’ll ask you for a few details to find you in our records.
+  {% endif %}
+</p>
 <p>We’ll ask for your:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>name</li>

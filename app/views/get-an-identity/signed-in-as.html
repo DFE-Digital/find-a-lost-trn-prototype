@@ -1,8 +1,16 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "You’re signed in" %}
+
+{% if getAnIdentityJourney %}
+    {% set title = "Your details" %}
+    {% else %}
+    {% set title = "You’re signed in" %}
+{% endif %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
+<p>We found the following details in our records. </p>
+ 
+  <p><a target="_blank" href='https://forms.gle/RQbuhAHzhKu12ZVC7'>Let us know if your details are incorrect.</a></p>
 
 {{ govukSummaryList({
   rows: [
@@ -11,7 +19,15 @@
         text: "Name"
       },
       value: {
-        text: "Jane Doe"
+        text:  data['full-name'] | title
+      }
+    },
+    {
+      key: {
+        text: "Preferred name"
+      },
+      value: {
+        text:  data['preferred-name'] | title
       }
     },
     {
@@ -19,7 +35,7 @@
         text: "TRN"
       },
       value: {
-        text: "1234567"
+        text: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else '324235233'
       }
     },
     {
@@ -27,7 +43,15 @@
         text: "Date of birth"
       },
       value: {
-        text: "1 January 1980"
+        text: data['date-of-birth'] | isoDateFromDateInput| govukDate
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        html: data['email-address'] 
       }
     }
   ]
