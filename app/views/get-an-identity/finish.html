@@ -22,9 +22,9 @@
   <p class="govuk-!-margin-bottom-6"></p>
       {% if not matched and data.features.noMatchJourney.on %}
 
-      If you need to come back to this service later, use your email address <b>{{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }}</b> when prompted and you will not have to answer these questions again. 
+      If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again. 
       {% else %}
-        We’ll only need your email address: <b>{{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }}</b> to find your details in the future. 
+        We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
       {% endif %}
   </p>
   
