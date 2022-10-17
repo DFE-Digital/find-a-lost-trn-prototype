@@ -1,7 +1,11 @@
 {% extends "layouts/wizard.html" %}
 
 {% if getAnIdentityJourney %}
-    {% set title = "Your details" %}
+    {% set title = "Confirm your details before proceding" %}
+    {% set buttonText = "Confirm and continue" %}
+    {% set shoeSecondaryButton = true %}
+    
+
     {% else %}
     {% set title = "You’re signed in" %}
 {% endif %}
@@ -10,7 +14,6 @@
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 <p>We found the following details in our records. </p>
  
-  <p><a target="_blank" href='https://forms.gle/RQbuhAHzhKu12ZVC7'>Let us know if your details are incorrect.</a></p>
 
 {{ govukSummaryList({
   rows: [
@@ -24,7 +27,8 @@
     },
     {
       key: {
-        text: "Preferred name"
+        text: "Preferred name ",
+        hint: 'test'
       },
       value: {
         text:  data['preferred-name'] | title
@@ -36,14 +40,6 @@
       },
       value: {
         text: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else '324235233'
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: data['date-of-birth'] | isoDateFromDateInput| govukDate
       }
     },
     {
