@@ -12,15 +12,27 @@
 
       <form method="post" novalidate {% if data.features.validation.on %}data-validate{% endif %}>
         {% block form %}{% endblock %}
-
+        <div class="govuk-button-group">
+  
         {% if not hideButton %}
           {{ govukButton({
             html: buttonText if buttonText else 'Continue'
           }) }}
         {% endif %}
-        {% if shoeSecondaryButton %}
-            test
-        {% endif %}
+      {% if showAlternativePrimary %}
+        {{ govukButton({
+          html: secondaryButtonText if secondaryButtonText else 'Continue',
+          href: primaryButtonHtml if primaryButtonHtml else '#'
+        }) }}
+      {% endif %}
+        {% if showSecondaryButton %} 
+            {{ govukButton({
+              html: secondaryButtonText if secondaryButtonText else 'Secondary button',
+              classes: "govuk-button--secondary",
+              href: secondaryButtonHtml if secondaryButtonHtml else '#'
+            }) }}
+      {% endif %}
+    </div>
 
       </form>
     </div>

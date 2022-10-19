@@ -1,0 +1,71 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Update your details" %}
+{% set showSecondaryButton = true %}
+{% set hideButton = true %}
+{% set secondaryButtonHtml = 'signed-in-as' %}
+{% set secondaryButtonText = 'Back to details confirmation' %}
+
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <h2 class="govuk-heading-m">Update your name</h2>
+   
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          html:  data['full-name'] | title + '<p class="govuk-hint govuk-!-font-size-14"">used for certificates</p>'
+        }
+      }
+    ]
+  }) }}
+<p>To update the name that will appear on your certificates, <a href='https://www.gov.uk/guidance/teacher-self-service-portal' target="_blank">access the Teacher self-service portal</a>.</p>
+<p>You can also update your date of birth and National Insurance number there.</p>
+
+<h2 class="govuk-heading-m">Update your preferred name or email</h2>
+<input type="hidden" name="preferred-last-name" id="preferred-last-name" value="smith">
+
+{{ govukSummaryList({
+  rows: [
+
+    {
+      key: {
+        text: "Preferred name "
+      },
+      value: {
+        html:  data['preferred-name'] | title+'<p class="govuk-hint govuk-!-font-size-14"">used for email correspondence</p>'
+      },
+      actions: {
+        items: [
+          {
+            href: "edit-preferred-name",
+            text: "Update",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        html: data['email-address'] 
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Update",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% endblock %}

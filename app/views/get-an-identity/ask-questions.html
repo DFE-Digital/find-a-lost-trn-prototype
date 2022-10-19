@@ -22,7 +22,6 @@
   <li>date of birth</li>
   {% if not data.features.trnRequired.on %}<li>teacher reference number (TRN), if you have one</li>{% endif %}
   <li>National Insurance number, if you have one</li>
-  {% if data.features.trnRequired.on %}<li>teacher reference number (TRN)</li>{% endif %}
 </ul>
 
 <p class="govuk-!-margin-bottom-6">
@@ -32,5 +31,12 @@
     We may also ask some follow-up questions.
   {% endif %}
 </p>
+
+{% endblock %}
+{% block form %}
+<input type="hidden" name="last-name" id="last-name" value="">
+<input type="hidden" name="first-name" id="first-name" value="">
+<input type="hidden" name="preferred-first-name" id="preferred-first-name" value="">
+<input type="hidden" name="preferred-last-name" id="preferred-last-name" value="">
 
 {% endblock %}

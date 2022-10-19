@@ -1,12 +1,12 @@
 {% extends "layouts/wizard.html" %}
 
 {% if getAnIdentityJourney %}
-    {% set title = "Confirm your details before proceding" %}
+    {% set title = "Confirm your details " %}
     {% set buttonText = "Confirm and continue" %}
-    {% set shoeSecondaryButton = true %}
-    
-
-    {% else %}
+    {% set secondaryButtonText = "Update details" %}
+    {% set secondaryButtonHtml = "edit-details" %}
+    {% set showSecondaryButton = true %}
+{% else %}
     {% set title = "You’re signed in" %}
 {% endif %}
 
@@ -22,16 +22,15 @@
         text: "Name"
       },
       value: {
-        text:  data['full-name'] | title
+        html:  data['full-name'] | title +'<p class="govuk-hint govuk-!-font-size-14"">used for certificates</p>' 
       }
     },
     {
       key: {
-        text: "Preferred name ",
-        hint: 'test'
+        text: "Preferred name "
       },
       value: {
-        text:  data['preferred-name'] | title
+        html:  data['preferred-name'] | title+'<p class="govuk-hint govuk-!-font-size-14"">used for email correspondence</p>'
       }
     },
     {

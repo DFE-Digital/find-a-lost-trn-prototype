@@ -9,11 +9,13 @@
 export default {
   // Set feature flags using the `features` key
 
-  'first-name': 'Jane',
-  'last-name': 'Doe',
+  'first-name': 'Johanna',
+  'last-name': 'Smith',
   'date-of-birth': { day: 27, month: 3, year: 1987 },
   'full-name': 'Johanna Smith',
   'preferred-name': 'Jo Smith',
+  'preferred-first-name': 'Jo',
+  'preferred-last-name': 'Smith',
   features: {
     validation: {
       on: false,

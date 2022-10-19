@@ -18,8 +18,9 @@ export default (req) => {
       '/get-an-identity/ask-questions': () => !emailHasIdentity(data)
     },
     '/get-an-identity/signed-in-as': {
-      '/get-an-identity/return-to-service': true
-    },
+      '/get-an-identity/edit-datails': {},
+    },      
+    '/get-an-identity/edit-details': {},
     '/get-an-identity/ask-questions': {},
     ...!trnRequired
       ? {

@@ -1,0 +1,26 @@
+{% extends "layouts/wizard.html" %}
+{% set title %} Update your preferred name{% endset%}
+{% set hideButton = true %}
+{% set showAlternativePrimary = true %}
+{% set primaryButtonHtml = 'signed-in-as' %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+  <p>We can use a different name in correspondence, and tell people what you prefer to be called.</p>
+  {{ govukInput({
+    label: {
+      text: "Preferred first name",
+      classes: "govuk-label--s"
+    },
+    decorate: 'preferred-first-name'
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Preferred last name",
+      classes: "govuk-label--s"
+    },
+    decorate: 'preferred-last-name'
+  }) }}
+
+{% endblock %}
