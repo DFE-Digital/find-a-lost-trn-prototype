@@ -1,14 +1,29 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Change your email address" %}
 
+{% set title = "Change your email address" %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Cancel changes',
+    href: 'edit-details',
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset %}
 {% block form %}
+
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+<p>
+You’ll receive a code by email to confirm your email address.
+</p>
+
   {{ govukInput({
-    label: {
-      text: title,
-      classes: "govuk-label--xl",
-      isPageHeading: true
-    },
+
     decorate: 'email-address',
+    label: {
+      text: "Enter your new email address",
+      classes: "govuk-label--s"
+    },
     validate: {
       presence: {
         message: "Enter your email address"

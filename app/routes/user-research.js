@@ -50,7 +50,7 @@ export const userResearch = router => {
     const data = req.session.data
     data.identityServiceName = 'Register for a National Professional Qualification'
     data.onwardContinue = 'to register for an NPQ'
-    data.returnToService = returnToService()
+    data.returnToService = 'returnToService()'
     data.scenario = '1'
     data.hasIdentity = false
     res.redirect('/get-an-identity/email')

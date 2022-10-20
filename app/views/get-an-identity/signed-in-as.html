@@ -34,7 +34,7 @@
         text: "Preferred name"
       },
       value: {
-        html:  data['preferred-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for email correspondence</p>'
+        html:  data['preferred-first-name'] | title + ' ' + data['preferred-last-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for email correspondence</p>'
       }
     },
     {

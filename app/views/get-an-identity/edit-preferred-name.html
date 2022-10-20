@@ -1,5 +1,13 @@
 {% extends "layouts/wizard.html" %}
 {% set title %}Update your preferred name{% endset %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Cancel changes',
+    href: 'edit-details',
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
