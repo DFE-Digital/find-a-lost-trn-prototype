@@ -1,4 +1,5 @@
 import wizard from '../wizards/get-an-identity.js'
+import updateWizard from '../wizards/get-an-identity-update-details.js'
 
 export const getAnIdentityRoutes = router => {
   router.all('/get-an-identity/:view', (req, res, next) => {
@@ -6,6 +7,14 @@ export const getAnIdentityRoutes = router => {
     res.locals.getAnIdentityJourney = true
     res.locals.serviceUrl = '/get-an-identity/email'
     res.locals.serviceName = req.session.data.identityServiceName || 'Get an identity to access Teacher Services'
+    next()
+  })
+
+  router.all([
+    '/get-an-identity/edit-details',
+    '/get-an-identity/edit-preferred-name'
+  ], (req, res, next) => {
+    res.locals.paths = updateWizard(req)
     next()
   })
 
@@ -65,6 +74,21 @@ export const getAnIdentityRoutes = router => {
     } else {
       next()
     }
+  })
+
+  router.all('/get-an-identity/signed-in-as', (req, res, next) => {
+    if (req.query.success) {
+      switch (req.query.success) {
+        case 'preferred-name':
+          res.locals.appSuccess = { heading: 'Preferred name updated successfully' }
+          break
+        default:
+          res.locals.appSuccess = { heading: 'Changes saved' }
+          break
+      }
+    }
+
+    next()
   })
 
   router.post('/get-an-identity/:view', (req, res) => {

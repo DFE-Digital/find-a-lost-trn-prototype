@@ -1,19 +1,23 @@
 {% extends "layouts/wizard.html" %}
 
 {% if getAnIdentityJourney %}
-    {% set title = "Confirm your details " %}
+    {% set title = "Confirm your details" %}
     {% set buttonText = "Confirm and continue" %}
-    {% set secondaryButtonText = "Update details" %}
-    {% set secondaryButtonHtml = "edit-details" %}
-    {% set showSecondaryButton = true %}
+    {% set secondaryButton %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {{ govukButton({
+        html: 'Update details',
+        href: '/get-an-identity/edit-details',
+        classes: "govuk-button--secondary"
+      }) }}
+    {% endset %}
 {% else %}
     {% set title = "You’re signed in" %}
 {% endif %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
-<p>We found the following details in our records. </p>
- 
+<p>We found the following details in our records.</p>
 
 {{ govukSummaryList({
   rows: [
@@ -22,15 +26,15 @@
         text: "Name"
       },
       value: {
-        html:  data['full-name'] | title +'<p class="govuk-hint govuk-!-font-size-14"">used for certificates</p>' 
+        html:  data['full-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for certificates</p>'
       }
     },
     {
       key: {
-        text: "Preferred name "
+        text: "Preferred name"
       },
       value: {
-        html:  data['preferred-name'] | title+'<p class="govuk-hint govuk-!-font-size-14"">used for email correspondence</p>'
+        html:  data['preferred-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for email correspondence</p>'
       }
     },
     {
@@ -46,7 +50,7 @@
         text: "Email address"
       },
       value: {
-        html: data['email-address'] 
+        html: data['email-address']
       }
     }
   ]
