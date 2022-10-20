@@ -1,16 +1,27 @@
 {% extends "layouts/wizard-interruption.html" %}
-{% set title = "We’ll ask you some questions to check against our records" %}
+{% if getAnIdentityJourney %}
+  {% set title = "Your details" %}
+
+  {% else %}
+
+  {% set title = "We’ll ask you some questions to check against our records" %}
+{% endif %}
+
+
 
 {% block beforeForm %}
 <h1 class="govuk-panel__title">{{ title }}</h1>
-
+<p>
+  {% if getAnIdentityJourney %}
+    Before you register for an NPQ, we’ll ask you for a few details to find you in our records.
+  {% endif %}
+</p>
 <p>We’ll ask for your:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>name</li>
   <li>date of birth</li>
   {% if not data.features.trnRequired.on %}<li>teacher reference number (TRN), if you have one</li>{% endif %}
   <li>National Insurance number, if you have one</li>
-  {% if data.features.trnRequired.on %}<li>teacher reference number (TRN)</li>{% endif %}
 </ul>
 
 <p class="govuk-!-margin-bottom-6">
@@ -20,5 +31,12 @@
     We may also ask some follow-up questions.
   {% endif %}
 </p>
+
+{% endblock %}
+{% block form %}
+<input type="hidden" name="last-name" id="last-name" value="">
+<input type="hidden" name="first-name" id="first-name" value="">
+<input type="hidden" name="preferred-first-name" id="preferred-first-name" value="">
+<input type="hidden" name="preferred-last-name" id="preferred-last-name" value="">
 
 {% endblock %}

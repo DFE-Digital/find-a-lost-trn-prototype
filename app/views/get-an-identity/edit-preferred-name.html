@@ -1,6 +1,5 @@
 {% extends "layouts/wizard.html" %}
-
-{% set title = "Change your email address" %}
+{% set title %}Update your preferred name{% endset %}
 {% set secondaryButton %}
   {% from "govuk/components/button/macro.njk" import govukButton %}
   {{ govukButton({
@@ -9,28 +8,24 @@
     classes: "govuk-button--secondary"
   }) }}
 {% endset %}
+
 {% block form %}
-
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
-
-<p>
-You’ll receive a code by email to confirm your email address.
-</p>
-
+  <p>We can use a different name in correspondence, and tell people what you prefer to be called.</p>
   {{ govukInput({
-
-    decorate: 'email-address',
     label: {
-      text: "Enter your new email address",
+      text: "Preferred first name",
       classes: "govuk-label--s"
     },
-    validate: {
-      presence: {
-        message: "Enter your email address"
-      },
-      email: {
-        message: "Enter an email address in the correct format, like name@example.com"
-      }
-    }
+    decorate: 'preferred-first-name'
   }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Preferred last name",
+      classes: "govuk-label--s"
+    },
+    decorate: 'preferred-last-name'
+  }) }}
+
 {% endblock %}

@@ -11,7 +11,7 @@
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header">Name</th>
-        <th class="govuk-table__header">Name verified?</th>
+        <th class="govuk-table__header">Email</th>
         <th class="govuk-table__header">DQT record</th>
         <th class="govuk-table__header">TRN</th>
       </tr>
@@ -23,11 +23,7 @@
             <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
           </td>
           <td class="govuk-table__cell">
-            {% if user.name.verified %}
-              <span class="govuk-tag govuk-tag--green">Verified</span>
-            {% else %}
-              <span class="govuk-tag govuk-tag--grey">Unverified</span>
-            {% endif %}
+            {{ user.email }}
           </td>
           <td class="govuk-table__cell">
             {{ 'Yes' if user.dqt else ('No (<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>)') | safe }}

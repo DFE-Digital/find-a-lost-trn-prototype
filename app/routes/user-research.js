@@ -49,8 +49,8 @@ export const userResearch = router => {
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
     data.identityServiceName = 'Register for a National Professional Qualification'
-    data.onwardContinue = 'with your NPQ registration'
-    data.returnToService = returnToService()
+    data.onwardContinue = 'to register for an NPQ'
+    data.returnToService = 'returnToService()'
     data.scenario = '1'
     data.hasIdentity = false
     res.redirect('/get-an-identity/email')

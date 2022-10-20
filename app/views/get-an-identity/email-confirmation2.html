@@ -1,0 +1,28 @@
+{% extends "layouts/wizard.html" %}
+{% set title = 'Confirm your email address' %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Cancel changes',
+    href: 'edit-details',
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset %}
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We’ve emailed a confirmation code to {{ data['email-address'] }}</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your code",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-quarter',
+    decorate: 'identity.email-code'
+  }) }}
+
+  <p>
+    <a href="#">I have not received an email</a>
+  </p>
+{% endblock %}

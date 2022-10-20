@@ -1,4 +1,6 @@
 import wizard from '../wizards/get-an-identity.js'
+import updateWizard from '../wizards/get-an-identity-update-details.js'
+import updateEmailWizard from '../wizards/get-an-identity-update-email.js'
 
 export const getAnIdentityRoutes = router => {
   router.all('/get-an-identity/:view', (req, res, next) => {
@@ -8,6 +10,24 @@ export const getAnIdentityRoutes = router => {
     res.locals.serviceName = req.session.data.identityServiceName || 'Get an identity to access Teacher Services'
     next()
   })
+
+  router.all([
+    '/get-an-identity/edit-details',
+    '/get-an-identity/edit-preferred-name'
+  ], (req, res, next) => {
+    res.locals.paths = updateWizard(req)
+    next()
+  })
+
+  router.all([
+    '/get-an-identity/edit-details',
+    '/get-an-identity/change-email',
+    '/get-an-identity/email-confirmation2'
+  ], (req, res, next) => {
+    res.locals.paths = updateEmailWizard(req)
+    next()
+  })
+
 
   router.post(['/get-an-identity/name', '/get-an-identity/official-name'], (req, res, next) => {
     const data = req.session.data
@@ -19,11 +39,9 @@ export const getAnIdentityRoutes = router => {
   })
 
   router.post(['/get-an-identity/preferred-name'], (req, res, next) => {
-    const data = req.session.data
-      req.session.data['preferred-name'] = `${req.body['preferred-first-name']} ${req.body['preferred-last-name']}`  
+    req.session.data['preferred-name'] = `${req.body['preferred-first-name']} ${req.body['preferred-last-name']}`
     next()
   })
-
 
   router.get('/get-an-identity/email', (req, res) => {
     res.render('email')
@@ -67,6 +85,24 @@ export const getAnIdentityRoutes = router => {
     } else {
       next()
     }
+  })
+
+  router.all('/get-an-identity/signed-in-as', (req, res, next) => {
+    if (req.query.success) {
+      switch (req.query.success) {
+        case 'preferred-name':
+          res.locals.appSuccess = { heading: 'Preferred name updated' }
+          break
+          case 'email-update':
+            res.locals.appSuccess = { heading: 'Email address updated' }
+            break
+        default:
+          res.locals.appSuccess = { heading: 'Changes saved' }
+          break
+      }
+    }
+
+    next()
   })
 
   router.post('/get-an-identity/:view', (req, res) => {

@@ -6,14 +6,34 @@
   <h1 class="govuk-panel__title">{{ title }}</h1>
 
   {% if not matched and data.features.noMatchJourney.on %}
-    <h2 class="govuk-heading-m">You can continue without a match</h2>
-    <p>We will attempt to match your record again. If we cannot, someone might be in touch to ask for more information.</p>
+  {% if findTRNJourney %}
+  <h2 class="govuk-heading-m">You can continue without a match</h2>
+  <p>We will attempt to match your record again. If we cannot, someone might be in touch to ask for more information.</p>
+
   {% else %}
+  {% endif %}
+  <p>You can continue anyway and we’ll try to find your record. Someone may be in touch to ask for more information.</p>
+ 
+    {% else %}
     <p>Thank you, we’ve finished checking our records.</p>
   {% endif %}
 
-  <h2 class="govuk-heading-m">Next time</h2>
-  <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }}</b></p>
+  {% if getAnIdentityJourney %}
+  <p class="govuk-!-margin-bottom-6"></p>
+      {% if not matched and data.features.noMatchJourney.on %}
+
+      If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again. 
+      {% else %}
+        We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
+      {% endif %}
+  </p>
+  
+
+  {% else %}
+  <h2 class="govuk-heading-m">Next time</h2>  
+     <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }}</b></p>
+  {% endif %}
+
 
   <input type="hidden" name="account-data" value="{{ data | stringify }}">
 {% endblock %}

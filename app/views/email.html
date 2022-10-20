@@ -2,7 +2,37 @@
 {% set title = "Your email address" %}
 
 {% block form %}
-  {{ govukInput({
+
+{% if getAnIdentityJourney %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+<p>
+  We use your email address to find your details in our records. 
+</p>
+<p>
+If we do not recognise your email, we’ll ask you for a few details instead.
+</p>
+<p>
+You’ll receive a code by email to confirm your email address.
+</p>
+{{ govukInput({
+  label: {
+    text: "Enter your email address",
+    classes: "govuk-label--s"
+  },
+  decorate: 'email-address',
+  validate: {
+    presence: {
+      message: "Enter your email address"
+    },
+    email: {
+      message: "Enter an email address in the correct format, like name@example.com"
+    }
+  }
+}) }}
+
+
+{% else %}
+{{ govukInput({
     label: {
       text: title,
       classes: "govuk-label--xl",
@@ -10,7 +40,7 @@
     },
     hint: {
       text: 'If we can find your TRN, we’ll send it to the email address you give.'
-    } if findTRNJourney,
+    },
     decorate: 'email-address',
     validate: {
       presence: {
@@ -21,4 +51,6 @@
       }
     }
   }) }}
+  {% endif %}
+
 {% endblock %}
