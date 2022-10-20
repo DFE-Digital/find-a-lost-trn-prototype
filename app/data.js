@@ -127,7 +127,6 @@ export default {
     }
   }
 
-  
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',
   // 'full-name': 'Jane Smith',
