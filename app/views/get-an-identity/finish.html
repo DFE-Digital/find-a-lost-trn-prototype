@@ -12,7 +12,7 @@
 
   {% else %}
   {% endif %}
-  <p>You can continue anyway and we’ll try to find your record. Someone may be in touch to ask for more information.</p>
+  <p>Although we could not find your record, you can continue to register for an NPQ.  </p>
  
     {% else %}
     <p>Thank you, we’ve finished checking our records.</p>
@@ -22,7 +22,9 @@
   <p class="govuk-!-margin-bottom-6"></p>
       {% if not matched and data.features.noMatchJourney.on %}
 
-      If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again. 
+      <!-- If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again.  -->
+      You'll need to enter some of your details again.
+
       {% else %}
         We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
       {% endif %}
