@@ -1,0 +1,49 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "What is your TRN?" %}
+
+{% block form %}
+  {% set help %}
+  
+
+
+
+    {{ govukButton({
+      html: 'Continue without it',
+      classes: 'govuk-!-margin-bottom-0 govuk-button--secondary'
+    }) }}
+  {% endset %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+  <p>Your TRN is 7 digits long, for example 4567814.</p>
+
+  <p>It might include the letters RP and a slash, for example RP99/12345</p>
+  
+  <p>It’s previously been known as a QTS, GTC, DfE, DfES and DCSF number.</p>
+
+  <p class="govuk-!-margin-bottom-7">If you have a TRN but are not sure what it is, you can <a target="_blank" href='https://find-a-lost-trn.education.gov.uk/start'>find a lost TRN</a>.</p>
+  
+
+  
+  {{ govukInput({
+    label: {
+      text: "Enter your TRN",
+      classes: "govuk-label--s "
+    },
+    classes: 'govuk-input--width-10',
+    decorate: 'email-address',
+    validate: {
+      presence: {
+        message: "Enter your email address"
+      },
+      email: {
+        message: "Enter an email address in the correct format, like name@example.com"
+      }
+    }
+  }) }}
+
+  {{ govukDetails({
+    summaryText: "I don’t have a TRN",
+    html: help
+  }) }}
+{% endblock %}
