@@ -21,7 +21,9 @@ export const getAnIdentityRoutes = router => {
   })
 
   router.all([
-    '/get-an-identity/have-trn'
+    '/get-an-identity/have-trn',
+    '/get-an-identity/trn2'
+
       ], (req, res, next) => {
     res.locals.paths = updateSameWizard(req)
     next()
