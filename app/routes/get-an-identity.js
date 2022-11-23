@@ -1,7 +1,7 @@
 import wizard from '../wizards/get-an-identity.js'
 import updateWizard from '../wizards/get-an-identity-update-details.js'
 import updateEmailWizard from '../wizards/get-an-identity-update-email.js'
-import updateSameWizard from '../wizards/get-an-identity-sample.js'
+// import updateSameWizard from '../wizards/get-an-identity-sample.js'
 
 export const getAnIdentityRoutes = router => {
   router.all('/get-an-identity/:view', (req, res, next) => {
@@ -20,14 +20,14 @@ export const getAnIdentityRoutes = router => {
     next()
   })
 
-  router.all([
-    '/get-an-identity/have-trn',
-    '/get-an-identity/trn2'
+  // router.all([
+  //   '/get-an-identity/have-trn',
+  //   '/get-an-identity/trn2'
 
-      ], (req, res, next) => {
-    res.locals.paths = updateSameWizard(req)
-    next()
-  })
+  //     ], (req, res, next) => {
+  //   res.locals.paths = updateSameWizard(req)
+  //   next()
+  // })
 
   router.all([
     '/get-an-identity/edit-details',

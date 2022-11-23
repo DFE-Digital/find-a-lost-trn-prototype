@@ -1,0 +1,53 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you have a National Insurance (NI) number?" %}
+
+
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+{{ trnGuidance | govukMarkdown | safe }}
+<p>You can locate it on a National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.</p>
+<p class="govuk-!-margin-bottom-7">If you have a NI number but are not sure what it is, you can <a target="_blank" href='https://www.gov.uk/lost-national-insurance-number'> find a lost National Insurance number</a>.</p>
+
+
+{% set trn %}
+  {{ govukInput({
+    label: {
+      text: 'What is your NI number?',
+      classes: "govuk-label--s"
+    },
+    decorate: 'identity.trn',
+    validate: {
+      presence: {
+        message: "Enter your NI number"
+      }
+    }
+  }) }}
+{% endset %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      classes: "govuk-fieldset__legend--m",
+      text: 'Do you have a NI number?'
+    }
+  },
+  items: [{
+    text: "Yes",
+    value: "yes",
+    conditional: {
+      html: trn
+    }
+  }, {
+    text: "No",
+    value: "no"
+  }],
+  decorate: "identity.do-you-know-your-trn",
+  validate: {
+    presence: {
+      message: "Tell us if you know your TRN"
+    }
+  }
+}) }}
+{% endblock %}
+

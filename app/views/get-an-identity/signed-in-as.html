@@ -1,8 +1,8 @@
 {% extends "layouts/wizard.html" %}
 
 {% if getAnIdentityJourney %}
-    {% set title = "Confirm your details" %}
-    {% set buttonText = "Confirm and continue" %}
+    {% set title = "Your details" %}
+    {% set buttonText = "Continue" %}
     {% set secondaryButton %}
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {{ govukButton({
