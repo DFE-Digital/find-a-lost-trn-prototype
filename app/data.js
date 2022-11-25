@@ -22,11 +22,6 @@ export default {
       name: 'Use validation',
       description: 'Show errors during journey'
     },
-    trnRequired: {
-      on: true,
-      name: 'Get an identity: TRN required',
-      description: 'Journey assumes all users will have a TRN (MVP before we introduced flows for users without a TRN)'
-    },
     noMatchJourney: {
       on: false,
       name: 'Get an identity: Show the No match page',
