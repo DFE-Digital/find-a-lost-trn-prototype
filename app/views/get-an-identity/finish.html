@@ -18,7 +18,7 @@
       {% if not matched and data.features.noMatchJourney.on %}
 
       <!-- If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again.  -->
-      You'll need to enter some of your details again.
+      Next time use <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to amend your application or account details. 
 
       {% else %}
         We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
