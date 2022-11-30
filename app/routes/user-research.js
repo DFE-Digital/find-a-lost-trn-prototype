@@ -48,8 +48,8 @@ export const userResearch = router => {
   // First time account journey
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = 'Apply for QTS'
-    data.onwardContinue = 'to apply for QTS'
+    data.identityServiceName = 'Register for a National Professional Qualification'
+    data.onwardContinue = 'to register for an NPQ'
     data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
     data.scenario = '1'
     data.hasIdentity = false
