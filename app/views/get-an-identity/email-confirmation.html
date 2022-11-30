@@ -4,7 +4,7 @@
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>We’ve emailed a confirmation code to {{ data['email-address'] }}</p>
+  <p>We’ve emailed a confirmation code to <b>{{ data['email-address'] }}</b></p>
 
   {{ govukInput({
     label: {

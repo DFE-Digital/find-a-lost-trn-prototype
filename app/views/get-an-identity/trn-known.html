@@ -1,14 +1,17 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Do you know your teacher reference number (TRN)?" %}
+{% set title = "Do have a teacher reference number (TRN)?" %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-<p>Your TRN is 7 digits long, for example 4567814.</p>
 
-<p>It might include the letters RP and a slash, for example RP99/12345</p>
+<p>A TRN is 7 digits long, for example 4567814.</p>
 
-<p class="govuk-!-margin-bottom-7">It’s previously been known as a QTS, GTC, DfE, DfES and DCSF number.</p>
+<p>It might include the letters RP and a slash, for example RP99/12345.</p>
+
+<p>It’s previously been known as a QTS, GTC, DfE, DfES and DCSF number.</p>
+
+<!-- <p class="govuk-!-margin-bottom-7">If you have a TRN but are not sure what it is, you can <a target="_blank" href='https://find-a-lost-trn.education.gov.uk/start'>find a lost TRN</a>.</p> -->
 
 {% set trn %}
   {{ govukInput({
@@ -29,17 +32,17 @@
   fieldset: {
     legend: {
       classes: "govuk-fieldset__legend--m",
-      text: 'Do you know your TRN?'
+      text: 'Do you have a TRN?'
     }
   },
   items: [{
-    text: "Yes, I know my TRN",
+    text: "Yes",
     value: "yes",
     conditional: {
       html: trn
     }
   }, {
-    text: "No, I need to continue without my TRN",
+    text: "No",
     value: "no"
   }],
   decorate: "identity.do-you-know-your-trn",

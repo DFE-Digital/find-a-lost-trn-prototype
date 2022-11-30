@@ -1,6 +1,8 @@
 import wizard from '../wizards/get-an-identity.js'
 import updateWizard from '../wizards/get-an-identity-update-details.js'
 import updateEmailWizard from '../wizards/get-an-identity-update-email.js'
+import updateNameWizard from '../wizards/get-an-identity-update-name.js'
+// import updateSameWizard from '../wizards/get-an-identity-sample.js'
 
 export const getAnIdentityRoutes = router => {
   router.all('/get-an-identity/:view', (req, res, next) => {
@@ -21,13 +23,28 @@ export const getAnIdentityRoutes = router => {
 
   router.all([
     '/get-an-identity/edit-details',
+    '/get-an-identity/edit-name'
+  ], (req, res, next) => {
+    res.locals.paths = updateNameWizard(req)
+    next()
+  })
+  // router.all([
+  //   '/get-an-identity/have-trn',
+  //   '/get-an-identity/trn2'
+
+  //     ], (req, res, next) => {
+  //   res.locals.paths = updateSameWizard(req)
+  //   next()
+  // })
+
+  router.all([
+    '/get-an-identity/edit-details',
     '/get-an-identity/change-email',
     '/get-an-identity/email-confirmation2'
   ], (req, res, next) => {
     res.locals.paths = updateEmailWizard(req)
     next()
   })
-
 
   router.post(['/get-an-identity/name', '/get-an-identity/official-name'], (req, res, next) => {
     const data = req.session.data
@@ -58,6 +75,8 @@ export const getAnIdentityRoutes = router => {
   router.get('/get-an-identity/have-nino', (req, res) => {
     res.render('have-nino')
   })
+
+
 
   router.get('/get-an-identity/nino', (req, res) => {
     res.render('nino')
@@ -93,9 +112,12 @@ export const getAnIdentityRoutes = router => {
         case 'preferred-name':
           res.locals.appSuccess = { heading: 'Preferred name updated' }
           break
-          case 'email-update':
-            res.locals.appSuccess = { heading: 'Email address updated' }
-            break
+        case 'email-update':
+          res.locals.appSuccess = { heading: 'Email address updated' }
+          break
+        case 'name':
+          res.locals.appSuccess = { heading: 'Name updated' }
+          break
         default:
           res.locals.appSuccess = { heading: 'Changes saved' }
           break

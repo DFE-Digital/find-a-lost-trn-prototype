@@ -5,17 +5,8 @@
   rows: decorateRows([
     {
       key: "Email address",
-      value: data['email-address'] or 'email@example.com',
-      href: basePath + "/email" if change
+      value: data['email-address'] or 'email@example.com'
     }, {
-      key: "Do you have a TRN?",
-      data: "identity.do-you-have-a-trn",
-      href: basePath + "/trn-holder" if change
-    } if getAnIdentityJourney and not data.features.trnRequired.on, {
-      key: "Teacher reference number (TRN)",
-      value: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
-      href: basePath + "/trn-known" if change
-    } if getAnIdentityJourney and data.identity['do-you-have-a-trn'] === 'Yes' and not data.features.trnRequired.on, {
       key: "Name",
       value: data['full-name'] | title,
       href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change,
@@ -26,9 +17,9 @@
       href: (basePath + "/official-name" if getAnIdentityJourney else basePath + "/name") if change
     } if data['previous-name'] and not (data['previous-name'] === " "), {
       key: "Preferred name",
-      value: data['preferred-name'] | title,
+      value: data['preferred-name'] | title if data['have-preferred-name'] === 'no' else 'Same as name',
       href: basePath + "/preferred-name " if change
-    } if data['preferred-name'] and not (data['preferred-name'] === " "), {
+    } if data['preferred-name'], {
       key: "Date of birth",
       value: data['date-of-birth'] | isoDateFromDateInput| govukDate,
       href: basePath + "/dob" if change
@@ -42,9 +33,13 @@
       href: basePath + "/have-nino" if change
     } if data['have-nino'] === 'No', {
       key: "Teacher reference number (TRN)",
-      value: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN',
-      href: basePath + "/trn-known" if change
-    } if getAnIdentityJourney and data.features.trnRequired.on, {
+      value: data.identity.trn or 'Not given',
+      href: basePath + "/trn2" if change
+    } if data['have-trn'] == 'yes' and not data.emailMatchJourney, {
+      key: "Do you have a Teacher reference number (TRN)?",
+      value: "No",
+      href: basePath + "/have-trn" if change
+    } if data['have-trn'] === 'no', {
       key: "Have you been awarded QTS?",
       data: "has-qts",
       href: basePath + "/have-qts" if change,

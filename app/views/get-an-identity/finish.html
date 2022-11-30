@@ -6,12 +6,7 @@
   <h1 class="govuk-panel__title">{{ title }}</h1>
 
   {% if not matched and data.features.noMatchJourney.on %}
-  {% if findTRNJourney %}
-  <h2 class="govuk-heading-m">You can continue without a match</h2>
-  <p>We will attempt to match your record again. If we cannot, someone might be in touch to ask for more information.</p>
 
-  {% else %}
-  {% endif %}
   <p>Although we could not find your record, you can continue to register for an NPQ.  </p>
  
     {% else %}
@@ -23,14 +18,12 @@
       {% if not matched and data.features.noMatchJourney.on %}
 
       <!-- If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again.  -->
-      You'll need to enter some of your details again.
+      Next time use <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to amend your application or account details. 
 
       {% else %}
         We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
       {% endif %}
   </p>
-  
-
   {% else %}
   <h2 class="govuk-heading-m">Next time</h2>  
      <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }}</b></p>

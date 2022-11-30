@@ -1,35 +1,24 @@
 {% extends "layouts/wizard-interruption.html" %}
-{% if getAnIdentityJourney %}
   {% set title = "Your details" %}
 
-  {% else %}
-
-  {% set title = "We’ll ask you some questions to check against our records" %}
-{% endif %}
 
 
 
 {% block beforeForm %}
 <h1 class="govuk-panel__title">{{ title }}</h1>
 <p>
-  {% if getAnIdentityJourney %}
-    Before you register for an NPQ, we’ll ask you for a few details to find you in our records.
-  {% endif %}
+    Before you register for an NPQ, we'll ask you for a few details to see if you're in our records.
 </p>
 <p>We’ll ask for your:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>name</li>
   <li>date of birth</li>
-  {% if not data.features.trnRequired.on %}<li>teacher reference number (TRN), if you have one</li>{% endif %}
   <li>National Insurance number, if you have one</li>
 </ul>
 
 <p class="govuk-!-margin-bottom-6">
-  {% if not data.features.trnRequired.on %}
-    If you do not have your TRN or National Insurance number available, we may ask some follow-up questions.
-  {% else %}
+
     We may also ask some follow-up questions.
-  {% endif %}
 </p>
 
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layouts/wizard.html" %}
+{% set title %}Update your name{% endset %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Cancel changes',
+    href: 'edit-details',
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+  {{ govukInput({
+    label: {
+      text: "First name",
+      classes: "govuk-label--s"
+    },
+    decorate: 'first-name'
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Last name",
+      classes: "govuk-label--s"
+    },
+    decorate: 'last-name'
+  }) }}
+
+{% endblock %}

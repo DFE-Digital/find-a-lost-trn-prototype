@@ -1,8 +1,8 @@
 {% extends "layouts/wizard.html" %}
 
 {% if getAnIdentityJourney %}
-    {% set title = "Confirm your details" %}
-    {% set buttonText = "Confirm and continue" %}
+    {% set title = "Your details" %}
+    {% set buttonText = "Continue" %}
     {% set secondaryButton %}
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {{ govukButton({
@@ -15,9 +15,19 @@
     {% set title = "You’re signed in" %}
 {% endif %}
 
+{% set name %}
+    {% if not data.features.noMatchJourney.on %}
+    <p class="govuk-hint govuk-!-font-size-14">used for certificates</p>
+   
+    {% endif %}
+{% endset %}
+
+
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title }}</h1>
 <p>We found the following details in our records.</p>
+
+
 
 {{ govukSummaryList({
   rows: [
@@ -26,7 +36,7 @@
         text: "Name"
       },
       value: {
-        html:  data['full-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for certificates</p>'
+        html: data['first-name'] | title + ' ' + data['last-name'] | title + name
       }
     },
     {
