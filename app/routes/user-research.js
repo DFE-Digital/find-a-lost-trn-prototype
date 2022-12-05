@@ -48,13 +48,15 @@ export const userResearch = router => {
   // First time account journey
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = 'Apply for QTS'
-    data.onwardContinue = 'to apply for QTS'
+    data.identityServiceName = 'Register for a National Professional Qualification'
+    data.onwardContinue = 'Register for a National Professional Qualification'
     data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
     data.scenario = '1'
     data.hasIdentity = false
     res.redirect('/get-an-identity/email')
   })
+
+
 
   // Has account journey
   router.get('/user-research/scenario-2/', (req, res) => {
@@ -77,6 +79,19 @@ export const userResearch = router => {
     data.hasIdentity = false
     res.redirect('/get-an-identity/email')
   })
+
+
+    // First time account journey
+    router.get('/user-research/scenario-aa/', (req, res) => {
+      const data = req.session.data
+      data.identityServiceName = 'Register for a National Professional Qualification'
+      data.onwardContinue = 'to register for a National Professional Qualification'
+      data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
+      data.scenario = '4'
+      data.hasIdentity = false
+      data.hasAccount = true
+      res.redirect('/get-an-identity/start')
+    })
 
   const returnToService = () => {
     const isProduction = process.env.NODE_ENV === 'production'

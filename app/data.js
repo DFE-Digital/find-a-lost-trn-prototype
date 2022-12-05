@@ -9,18 +9,23 @@
 export default {
   // Set feature flags using the `features` key
 
-  'first-name': 'Johanna',
+  'first-name': 'Francis',
   'last-name': 'Smith',
   'date-of-birth': { day: 27, month: 3, year: 1987 },
-  'full-name': 'Johanna Smith',
-  'preferred-name': 'Jo Smith',
-  'preferred-first-name': 'Jo',
+  'full-name': 'Francis Smith',
+  'preferred-name': 'Fran Smith',
+  'preferred-first-name': 'Fran',
   'preferred-last-name': 'Smith',
   features: {
     validation: {
       on: false,
       name: 'Use validation',
       description: 'Show errors during journey'
+    },
+    newAuth: {
+      on: true,
+      name: 'GAI concept auth journey',
+      description: 'Display GAI concept journey'
     },
     noMatchJourney: {
       on: false,

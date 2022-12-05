@@ -1,0 +1,25 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Create account or sign in" %}
+{% set hideButton = true %}
+{% block pageNavigation %}{% endblock %}
+
+
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <p>Before you register for a NPQ you’ll need to create an account</p>
+  <p>We'll also ask you some questions to try and locate you in our records.</p>
+
+  {{ govukButton({
+    text: 'Create a account'
+  }) }}
+
+  <h1 class="govuk-heading-m">Already have an account?</h1>
+
+  <p class="govuk-body">
+    <a href="signed-in-as">Sign in</a> to amend your application or account details.
+  </p>
+
+  
+{% endblock %}
+
