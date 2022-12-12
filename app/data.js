@@ -23,7 +23,7 @@ export default {
       description: 'Show errors during journey'
     },
     newAuth: {
-      on: true,
+      on: false,
       name: 'GAI concept auth journey',
       description: 'Display GAI concept journey'
     },
