@@ -15,14 +15,7 @@
 
   {% if getAnIdentityJourney %}
   <p class="govuk-!-margin-bottom-6"></p>
-      {% if not matched and data.features.noMatchJourney.on %}
-
-      <!-- If you need to come back to this service later, use your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> when prompted and you will not have to answer these questions again.  -->
-      Next time use <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to amend your application or account details. 
-
-      {% else %}
-        We’ll only need your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b> to find your details in the future. 
-      {% endif %}
+       If you need to come back to this service later you'll only need to give us your email address <b>({{ data['replaced-email-address'] or data['email-address'] or "email@example.com" }})</b>.
   </p>
   {% else %}
   <h2 class="govuk-heading-m">Next time</h2>  
