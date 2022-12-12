@@ -2,10 +2,10 @@ import { wizard } from 'govuk-prototype-rig'
 
 export default (req) => {
   const journey = {
-    '/get-an-identity/signed-in-as': {},
-    '/get-an-identity/edit-details': {},
+    '/get-an-identity/check-answer-npq': {},
+      '/get-an-identity/account-details': {},
     '/get-an-identity/edit-name': {
-      '/get-an-identity/signed-in-as?success=name': true
+      '/get-an-identity/account-details?success=name': true
     }
   }
   return wizard(journey, req)

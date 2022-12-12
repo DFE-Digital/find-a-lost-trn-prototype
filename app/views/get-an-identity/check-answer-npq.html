@@ -1,0 +1,44 @@
+{% extends "layouts/default.html" %}
+{% block pageNavigation %}
+{% endblock %}
+
+{% set title = "Check your answers and confirm" %}
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    productName: productName,
+    serviceName: serviceName if not productName,
+    serviceUrl: serviceUrl or "/start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+    {
+      href: "account-details",
+      text: "Account"
+    },
+    {
+      href: "signed-out",
+      text: "Sign out"
+    }
+  ]
+  }) }}
+{% endblock %}
+
+{% set title = "Confirmation page" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Your initial registration is complete",
+        html: "<div class='govuk-!-font-size-19'>You've registered for an NPQ for <b>Leading Behaviour and Culture (NPQLBC)</b> with <b>Ambition Institute</b></div>"
+      }) }}
+
+      <p>We have sent you a confirmation email.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>Ambition Institute will contact you to complete your registration.</p>
+      <p>They will provide details of timings, costs and deadlines.</p>
+    </div>
+  </div>
+{% endblock %}

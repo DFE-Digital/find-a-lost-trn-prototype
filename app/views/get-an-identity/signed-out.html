@@ -1,0 +1,14 @@
+{% extends "layouts/default.html" %}
+
+{% set title = "You have been signed out" %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+{{ govukButton({
+    html: 'Back to Gov.uk',
+    href: 'start'
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Your account details" %}
+ {% set hideButton = true %}
+{% set secondaryButton %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+  {{ govukButton({
+    html: 'Back to service',
+    href: 'check-answer-npq',
+    classes: "govuk-button--secondary"
+  }) }}
+{% endset %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    productName: productName,
+    serviceName: serviceName if not productName,
+    serviceUrl: serviceUrl or "/start",
+    containerClasses: "govuk-width-container",
+    navigation: [
+    {
+      href: "account-details",
+      text: "Account",
+      active: true
+    },
+    {
+      href: "signed-out",
+      text: "Sign out"
+    }
+  ]
+  }) }}
+{% endblock %}
+
+
+{% block form %}
+
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+
+
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Name"
+    },
+    value: {
+      html:  data['first-name'] | title + ' ' + data['last-name'] | title
+    },
+    actions: {
+      items: [
+        {
+          href: "edit-name",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }
+      ]
+    }
+  } ,
+    {
+      key: {
+        text: "Preferred name"
+      },
+      value: {
+        html:  data['preferred-name'] | title+'<p class="govuk-hint govuk-!-font-size-14"">used for email correspondence</p>'
+      },
+      actions: {
+        items: [
+          {
+            href: "edit-preferred-name",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    } ,
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        html: data['email-address']
+      },
+      actions: {
+        items: [
+          {
+            href: "change-email",
+            text: "Change",
+            visuallyHiddenText: "email"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+
+{% endblock %}

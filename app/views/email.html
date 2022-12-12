@@ -3,14 +3,27 @@
 
 {% block form %}
 
+{% set title = ("Enter your email address to sign in ") if data['signedIn'] == 'yes' else "Enter your email address" %}
+
+
+
 {% if getAnIdentityJourney %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+
+{% if data.features.newAuth.on %}
 <p>
   We use your email address to find your details in our records. 
 </p>
 <p>
 If we do not recognise your email, we’ll ask you for a few details instead.
 </p>
+
+{% endif %}
+
+
+
+
 <p>
 You’ll receive a code by email to confirm your email address.
 </p>
@@ -20,8 +33,8 @@ You’ll receive a code by email to confirm your email address.
     classes: "govuk-label--s"
   },
   hint: {
-    text: 'Use your personal email address. This is so you can keep these login details should you change jobs.'
-  },
+    text: 'Use your personal email address. This is so you can keep these sign in details should you change jobs .'
+  } if data['signedIn'] !== 'yes',
   decorate: 'email-address',
   validate: {
     presence: {

@@ -4,7 +4,6 @@
     {% set title = "Your details" %}
     {% set buttonText = "Continue" %}
     {% set secondaryButton %}
-      {% from "govuk/components/button/macro.njk" import govukButton %}
       {{ govukButton({
         html: 'Update details',
         href: '/get-an-identity/edit-details',
