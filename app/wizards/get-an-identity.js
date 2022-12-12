@@ -21,15 +21,20 @@ export default (req) => {
     '/get-an-identity/email': {},
     '/get-an-identity/email-confirmation': {
       '/get-an-identity/ask-questions': () => !emailHasIdentity(data) && !data.features.newAuth.on,
-      '/get-an-identity/signed-in-as': () => emailHasIdentity(data) && data.features.newAuth.on,
+      '/get-an-identity/signed-in': () => emailHasIdentity(data) && data.features.newAuth.on,
       '/get-an-identity/account-created': () => data.features.newAuth.on
     },
     '/get-an-identity/signed-in-as': {
       '/get-an-identity/return-to-service': true
     },
-    '/get-an-identity/signed-in-as': {
-      '/get-an-identity/return-to-service': true
-    },
+    ...(newAuth)
+    ? {
+      '/get-an-identity/signed-in': {
+        '/get-an-identity/check-answer-npq': () => data.features.newAuth.on,
+      },
+    }
+    : {},
+
     ...(newAuth)
     ? {
       '/get-an-identity/account-created': {
@@ -65,7 +70,9 @@ export default (req) => {
       '/get-an-identity/check-answers': { data: 'has-qts', value: 'No' }
     },
     '/get-an-identity/how-qts': {},
-    '/get-an-identity/check-answers': {},
+    '/get-an-identity/check-answers': {
+      '/get-an-identity/finish2': () => data.features.newAuth.on,
+    },
     ...(noMatchJourney)
       ? {
         '/get-an-identity/no-match': {
@@ -80,6 +87,12 @@ export default (req) => {
       }
       : {},
     '/get-an-identity/finish': {},
+    ...(newAuth)
+    ? {
+      '/get-an-identity/finish2': {},
+
+    }
+    : {},
     '/get-an-identity/return-to-service': {}
   }
 

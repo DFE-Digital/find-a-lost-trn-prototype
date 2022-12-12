@@ -1,6 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "You've created a teaching account" %}
-{% set serviceName = "Teaching account" %}
+{% set title = "You've created an account" %}
 {% set emailAddress = data['email-address'] or 'email@example.com' %}
 
 
@@ -8,6 +7,8 @@
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
   <p>You can use <b>{{emailAddress}}</b> to sign into your account.  </p>
-  <p>Next, we will ask you some questions to find you in our records</p>
+  <p>Next, we'll ask you some questions to find you in our records.</p>
 {% endblock %}
+
+
 

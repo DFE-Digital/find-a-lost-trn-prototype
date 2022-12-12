@@ -1,0 +1,16 @@
+{% extends "layouts/wizard.html" %}
+{% set title =  "We've finished checking our records. " %}
+
+{% block form %}
+  <h1 class="govuk-panel__title">{{ title }}</h1>
+
+
+  <p>We have located you in our records.  </p>
+  <p>Continue to register for a NPQ.  </p>
+ 
+
+
+
+
+  <input type="hidden" name="account-data" value="{{ data | stringify }}">
+{% endblock %}

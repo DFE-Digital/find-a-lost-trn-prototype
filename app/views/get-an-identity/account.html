@@ -8,16 +8,18 @@
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
   <p>Before you register for a NPQ you’ll need to create an account</p>
-  <p>We'll also ask you some questions to try and locate you in our records.</p>
+  <p>After you've created an account and given some details, you can continue to Register for NPQ.</p>
 
+  
   {{ govukButton({
-    text: 'Create a account'
+    text: 'Create a account',
+    href: 'email?signedIn=no'
   }) }}
 
   <h1 class="govuk-heading-m">Already have an account?</h1>
 
   <p class="govuk-body">
-    <a href="signed-in-as">Sign in</a> to amend your application or account details.
+    <a href="email?signedIn=yes">Sign in</a> to amend your NPQ application or account details.
   </p>
 
   
