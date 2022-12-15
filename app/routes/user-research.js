@@ -48,8 +48,8 @@ export const userResearch = router => {
   // First time account journey
   router.get('/user-research/scenario-1/', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = 'Register for a national professional qualification (NPQ)'
-    data.onwardContinue = 'with your NPQ registration'
+    data.identityServiceName = 'Register for a National Professional Qualification'
+    data.onwardContinue = 'Register for a National Professional Qualification'
     data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
     data.scenario = '1'
     data.hasIdentity = false
@@ -61,7 +61,7 @@ export const userResearch = router => {
   // Has account journey
   router.get('/user-research/scenario-2/', (req, res) => {
     const data = req.session.data
-    data.identityServiceName = 'Register for a national professional qualification (NPQ)'
+    data.identityServiceName = 'Register for a National Professional Qualification'
     data.onwardContinue = 'with your NPQ registration'
     data.returnToService = returnToService()
     data.scenario = '2'
@@ -84,8 +84,8 @@ export const userResearch = router => {
     // First time account journey
     router.get('/user-research/scenario-aa/', (req, res) => {
       const data = req.session.data
-      data.identityServiceName = 'Register for a national professional qualification (NPQ)'
-      data.onwardContinue = 'to register for a NPQ'
+      data.identityServiceName = 'Register for a National Professional Qualification'
+      data.onwardContinue = 'to register for a National Professional Qualification'
       data.returnToService = 'https://npq-prototype.herokuapp.com/chosen'
       data.scenario = '4'
       data.hasIdentity = false

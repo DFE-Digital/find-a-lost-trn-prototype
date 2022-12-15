@@ -4,16 +4,14 @@
   {% from "govuk/components/button/macro.njk" import govukButton %}
   {{ govukButton({
     html: 'Cancel changes',
-    href: 'signed-in-as',
+    href: 'edit-details',
     classes: "govuk-button--secondary"
   }) }}
 {% endset %}
 
 {% block form %}
 <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
-<p>You can tell us what you prefer to be called if it's different from the name on your offcial documents. </p>
-
-<p>For example, if your name is Joanne and you preferred to be called Jo.</p>
+  <p>We can use a different name in correspondence, and tell people what you prefer to be called.</p>
   {{ govukInput({
     label: {
       text: "Preferred first name",

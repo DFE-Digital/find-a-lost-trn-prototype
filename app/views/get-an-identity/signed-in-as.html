@@ -1,75 +1,68 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Continue with your NPQ registration" %}
+
+{% if getAnIdentityJourney %}
+    {% set title = "Your details" %}
+    {% set buttonText = "Continue" %}
+    {% set secondaryButton %}
+      {{ govukButton({
+        html: 'Update details',
+        href: '/get-an-identity/edit-details',
+        classes: "govuk-button--secondary"
+      }) }}
+    {% endset %}
+{% else %}
+    {% set title = "You’re signed in" %}
+{% endif %}
+
+{% set name %}
+    {% if not data.features.noMatchJourney.on %}
+    <p class="govuk-hint govuk-!-font-size-14">used for certificates</p>
+   
+    {% endif %}
+{% endset %}
 
 
 {% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+<p>We found the following details in our records.</p>
 
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
 
 
-{{ xGovukSummaryCard({
-  classes: "govuk-!-margin-bottom-9",
-  titleText: "Your details",
-  actions: {
-    items: [{
-
-    }]
-  },
+{{ govukSummaryList({
   rows: [
-  {
-    key: {
-      text: "Name"
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        html: data['first-name'] | title + ' ' + data['last-name'] | title + name
+      }
     },
-    value: {
-      html:  data['first-name'] | title + ' ' + data['last-name'] | title
-    },
-    actions: {
-      items: [
-        {
-          href: "edit-name",
-          text: "Change",
-          visuallyHiddenText: "name"
-        }
-      ]
-    }
-  } ,
     {
       key: {
         text: "Preferred name"
       },
       value: {
-        html:  data['preferred-name'] | title 
-      },
-      actions: {
-        items: [
-          {
-            href: "edit-preferred-name",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
+        html:  data['preferred-first-name'] | title + ' ' + data['preferred-last-name'] | title + '<p class="govuk-hint govuk-!-font-size-14">used for email correspondence</p>'
       }
-    } ,
+    },
+    {
+      key: {
+        text: "TRN"
+      },
+      value: {
+        text: data.identity.trn if data.identity['do-you-know-your-trn'] === 'yes' else '324235233'
+      }
+    },
     {
       key: {
         text: "Email address"
       },
       value: {
         html: data['email-address']
-      },
-      actions: {
-        items: [
-          {
-            href: "change-email",
-            text: "Change",
-            visuallyHiddenText: "email"
-          }
-        ]
       }
     }
   ]
 }) }}
-
-
-
+<input type="hidden" name="account-data" value="{{ data | stringify }}">
 {% endblock %}

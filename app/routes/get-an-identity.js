@@ -14,7 +14,7 @@ export const getAnIdentityRoutes = router => {
   })
 
   router.all([
-    '/get-an-identity/signed-in-as',
+    '/get-an-identity/account-details',
     '/get-an-identity/edit-preferred-name'
   ], (req, res, next) => {
     res.locals.paths = updateWizard(req)
@@ -22,7 +22,7 @@ export const getAnIdentityRoutes = router => {
   })
 
   router.all([
-    '/get-an-identity/signed-in-as',
+    '/get-an-identity/account-details',
     '/get-an-identity/edit-name'
   ], (req, res, next) => {
     res.locals.paths = updateNameWizard(req)
@@ -38,7 +38,7 @@ export const getAnIdentityRoutes = router => {
   // })
 
   router.all([
-    '/get-an-identity/signed-in-as',
+    '/get-an-identity/account-details',
     '/get-an-identity/change-email',
     '/get-an-identity/email-confirmation2'
   ], (req, res, next) => {
