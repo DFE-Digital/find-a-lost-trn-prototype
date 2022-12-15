@@ -10,9 +10,7 @@
 {% endset %}
 
 {% block form %}
-<h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
-<p>Use the name on your official documents, such as your passport.</p>
-
+<h1  class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
   {{ govukInput({
     label: {
       text: "First name",
