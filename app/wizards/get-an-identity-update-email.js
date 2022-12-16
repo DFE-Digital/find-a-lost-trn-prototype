@@ -13,6 +13,7 @@ export default (req) => {
     '/get-an-identity/email-confirmation2': {
 
       '/get-an-identity/signed-in-as?success=email-update': true
+      
     }
   }
   return wizard(journey, req)
