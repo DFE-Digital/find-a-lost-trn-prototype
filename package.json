@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.0.0 <17"
   },
   "prototype": {
     "serviceName": "Find a lost teacher reference number (TRN)",
