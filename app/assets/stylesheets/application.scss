@@ -40,3 +40,8 @@ $govuk-assets-path: "/govuk/assets/";
 .app-\!-no-wrap {
   white-space: nowrap !important;
 }
+
+
+ .govuk-summary-list__actions {
+  width: auto;
+}

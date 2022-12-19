@@ -13,25 +13,25 @@
   <ul class="govuk-tabs__list">
     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#open">
-        Awaiting TRN
+        Open
       </a>
     </li>
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#closed">
-        Complete
+        Closed
       </a>
     </li>
     
   </ul>
   <div class="govuk-tabs__panel" id="open">
-    <p class="govuk-heading-s ">Users require DQT check </p>
+    <p class="govuk-heading-s ">These records need to be checked against the DQT. </p>
     <p >Showing 1 of 3 total</p>
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header">Name</th>
           <th class="govuk-table__header">Email</th>
-          <th class="govuk-table__header">DQT record</th>
+          <th class="govuk-table__header"></th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
@@ -48,7 +48,7 @@
               {{ user.email }}
             </td>
             <td class="govuk-table__cell">
-              {{ 'Yes' if user.dqt else ('No (<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>)') | safe }}
+              {{ 'Yes' if user.dqt else ('<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>') | safe }}
             </td>
     
           </tr>
@@ -59,7 +59,7 @@
     </table> 
   </div>
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed">
-    <p class="govuk-heading-s ">Active users with assigned DQT status </p>
+    <p class="govuk-heading-s ">These records have been checked against the DQT. </p>
     <p >Showing 100 of 500 total</p>
 
     <table class="govuk-table">
@@ -76,16 +76,17 @@
         {% for id, user in data.supportHasDQT.users %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
+              <a href="#">{{ fullName(user.name) }}</a>
             </td>
             <td class="govuk-table__cell">
               {{ user.email }}
             </td>
             <td class="govuk-table__cell">
-              {{ 'Yes' if user.dqt else ('No record') | safe }}
+              {{ 'Yes' if user.dqt else ('No') | safe }}
             </td>
             <td class="govuk-table__cell">
-              {{ user.dqt.trn }}
+              {{ user.dqt.trn if user.dqt.trn else ('N/A') | safe }}
+
             </td>
           </tr>
         {% endfor %}

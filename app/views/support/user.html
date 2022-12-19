@@ -48,6 +48,7 @@
         value: {
           html: officialName
         },
+        
         actions: {
           items: [
             {
@@ -70,6 +71,7 @@
         value: {
           html: 'Yes' if user.dqt else 'No record linked'
         },
+        classes: 'action_links',
         actions: {
           items: [
             {
@@ -79,13 +81,10 @@
               text: "Add record",
               href: urlPath + '/link-dqt/trn'  
             },
-            {
-              text: "Change record",
-              href: "#"
-            } if user.dqt else {
-              text: "Mark as no record",
+           {
+              text: "Mark as non DQT",
               href: urlPath + '?success=no-record'  
-            }
+            } if not user.dqt
           ]
         }
       }

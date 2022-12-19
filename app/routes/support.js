@@ -50,6 +50,9 @@ export const supportRoutes = router => {
         case 'dqt-linked':
           res.locals.appSuccess = { heading: 'DQT record added' }
           break
+          case 'no-record':
+          res.locals.appSuccess = { heading: 'User marked as not on DQT' }
+          break
         default:
           res.locals.appSuccess = { heading: 'Changes saved' }
           break
