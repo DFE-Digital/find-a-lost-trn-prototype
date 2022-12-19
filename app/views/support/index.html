@@ -1,38 +1,105 @@
 {% extends "layouts/default.html" %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-      <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
-    </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+  </div>
+</div>
+
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#open">
+        Awaiting TRN
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#closed">
+        Complete
+      </a>
+    </li>
+    
+  </ul>
+  <div class="govuk-tabs__panel" id="open">
+    <p class="govuk-heading-s ">Users require DQT check </p>
+    <p >Showing 1 of 3 total</p>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">Name</th>
+          <th class="govuk-table__header">Email</th>
+          <th class="govuk-table__header">DQT record</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+
+        {% for id, user in data.support.users %}
+        {% if not user.dqt %}
+        
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
+            </td>
+            <td class="govuk-table__cell">
+              {{ user.email }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ 'Yes' if user.dqt else ('No (<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>)') | safe }}
+            </td>
+    
+          </tr>
+          {% endif %}
+
+        {% endfor %}
+      </tbody>
+    </table> 
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed">
+    <p class="govuk-heading-s ">Active users with assigned DQT status </p>
+    <p >Showing 100 of 500 total</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">Name</th>
+          <th class="govuk-table__header">Email</th>
+          <th class="govuk-table__header">DQT record</th>
+          <th class="govuk-table__header">TRN</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+  
+        {% for id, user in data.supportHasDQT.users %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
+            </td>
+            <td class="govuk-table__cell">
+              {{ user.email }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ 'Yes' if user.dqt else ('No record') | safe }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ user.dqt.trn }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
   </div>
 
-  <table class="govuk-table">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header">Name</th>
-        <th class="govuk-table__header">Email</th>
-        <th class="govuk-table__header">DQT record</th>
-        <th class="govuk-table__header">TRN</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      {% for id, user in data.support.users %}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="/support/{{ user.id }}">{{ fullName(user.name) }}</a>
-          </td>
-          <td class="govuk-table__cell">
-            {{ user.email }}
-          </td>
-          <td class="govuk-table__cell">
-            {{ 'Yes' if user.dqt else ('No (<a href="/support/' + id + '/link-dqt/trn">Add a DQT record</a>)') | safe }}
-          </td>
-          <td class="govuk-table__cell">
-            {{ user.dqt.trn }}
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+</div>
+
+
+
+
+
+  
+
+
 {% endblock %}

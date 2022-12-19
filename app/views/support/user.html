@@ -77,7 +77,14 @@
               href: "#"
             } if user.dqt else {
               text: "Add record",
-              href: urlPath + '/link-dqt/trn'
+              href: urlPath + '/link-dqt/trn'  
+            },
+            {
+              text: "Change record",
+              href: "#"
+            } if user.dqt else {
+              text: "Mark as no record",
+              href: urlPath + '?success=no-record'  
             }
           ]
         }

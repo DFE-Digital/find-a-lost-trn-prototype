@@ -77,9 +77,9 @@ export default {
         created: '2022-01-13',
         accessed: '2022-06-20',
         email: 'jon.doe@example.com',
-        dqt: {
-          'first-name': 'Jonathan',
-          'last-name': 'Doe',
+        'inactive-dqt': {
+          'first-name': 'Keanu',
+          'last-name': 'Greeves',
           dob: '1950-01-01',
           nino: true,
           trn: '1234567'
@@ -97,9 +97,9 @@ export default {
         created: '2022-01-13',
         accessed: '2022-06-20',
         email: 'jane.smith@example.com',
-        dqt: {
-          'first-name': 'Jane',
-          'last-name': 'Doe',
+        'inactive-dqt': {
+          'first-name': 'Keanu',
+          'last-name': 'Greeves',
           dob: '1950-01-01',
           nino: true,
           trn: '1234567'
@@ -125,8 +125,64 @@ export default {
         }
       }
     }
+  },
+  supportHasDQT: {
+    users: {
+      124: {
+        id: '123',
+        name: {
+          'first-name': 'Mary',
+          'last-name': 'Deane',
+          verified: true,
+          'verified-on': '2022-01-13',
+          from: 'Register for an NPQ',
+          created: '2022-01-13'
+        },
+        created: '2022-01-13',
+        accessed: '2022-06-20',
+        email: 'jon.doe@example.com',
+        dqt: {
+          'first-name': 'Mary',
+          'last-name': 'Dean',
+          dob: '1950-01-01',
+          nino: true,
+          trn: '1234567'
+        }
+      },
+      125: {
+        id: '124',
+        name: {
+          'first-name': 'Barry',
+          'last-name': 'King',
+          verified: false,
+          from: 'Register for an NPQ',
+          created: '2022-01-13'
+        },
+        created: '2022-01-13',
+        accessed: '2022-06-20',
+        email: 'barry.king@example.com',
+        dqt: {
+          'first-name': 'Barry',
+          'last-name': 'King',
+          dob: '1950-01-01',
+          nino: true,
+          trn: '1234567'
+        }
+      },
+      102: {
+        id: '101',
+        name: {
+          'first-name': 'Sam',
+          'last-name': 'Jones',
+          from: 'Register for an NPQ',
+          created: '2022-03-12'
+        },
+        created: '2022-03-12',
+        accessed: '2022-03-12',
+        email: 'Sam.jones@example.com'
+      }
+    }
   }
-
   // 'email-address': 'jsmith@example.com',
   // 'email-address': 'jsmith@myschool.gov.uk',
   // 'full-name': 'Jane Smith',
