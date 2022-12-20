@@ -39,6 +39,22 @@
     </span>
   {% endset %}
 
+  {% set dqt %}
+
+      {% if data['success'] === "no-record" %}
+        No      
+      {% elseif data['success']  !== "no-record"  %}
+          {% if user.dqt %}
+          Yes
+
+        
+            {% else %}
+              No record linked
+          {% endif %}
+      
+      {% endif %}
+{% endset %}
+
   {{ xGovukSummaryCard({
     classes: "govuk-!-margin-bottom-9",
     titleText: "Get an identity details",
@@ -69,11 +85,8 @@
       {
         key: 'DQT record',
         value: {
-          html: 'Yes' 
-        } if data['success'] !== 'no-record',
-        value: {
-          html: 'No' 
-        } if data['success'] === 'no-record',
+          html: dqt
+        },
         classes: 'action_links',
         actions: {
           items: [
