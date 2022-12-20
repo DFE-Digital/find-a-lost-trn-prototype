@@ -69,8 +69,11 @@
       {
         key: 'DQT record',
         value: {
-          html: 'Yes' if user.dqt else 'No record linked'
-        },
+          html: 'Yes' 
+        } if data['success'] !== 'no-record',
+        value: {
+          html: 'No' 
+        } if data['success'] === 'no-record',
         classes: 'action_links',
         actions: {
           items: [
@@ -83,7 +86,8 @@
             },
            {
               text: "Mark as non DQT",
-              href: urlPath + '?success=no-record'  
+              href: urlPath + '?success=no-record',
+              classes: 'button'  
             } if not user.dqt
           ]
         }
@@ -113,7 +117,7 @@
           value: {
             html: 'Given' if user.dqt.nino else 'Not given'
           }
-        },
+        } ,
         {
           key: 'TRN',
           value: {
@@ -123,4 +127,11 @@
       ])
     }) }}
   {% endif %}
+  <script>
+    $(document).ready(function(){
+      $(".button").click(function(){
+        $(".action_links .govuk-summary-list__value").text("Hello world!");
+      });
+    });
+    </script>
 {% endblock %}
